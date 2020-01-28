@@ -10,6 +10,7 @@ const app = express();
 
 /* Importazione Router */
 const userRouter = require('./routes/userRouter');
+const admin_router_impiantos = require('./routes/admin_router_impiantos');
 
 /* Costanti utils */
 const path = require('path');
@@ -30,16 +31,17 @@ app.set('view engine', 'ejs');
 
 /* Impostazione del middleware di body-parser - Ci permette di ottenere un oggetto dalla POST di un form HTML debitamente costruito */
 app.use(
-  methodOverride((req, res) => {
-    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-      var method = req.body._method;
-      delete req.body._method;
-      return method;
-    }
-  })
+    methodOverride((req, res) => {
+        if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+            var method = req.body._method;
+            delete req.body._method;
+            return method;
+        }
+    })
 );
 
 /* Richiamo dei diversi router precedentemente importati */
+app.use('/admin', admin_router_impiantos);
 app.use('/user', userRouter);
 
 /* Esportazione modulo app per l'utilizzo in server.js */
