@@ -18,5 +18,9 @@ router.route('/home').get((req, res) => {
     res.redirect('/user/');
 });
 
+/* Login page */
+router.route('/login').get(controller_user.get_login);
+router.route('/register').get(controller_user.get_register);
+
 /* Esportazione modulo router per app.js */
 module.exports = router;
