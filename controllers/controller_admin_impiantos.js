@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const express = require('express');
-const Impianto = require('./../models/Impianto');
+const Impianto = require('../models/Impianto');
 
 const app = express();
 
@@ -42,9 +42,7 @@ exports.new = (req, res) => {
         imgs: req.body.imgs.replace(/\s+/g, '').split(','),
         tags: req.body.tags.replace(/\s+/g, '').split(',')
     };
-
     newImpianto.desc = newImpianto.desc.replace('</p>', '');
-
 
 
     /* Split tags */
