@@ -114,13 +114,13 @@
                                     </div>
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <span name="desc" class="text">Descrizione</span>
+                                            <span name="descrizione" class="text">Descrizione</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="customRow100" style="margin-left: 1%;">
                                     <div>
-                                        <textarea id="mytextarea" style="margin-top: 20%;"></textarea>
+                                        <textarea name="desc" id="mytextarea" style="margin-top: 20%;"><% this.value %></textarea>
                                         <div style="margin-top: 4%;">
                                             <a onclick="re_toggle()"><button type="button" class="customBtn2" style="margin-right: 2%;">Inserisci Immagini</button></a>
                                             <a onclick="toggle()"><button type="button" class="customBtn2" style="margin-right: 2%;">Inserisci Tags</button></a>
@@ -131,12 +131,10 @@
                                                 <button type="submit" class="customBtn">Pronto</button>
                                             </a>
                                         </div>
-                                        <input type="hidden" id="arrSpo" value="<%= arrSpo %>"></input>
-                                        <p id="arrImm"></p>
-                                        <p id="arrTag"></p>
 
-
-                                        <input type="hidden" name="sport" id="arrSpo" value="<%=  %>">
+                                        <input type="hidden" name="sport" id="arrSpo" <% this.value %>">
+                                        <input type="hidden" name="imgs" id="arrImm" <% this.value %>">
+                                        <input type="hidden" name="tags" id="arrTag" <% this.value %>">
 
                                     </div>
                                 </div>
@@ -314,10 +312,10 @@
     function arraySport() {
         var s = [];
         for (var i = 1; i < table.rows.length; i++) {
-            s.push(table.rows[i].innerHTML);
+            s.push(table.rows[i].innerText);
         }
 
-        /* document.getElementById('arrSpo').innerHTML = s; */
+        document.getElementById('arrSpo').value = s;
 
         console.log(s);
         var blur3 = document.getElementById('blur3');
@@ -362,11 +360,11 @@
     function arrayImm() {
         var a = [];
         for (var i = 1; i < tableImm.rows.length; i++) {
-            a.push(tableImm.rows[i].innerHTML);
+            a.push(tableImm.rows[i].innerText);
         }
         console.log(a);
 
-        document.getElementById('arrImm').innerHTML = a;
+        document.getElementById('arrImm').value = a;
 
         var blur2 = document.getElementById('blur2');
         blur2.classList.toggle('attivo');
@@ -425,7 +423,7 @@
         }
         console.log(t);
 
-        document.getElementById('arrTag').innerHTML = t;
+        document.getElementById('arrTag').value = t;
 
         var blur = document.getElementById('blur');
         blur.classList.toggle('active');

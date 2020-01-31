@@ -35,18 +35,24 @@ exports.new = (req, res) => {
         name: req.body.name,
         address: req.body.address,
         iFrame: req.body.iFrame,
-        /* sport: req.body.sport.replace(/\s+/g, '').split(','), */
+        sport: req.body.sport.replace(/\s+/g, '').split(','),
         managementType: req.body.managementType * 1,
         manager: req.body.manager,
-        /* imgs: req.body.imgs.replace(/\s+/g, '').split(','), */
-        /* tags: req.body.tags.replace(/\s+/g, '').split(',') */
+        desc: req.body.desc.replace('<p>', ''),
+        imgs: req.body.imgs.replace(/\s+/g, '').split(','),
+        tags: req.body.tags.replace(/\s+/g, '').split(',')
     };
+
+    newImpianto.desc = newImpianto.desc.replace('</p>', '');
+
+
+
     /* Split tags */
-    /* for (var i = 0; i < newImpianto.tags.length; i++) {
+    for (var i = 0; i < newImpianto.tags.length; i++) {
         newImpianto.tags[i] = newImpianto.tags[i].replace(/\s+/g, '').split('-');
-    } */
+    }
     /* Array to Object */
-    /* var obj = {};
+    var obj = {};
     newImpianto.tags.forEach(item => {
         item.forEach(function(val, i) {
             if (i % 2 === 1) return
@@ -54,7 +60,7 @@ exports.new = (req, res) => {
             else obj[val] = item[i + 1];
         })
     })
-    newImpianto.tags = obj; */
+    newImpianto.tags = obj;
 
     /* Creating the Impianto */
     Impianto.create(newImpianto, (err, data) => {
@@ -76,4 +82,4 @@ exports.new = (req, res) => {
 exports.get_new = (req, res) => {
     /* Impostazione dello stato HTTP success e rendering della pagina dedicata alla creazione di un nuovo impianto (newImpianto.ejs) */
     res.status(200).render('admin_newImpianto');
-}
+};
