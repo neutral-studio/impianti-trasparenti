@@ -44,7 +44,6 @@ exports.new = (req, res) => {
     };
     newImpianto.desc = newImpianto.desc.replace('</p>', '');
 
-
     /* Split tags */
     for (var i = 0; i < newImpianto.tags.length; i++) {
         newImpianto.tags[i] = newImpianto.tags[i].replace(/\s+/g, '').split('-');
@@ -81,3 +80,85 @@ exports.get_new = (req, res) => {
     /* Impostazione dello stato HTTP success e rendering della pagina dedicata alla creazione di un nuovo impianto (newImpianto.ejs) */
     res.status(200).render('admin_newImpianto');
 };
+
+
+/* editing an Impianto */
+exports.edit = (req, res) => {
+    let id = req.params.id;
+    const updated = {
+        name: req.body.name,
+        address: req.body.address,
+        iFrame: req.body.iFrame,
+        sport: req.body.sport.replace(/\s+/g, '').split(','),
+        managementType: req.body.managementType * 1,
+        manager: req.body.manager,
+        desc: req.body.desc.replace('<p>', ''),
+        imgs: req.body.imgs.replace(/\s+/g, '').split(','),
+        tags: req.body.tags.replace(/\s+/g, '').split(',')
+    }
+    updated.desc = updated.desc.replace('</p>', '');
+
+    /* Split tags */
+    for (var i = 0; i < updated.tags.length; i++) {
+        updated.tags[i] = updated.tags[i].replace(/\s+/g, '').split('-');
+    }
+    /* Array to Object */
+    var obj = {};
+    updated.tags.forEach(item => {
+        item.forEach(function(val, i) {
+            if (i % 2 === 1) return
+            if (item[i + 1] == '') obj[val] = 'true';
+            else obj[val] = item[i + 1];
+        })
+    })
+    updated.tags = obj;
+
+
+
+    Impianto.findById(id, (err, data) => {
+        if (err) {
+            res.status(404).json({
+                status: 'failed',
+                message: 'Impianto does not exist | Invalid ID'
+            })
+        }
+        data.replaceOne(updated, err => {
+            if (err) {
+                res.status(500).json({
+                    status: 'failed',
+                    message: 'Impianto could not edited'
+                })
+            } else {
+                res.redirect('/admin/impianti');
+            }
+        })
+    })
+}
+
+
+/* editing Impianto page */
+exports.get_edit = (req, res) => {
+    Impianto.findById(req.params.id, (err, data) => {
+        if (err) {
+            res.status(404).render('404');
+        } else {
+            res.render('admin_editImpianto', { impianto: data });
+        }
+    })
+}
+
+
+/* deleting Impianto */
+exports.remove = (req, res) => {
+    let id = req.params.id;
+    Impianto.deleteOne({ _id: id }, (err, data) => {
+        if (err) {
+            res.status(500).json({
+                status: 'fail',
+                message: 'Impianto could not deleted'
+            })
+        } else {
+            res.redirect('/admin/impianti');
+        }
+    })
+}

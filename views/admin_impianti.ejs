@@ -95,126 +95,57 @@
                             <div class="card-body ">
                                 <div class="table-responsive ">
                                     <table class="table ">
-                                        <thead class=" text-primary ">
+                                        <thead class=" text-success ">
                                             <th>
-                                                Nome
+                                                Nome Impianto
                                             </th>
                                             <th>
-                                                Indirizzo
+                                                Indirizzo Impianto
                                             </th>
                                             <th>
-                                                Descrizione
+                                                Sport
                                             </th>
                                             <th>
-                                                Attivo
+                                                Status
                                             </th>
                                             <th>
-                                                Data Creazione
+                                                Azioni
                                             </th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    Padre Peeo
-                                                </td>
-                                                <td>
-                                                    Dakota Rice
-                                                </td>
-                                                <td>
-                                                    Niger
-                                                </td>
-                                                <td>
-                                                    Oud-Turnhout
-                                                </td>
-                                                <td class="text-primary ">
-                                                    $36,738
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2
-                                                </td>
-                                                <td>
-                                                    Minerva Hooper
-                                                </td>
-                                                <td>
-                                                    Curaçao
-                                                </td>
-                                                <td>
-                                                    Sinaai-Waas
-                                                </td>
-                                                <td class="text-primary ">
-                                                    $23,789
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    3
-                                                </td>
-                                                <td>
-                                                    Sage Rodriguez
-                                                </td>
-                                                <td>
-                                                    Netherlands
-                                                </td>
-                                                <td>
-                                                    Baileux
-                                                </td>
-                                                <td class="text-primary ">
-                                                    $56,142
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    4
-                                                </td>
-                                                <td>
-                                                    Philip Chaney
-                                                </td>
-                                                <td>
-                                                    Korea, South
-                                                </td>
-                                                <td>
-                                                    Overland Park
-                                                </td>
-                                                <td class="text-primary ">
-                                                    $38,735
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    5
-                                                </td>
-                                                <td>
-                                                    Doris Greene
-                                                </td>
-                                                <td>
-                                                    Malawi
-                                                </td>
-                                                <td>
-                                                    Feldkirchen in Kärnten
-                                                </td>
-                                                <td class="text-primary ">
-                                                    $63,542
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    6
-                                                </td>
-                                                <td>
-                                                    Mason Porter
-                                                </td>
-                                                <td>
-                                                    Chile
-                                                </td>
-                                                <td>
-                                                    Gloucester
-                                                </td>
-                                                <td class="text-primary ">
-                                                    $78,615
-                                                </td>
-                                            </tr>
+                                            <% impianti.forEach((impianto) => { %>
+
+                                                <tr>
+                                                    <td>
+                                                        <a style="color: black;" href="/admin/impianti/edit/<%= impianto._id %>">
+                                                            <%= impianto.name %>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <%= impianto.address %>
+                                                    </td>
+                                                    <td>
+                                                        <% impianto.sport.forEach((spo) => { %>
+                                                            <%= spo %>
+                                                                <% }) %>
+                                                    </td>
+                                                    <td>
+                                                        stato
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <a style="margin-left: 15px; color: rgb(255, 219, 152);" href="/admin/impianti/edit/<%= impianto._id %>"><i class="far fa-edit"></i></a>
+                                                            <form style="margin-left: 9px;" action="/admin/impianti/<%= impianto._id %>" method="POST">
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                <button type="submit" style="background-color: transparent; overflow: hidden; border: none; cursor: pointer;">
+                                                                    <a style="color: rgb(231, 0, 0);"><i class="far fa-trash-alt"></i></a>
+                                                                  </button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <% }) %>
                                         </tbody>
                                     </table>
                                 </div>

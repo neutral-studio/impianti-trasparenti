@@ -16,6 +16,19 @@ router
     .get(controller_admin_impiantos.get_new)
     .post(controller_admin_impiantos.new);
 
+/* */
+router
+    .route('/impianti/edit/:id')
+    .get(controller_admin_impiantos.get_edit)
+    .post(controller_admin_impiantos.edit);
+
+
+/* deleting an Impianto */
+router
+    .route('/impianti/:id')
+    .delete(controller_admin_impiantos.remove);
+
+
 /* Routes - Ricordiamo che anteposto al contenuto di 'router.route('/url)' è presente la route chiamante '/admin' */
 router
     .route('/impianti')

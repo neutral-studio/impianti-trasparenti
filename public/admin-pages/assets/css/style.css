@@ -433,17 +433,3 @@
     background-color: #4CAF50;
     color: white;
 }
-
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(transparent, #4BAE4E);
-    border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(transparent, rgb(66, 153, 69));
-    border-radius: 6px;
-}

@@ -73,41 +73,42 @@
                     <div class="customContainer2" id="blur2">
                         <div class="customContainer2" id="blur3">
                             <h2>
-                                Nuovo Impianto
+                                Modifica -
+                                <%= impianto.name %>
                             </h2>
-                            <form action="/admin/impianti/new" method="POST">
+                            <form action="/admin/impianti/edit/<%= impianto._id %>" method="POST">
                                 <div class="customRow100">
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <input type="text" name="name" required="required">
+                                            <input type="text" name="name" required="required" value="<%= impianto.name %>">
                                             <span class="text">Nome</span>
                                             <span class="line"></span>
                                         </div>
                                     </div>
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <input type="text" name="address" required="required">
+                                            <input type="text" name="address" required="required" value="<%= impianto.address %>">
                                             <span class="text">Indirizzo</span>
                                             <span class="line"></span>
                                         </div>
                                     </div>
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <input type="text" name="iFrame" required="required">
+                                            <input type="text" name="iFrame" required="required" value="<%= impianto.iFrame %>">
                                             <span class="text">iFrame mappa</span>
                                             <span class="line"></span>
                                         </div>
                                     </div>
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <input type="text" name="managementType" required="required">
+                                            <input type="text" name="managementType" required="required" value="<%= impianto.managementType %>">
                                             <span class="text">Management</span>
                                             <span class="line"></span>
                                         </div>
                                     </div>
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <input type="text" name="manager" required="required">
+                                            <input type="text" name="manager" required="required" value="<%= impianto.manager %>">
                                             <span class="text">Chi è il gestore?</span>
                                             <span class="line"></span>
                                         </div>
@@ -120,24 +121,31 @@
                                 </div>
                                 <div class="customRow100" style="margin-left: 1%;">
                                     <div>
-                                        <textarea name="desc" id="mytextarea" style="margin-top: 20%;"><% this.value %></textarea>
+                                        <textarea name="desc" id="mytextarea" style="margin-top: 20%;"><% this.value %><%= impianto.desc %></textarea>
                                         <div style="margin-top: 4%;">
                                             <a onclick="re_toggle()"><button type="button" class="customBtn2" style="margin-right: 2%;">Inserisci Immagini</button></a>
                                             <a onclick="toggle()"><button type="button" class="customBtn2" style="margin-right: 2%;">Inserisci Tags</button></a>
-                                            <a onclick="re_re_toggle()"><button type="button" class="customBtn2">Inserisci Sport</button></a>
+                                            <a onclick="re_re_toggle(), btnsport()"><button type="button" class="customBtn2">Inserisci Sport</button></a>
                                         </div>
                                         <div style="margin-top: 4%;">
                                             <a>
-                                                <button type="submit" class="btn btn-success">Pronto</button>
+                                                <button type="submit" class="btn btn-success">Apporta modifiche</button>
                                             </a>
-                                        </div>
+                            </form>
+                            <form action="/admin/impianti/<%= impianto._id %>" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <a>
+                                    <button type="submit" class="btn btn-danger">Elimina impianto</button>
+                                </a>
+                            </form>
+                            </div>
 
-                                        <input type="hidden" name="sport" id="arrSpo" <% this.value %>">
-                                        <input type="hidden" name="imgs" id="arrImm" <% this.value %>">
-                                        <input type="hidden" name="tags" id="arrTag" <% this.value %>">
+                            <input type="hidden" name="sport" id="arrSpo" <% this.value %>">
+                            <input type="hidden" name="imgs" id="arrImm" <% this.value %>">
+                            <input type="hidden" name="tags" id="arrTag" <% this.value %>">
 
-                                    </div>
-                                </div>
+                            </div>
+                            </div>
                             </form>
                         </div>
                     </div>
@@ -154,6 +162,21 @@
                                         Valore Tag
                                     </th>
                                 </tr>
+                                <% impianto.tags.forEach((tag) => { %>
+                                    <% var keys = Object.keys(tag);%>
+                                        <% keys.forEach((key) => { %>
+                                            <tr>
+                                                <td>
+                                                    <%= key %>
+                                                </td>
+                                                <td>
+                                                    <% if (tag[key] != 'true') { %>
+                                                        <%= tag[key] %>
+                                                            <% } %>
+                                                </td>
+                                            </tr>
+                                            <% }) %>
+                                                <% }) %>
                             </table>
                             <div class="customCol">
                                 <div class="customInputBox">
@@ -191,6 +214,13 @@
                                     URL immagine
                                 </th>
                             </tr>
+                            <% impianto.imgs.forEach((img) => { %>
+                                <tr>
+                                    <td>
+                                        <%= img %>
+                                    </td>
+                                </tr>
+                                <% }) %>
                         </table>
                         <div class="customCol">
                             <div class="customInputBox">
@@ -211,7 +241,6 @@
             </div>
 
             <div class="customContainer2" id="popup3">
-
                 <div class="customRow100">
                     <div class="customContainerTable">
                         <table id="table" class="customers">
@@ -220,6 +249,14 @@
                                     Sport
                                 </th>
                             </tr>
+                            <% impianto.sport.forEach((spo) => { %>
+                                <tr>
+                                    <td>
+                                        <%= spo %>
+                                    </td>
+                                </tr>
+
+                                <% }) %>
                         </table>
                         <div class="customCol">
                             <div class="customInputBox">
@@ -241,7 +278,6 @@
         </div>
     </div>
 </body>
-
 <script>
     tinymce.init({
         selector: 'textarea',
@@ -300,7 +336,7 @@
 
     function editSelectedRowSport() {
         var sport = document.getElementById('sport').value;
-        table.rows[rIndex].cells[0].innerHTML = sport;
+        table.rows[rIndex].cells[0].innerText = sport;
         document.getElementById('sport').value = "";
     }
 
