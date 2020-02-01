@@ -3,7 +3,12 @@ const express = require("express");
 const app = express();
 
 exports.errPage = (req, res) => {
-    res.render("error", { err: req.params.code });
+
+    if (!isNaN(req.params.code)) {
+        res.render("error", { err: req.params.code });
+    } else {
+        res.redirect("/user/");
+    }
 };
 
 exports.pageNotFound = (req, res) => {

@@ -10,3 +10,7 @@ exports.get_login = (req, res) => {
 exports.get_register = (req, res) => {
     res.status(200).render('register');
 }
+
+exports.get_about = (req, res) => {
+    res.render('about');
+}

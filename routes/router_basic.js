@@ -3,11 +3,18 @@ const controller_basic = require('./../controllers/controller_basic');
 const controller_error = require('./../controllers/controller_error');
 const router = express.Router();
 
-router.route('/*').get(controller_basic.pageNotFound);
 
-router.route('/about').get(contoller_basic.get_about);
+router.route("/").get((req, res) => {
+    res.redirect("/user/");
+})
+router.route("/home").get((req, res) => {
+    res.redirect("/user/");
+})
+router.route("/index").get((req, res) => {
+    res.redirect("/user/");
+})
 
-router.route("/err/:code").get(controller_error.errPage);
+
 
 router.route("/*").get(controller_error.pageNotFound);
 

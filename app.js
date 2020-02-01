@@ -10,6 +10,8 @@ const app = express();
 
 /* Importazione Router */
 const userRouter = require('./routes/router_user');
+const basicRouter = require('./routes/router_basic');
+const errorRouter = require('./routes/router_error');
 
 /* Costanti utils */
 const path = require('path');
@@ -40,7 +42,10 @@ app.use(
 );
 
 /* Richiamo dei diversi router precedentemente importati */
+app.use('/err', errorRouter);
 app.use('/user', userRouter);
+app.use('/', basicRouter);
+
 
 /* Esportazione modulo app per l'utilizzo in server.js */
 module.exports = app;

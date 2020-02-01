@@ -21,6 +21,7 @@ router.route('/home').get((req, res) => {
 /* Login page */
 router.route('/login').get(controller_user.get_login);
 router.route('/register').get(controller_user.get_register);
+router.route('/about').get(controller_user.get_about);
 
 /* Esportazione modulo router per app.js */
 module.exports = router;
