@@ -8,13 +8,15 @@
     <title>Nuovo Impianto</title>
 
     <script src="https://kit.fontawesome.com/cf6028255a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="../../../../../admin-pages/assets/css/admin/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../../../../../admin-pages/assets/css/style.css">
 
-    <script src="https://cdn.tiny.cloud/1/qbg8aqvvm4rcofj7peoqelpx2ggev08nhkv2aiar5kpvssr9/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/qbg8aqvvm4rcofj7peoqelpx2ggev08nhkv2aiar5kpvssr9/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
 
 
 </head>
@@ -80,35 +82,40 @@
                                 <div class="customRow100">
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <input type="text" name="name" required="required" value="<%= impianto.name %>">
+                                            <input type="text" name="name" required="required"
+                                                value="<%= impianto.name %>">
                                             <span class="text">Nome</span>
                                             <span class="line"></span>
                                         </div>
                                     </div>
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <input type="text" name="address" required="required" value="<%= impianto.address %>">
+                                            <input type="text" name="address" required="required"
+                                                value="<%= impianto.address %>">
                                             <span class="text">Indirizzo</span>
                                             <span class="line"></span>
                                         </div>
                                     </div>
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <input type="text" name="iFrame" required="required" value="<%= impianto.iFrame %>">
+                                            <input type="text" name="iFrame" required="required"
+                                                value="<%= impianto.iFrame %>">
                                             <span class="text">iFrame mappa</span>
                                             <span class="line"></span>
                                         </div>
                                     </div>
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <input type="text" name="managementType" required="required" value="<%= impianto.managementType %>">
+                                            <input type="text" name="managementType" required="required"
+                                                value="<%= impianto.managementType %>">
                                             <span class="text">Management</span>
                                             <span class="line"></span>
                                         </div>
                                     </div>
                                     <div class="customCol">
                                         <div class="customInputBox">
-                                            <input type="text" name="manager" required="required" value="<%= impianto.manager %>">
+                                            <input type="text" name="manager" required="required"
+                                                value="<%= impianto.manager %>">
                                             <span class="text">Chi è il gestore?</span>
                                             <span class="line"></span>
                                         </div>
@@ -121,11 +128,15 @@
                                 </div>
                                 <div class="customRow100" style="margin-left: 1%;">
                                     <div>
-                                        <textarea name="desc" id="mytextarea" style="margin-top: 20%;"><% this.value %><%= impianto.desc %></textarea>
+                                        <textarea name="desc" id="mytextarea"
+                                            style="margin-top: 20%;"><% this.value %><%= impianto.desc %></textarea>
                                         <div style="margin-top: 4%;">
-                                            <a onclick="re_toggle()"><button type="button" class="customBtn2" style="margin-right: 2%;">Inserisci Immagini</button></a>
-                                            <a onclick="toggle()"><button type="button" class="customBtn2" style="margin-right: 2%;">Inserisci Tags</button></a>
-                                            <a onclick="re_re_toggle(), btnsport()"><button type="button" class="customBtn2">Inserisci Sport</button></a>
+                                            <a onclick="re_toggle()"><button type="button" class="customBtn2"
+                                                    style="margin-right: 2%;">Inserisci Immagini</button></a>
+                                            <a onclick="toggle()"><button type="button" class="customBtn2"
+                                                    style="margin-right: 2%;">Inserisci Tags</button></a>
+                                            <a onclick="re_re_toggle(), btnsport()"><button type="button"
+                                                    class="customBtn2">Inserisci Sport</button></a>
                                         </div>
                                         <div style="margin-top: 4%;">
                                             <a>
@@ -138,144 +149,147 @@
                                     <button type="submit" class="btn btn-danger">Elimina impianto</button>
                                 </a>
                             </form>
-                            </div>
-
-                            <input type="hidden" name="sport" id="arrSpo" <% this.value %>">
-                            <input type="hidden" name="imgs" id="arrImm" <% this.value %>">
-                            <input type="hidden" name="tags" id="arrTag" <% this.value %>">
-
-                            </div>
-                            </div>
-                            </form>
                         </div>
+
+                        <input type="hidden" name="sport" id="arrSpo" <% this.value %>">
+                        <input type="hidden" name="imgs" id="arrImm" <% this.value %>">
+                        <input type="hidden" name="tags" id="arrTag" <% this.value %>">
+
                     </div>
                 </div>
-                <div class="customContainer2" id="popup1">
-                    <div class="customRow100">
-                        <div class="customContainerTable">
-                            <table id="tableTag" class="customers">
-                                <tr>
-                                    <th>
-                                        Nome Tag
-                                    </th>
-                                    <th>
-                                        Valore Tag
-                                    </th>
-                                </tr>
-                                <% impianto.tags.forEach((tag) => { %>
-                                    <% var keys = Object.keys(tag);%>
-                                        <% keys.forEach((key) => { %>
-                                            <tr>
-                                                <td>
-                                                    <%= key %>
-                                                </td>
-                                                <td>
-                                                    <% if (tag[key] != 'true') { %>
-                                                        <%= tag[key] %>
-                                                            <% } %>
-                                                </td>
-                                            </tr>
-                                            <% }) %>
-                                                <% }) %>
-                            </table>
-                            <div class="customCol">
-                                <div class="customInputBox">
-                                    <input type="text" name="" required="required" id="tag">
-                                    <span class="text">Nome Tag</span>
-                                    <span class="line"></span>
-                                </div>
-                            </div>
-                            <div class="customCol">
-                                <div class="customInputBox">
-                                    <input type="text" name="" required="required" id="valore">
-                                    <span class="text">Valore Tag</span>
-                                    <span class="line"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowTag()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowTag()" style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowTag()" style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arrayTag()"><button class="customBtn2" style="margin-top: 2%;"  margin-left: 2%;>Chiudi</button></a></div>
-                </div>
+                </form>
             </div>
-
-            <div class="customContainer2" id="popup2">
-
-                <div class="customRow100">
-                    <div class="customContainerTable">
-                        <table id="tableImm" class="customers">
-                            <tr>
-                                <th>
-                                    URL immagine
-                                </th>
-                            </tr>
-                            <% impianto.imgs.forEach((img) => { %>
-                                <tr>
-                                    <td>
-                                        <%= img %>
-                                    </td>
-                                </tr>
-                                <% }) %>
-                        </table>
-                        <div class="customCol">
-                            <div class="customInputBox">
-                                <input type="text" name="immagine" required="required" id="immagine">
-                                <span class="text">Inserire URL</span>
-                                <span class="line"></span>
-                            </div>
-                        </div>
+        </div>
+    </div>
+    <div class="customContainer2" id="popup1">
+        <div class="customRow100">
+            <div class="customContainerTable">
+                <table id="tableTag" class="customers">
+                    <tr>
+                        <th>
+                            Nome Tag
+                        </th>
+                        <th>
+                            Valore Tag
+                        </th>
+                    </tr>
+                    <% impianto.tags.forEach((tag) => { %>
+                    <% var keys = Object.keys(tag);%>
+                    <% keys.forEach((key) => { %>
+                    <tr>
+                        <td><%= key %></td>
+                        <td><% if (tag[key] != 'true') { %><%= tag[key] %><% } %></td>
+                    </tr>
+                    <% }) %>
+                    <% }) %>
+                </table>
+                <div class="customCol">
+                    <div class="customInputBox">
+                        <input type="text" name="" required="required" id="tag">
+                        <span class="text">Nome Tag</span>
+                        <span class="line"></span>
                     </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowImmagine()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowImmagine()" style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowImmagine()" style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arrayImm()"><button class="customBtn2" style="margin-top: 2%;"  margin-left: 2%;>Chiudi</button></a></div>
                 </div>
-            </div>
-
-            <div class="customContainer2" id="popup3">
-                <div class="customRow100">
-                    <div class="customContainerTable">
-                        <table id="table" class="customers">
-                            <tr>
-                                <th>
-                                    Sport
-                                </th>
-                            </tr>
-                            <% impianto.sport.forEach((spo) => { %>
-                                <tr>
-                                    <td>
-                                        <%= spo %>
-                                    </td>
-                                </tr>
-
-                                <% }) %>
-                        </table>
-                        <div class="customCol">
-                            <div class="customInputBox">
-                                <input type="text" name="sport" required="required" id="sport">
-                                <span class="text">Inserire Sport</span>
-                                <span class="line"></span>
-                            </div>
-                        </div>
+                <div class="customCol">
+                    <div class="customInputBox">
+                        <input type="text" name="" required="required" id="valore">
+                        <span class="text">Valore Tag</span>
+                        <span class="line"></span>
                     </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowSport()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowSport()" style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowSport()" style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arraySport()"><button class="customBtn2" style="margin-top: 2%;"  margin-left: 2%;>Chiudi</button></a></div>
                 </div>
             </div>
         </div>
+        <div>
+            <a><button class="customBtn" onclick="addRowTag()" style="margin-top: 2%;">Aggiungi</button></a>
+            <a><button class="customBtn4" onclick="editSelectedRowTag()"
+                    style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+            <a><button class="customBtn3" onclick="deleteSelectedRowTag()"
+                    style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+        </div>
+        <div>
+            <a onclick="arrayTag()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
+                    2%;>Chiudi</button></a></div>
+    </div>
+    </div>
+
+    <div class="customContainer2" id="popup2">
+
+        <div class="customRow100">
+            <div class="customContainerTable">
+                <table id="tableImm" class="customers">
+                    <tr>
+                        <th>
+                            URL immagine
+                        </th>
+                    </tr>
+                    <% impianto.imgs.forEach((img) => { %>
+                    <tr>
+                        <td>
+                            <%= img %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </table>
+                <div class="customCol">
+                    <div class="customInputBox">
+                        <input type="text" name="immagine" required="required" id="immagine">
+                        <span class="text">Inserire URL</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a><button class="customBtn" onclick="addRowImmagine()" style="margin-top: 2%;">Aggiungi</button></a>
+                <a><button class="customBtn4" onclick="editSelectedRowImmagine()"
+                        style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+                <a><button class="customBtn3" onclick="deleteSelectedRowImmagine()"
+                        style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+            </div>
+            <div>
+                <a onclick="arrayImm()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
+                        2%;>Chiudi</button></a></div>
+        </div>
+    </div>
+
+    <div class="customContainer2" id="popup3">
+        <div class="customRow100">
+            <div class="customContainerTable">
+                <table id="table" class="customers">
+                    <tr>
+                        <th>
+                            Sport
+                        </th>
+                    </tr>
+                    <% impianto.sport.forEach((spo) => { %>
+                    <tr>
+                        <td>
+                            <%= spo %>
+                        </td>
+                    </tr>
+
+                    <% }) %>
+                </table>
+                <div class="customCol">
+                    <div class="customInputBox">
+                        <input type="text" name="sport" required="required" id="sport">
+                        <span class="text">Inserire Sport</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a><button class="customBtn" onclick="addRowSport()" style="margin-top: 2%;">Aggiungi</button></a>
+                <a><button class="customBtn4" onclick="editSelectedRowSport()"
+                        style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+                <a><button class="customBtn3" onclick="deleteSelectedRowSport()"
+                        style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+            </div>
+            <div>
+                <a onclick="arraySport()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
+                        2%;>Chiudi</button></a></div>
+        </div>
+    </div>
+    </div>
     </div>
 </body>
 <script>
@@ -326,9 +340,11 @@
 
     function selectedToInputSport() {
         for (var i = 1; i < table.rows.length; i++) {
-            table.rows[i].onclick = function() {
+            table.rows[i].onclick = function () {
                 rIndex = this.rowIndex;
-                document.getElementById('sport').value = this.cells[0].innerHTML;
+                /*TODO: Rendering spazi precedenti al valore sport */
+                document.getElementById('sport').value = '';
+                document.getElementById('sport').value = this.cells[0].innerHTML.replace(/\s/g, '');
             };
         }
     }
@@ -374,7 +390,7 @@
 
     function selectedToInputImmagine() {
         for (var i = 1; i < tableImm.rows.length; i++) {
-            tableImm.rows[i].onclick = function() {
+            tableImm.rows[i].onclick = function () {
                 rIndexImm = this.rowIndex;
                 document.getElementById('immagine').value = this.cells[0].innerHTML;
             };
@@ -426,7 +442,7 @@
 
     function selectedToInputTag() {
         for (var i = 1; i < tableTag.rows.length; i++) {
-            tableTag.rows[i].onclick = function() {
+            tableTag.rows[i].onclick = function () {
                 rIndexTag = this.rowIndex;
                 document.getElementById('tag').value = this.cells[0].innerHTML;
                 document.getElementById('valore').value = this.cells[1].innerHTML;
@@ -511,14 +527,15 @@
 <!--  Notifications Plugin    -->
 <script src="../../../../../admin-pages/assets/js/admin/plugins/bootstrap-notify.js "></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../../../../../admin-pages/assets/js/admin/material-dashboard.js?v=2.1.1 " type="text/javascript "></script>
+<script src="../../../../../admin-pages/assets/js/admin/material-dashboard.js?v=2.1.1 " type="text/javascript ">
+</script>
 
 <!--     Fonts and icons     -->
 <script src="https://kit.fontawesome.com/cf6028255a.js " crossorigin="anonymous "></script>
 
 <script>
-    $(document).ready(function() {
-        $().ready(function() {
+    $(document).ready(function () {
+        $().ready(function () {
             $sidebar = $('.sidebar');
             $sidebar_img_container = $sidebar.find('.sidebar-background');
             $full_page = $('.full-page');
@@ -530,7 +547,7 @@
                     $('.fixed-plugin .dropdown').addClass('open');
                 }
             }
-            $('.fixed-plugin a').click(function(event) {
+            $('.fixed-plugin a').click(function (event) {
                 // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
                 if ($(this).hasClass('switch-trigger')) {
                     if (event.stopPropagation) {
@@ -540,7 +557,7 @@
                     }
                 }
             });
-            $('.fixed-plugin .active-color span').click(function() {
+            $('.fixed-plugin .active-color span').click(function () {
                 $full_page_background = $('.full-page-background');
                 $(this).siblings().removeClass('active');
                 $(this).addClass('active');
@@ -555,7 +572,7 @@
                     $sidebar_responsive.attr('data-color', new_color);
                 }
             });
-            $('.fixed-plugin .background-color .badge').click(function() {
+            $('.fixed-plugin .background-color .badge').click(function () {
                 $(this).siblings().removeClass('active');
                 $(this).addClass('active');
                 var new_color = $(this).data('background-color');
@@ -563,35 +580,44 @@
                     $sidebar.attr('data-background-color', new_color);
                 }
             });
-            $('.fixed-plugin .img-holder').click(function() {
+            $('.fixed-plugin .img-holder').click(function () {
                 $full_page_background = $('.full-page-background');
                 $(this).parent('li').siblings().removeClass('active');
                 $(this).parent('li').addClass('active');
                 var new_image = $(this).find("img ").attr('src');
-                if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                    $sidebar_img_container.fadeOut('fast', function() {
-                        $sidebar_img_container.css('background-image', 'url(" ' + new_image + ' ")');
+                if ($sidebar_img_container.length != 0 && $(
+                        '.switch-sidebar-image input:checked').length != 0) {
+                    $sidebar_img_container.fadeOut('fast', function () {
+                        $sidebar_img_container.css('background-image', 'url(" ' +
+                            new_image + ' ")');
                         $sidebar_img_container.fadeIn('fast');
                     });
                 }
-                if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-                    $full_page_background.fadeOut('fast', function() {
-                        $full_page_background.css('background-image', 'url(" ' + new_image_full_page + ' ")');
+                if ($full_page_background.length != 0 && $(
+                        '.switch-sidebar-image input:checked').length != 0) {
+                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
+                        'img').data('src');
+                    $full_page_background.fadeOut('fast', function () {
+                        $full_page_background.css('background-image', 'url(" ' +
+                            new_image_full_page + ' ")');
                         $full_page_background.fadeIn('fast');
                     });
                 }
                 if ($('.switch-sidebar-image input:checked').length == 0) {
-                    var new_image = $('.fixed-plugin li.active .img-holder').find("img ").attr('src');
-                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-                    $sidebar_img_container.css('background-image', 'url(" ' + new_image + ' ")');
-                    $full_page_background.css('background-image', 'url(" ' + new_image_full_page + ' ")');
+                    var new_image = $('.fixed-plugin li.active .img-holder').find("img ").attr(
+                        'src');
+                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
+                        'img').data('src');
+                    $sidebar_img_container.css('background-image', 'url(" ' + new_image +
+                        ' ")');
+                    $full_page_background.css('background-image', 'url(" ' +
+                        new_image_full_page + ' ")');
                 }
                 if ($sidebar_responsive.length != 0) {
                     $sidebar_responsive.css('background-image', 'url(" ' + new_image + ' ")');
                 }
             });
-            $('.switch-sidebar-image input').change(function() {
+            $('.switch-sidebar-image input').change(function () {
                 $full_page_background = $('.full-page-background');
                 $input = $(this);
                 if ($input.is(':checked')) {
@@ -616,7 +642,7 @@
                     background_image = false;
                 }
             });
-            $('.switch-sidebar-mini input').change(function() {
+            $('.switch-sidebar-mini input').change(function () {
                 $body = $('body');
                 $input = $(this);
                 if (md.misc.sidebar_mini_active == true) {
@@ -625,17 +651,17 @@
                     $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
                 } else {
                     $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('body').addClass('sidebar-mini');
                         md.misc.sidebar_mini_active = true;
                     }, 300);
                 }
                 // we simulate the window Resize so the charts will get updated in realtime.
-                var simulateWindowResize = setInterval(function() {
+                var simulateWindowResize = setInterval(function () {
                     window.dispatchEvent(new Event('resize'));
                 }, 180);
                 // we stop the simulation of Window Resize after the animations are completed
-                setTimeout(function() {
+                setTimeout(function () {
                     clearInterval(simulateWindowResize);
                 }, 1000);
             });
@@ -643,7 +669,7 @@
     });
 </script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Javascript method's body can be found in assets/js/demos.js
         md.initDashboardPageCharts();
     });
