@@ -1,3 +1,4 @@
+
 /* Definizione delle funzioni disponibili per il lato user dell'applicazione */
 exports.get_home = (req, res) => {
     /* Impostazione dello stato HTTP success e rendering della pagina home (home.ejs) */
@@ -9,8 +10,13 @@ exports.get_login = (req, res) => {
 };
 exports.get_register = (req, res) => {
     res.status(200).render('register');
-}
+};
 
 exports.get_about = (req, res) => {
     res.render('about');
-}
+};
+
+
+exports.get_logout = (req, res) => {
+    res.send("Logging out");
+};

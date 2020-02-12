@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const sslRedirect = require('heroku-ssl-redirect');
+const passportSetup = require('./config/passport-setup');
 
 /* Definizione app */
 const app = express();
