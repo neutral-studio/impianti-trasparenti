@@ -5,6 +5,7 @@ User model, creation: 02/12/2020
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/*User schema*/
 const userSchema = new Schema({
     username: String,
     fName: String,
