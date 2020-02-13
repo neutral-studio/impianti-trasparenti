@@ -1,10 +1,13 @@
 /* Importazione Pacchetti necessari - Se non presenti lanciare 'npm i --save' per caricare come da package.json*/
 const express = require('express');
 const morgan = require('morgan');
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const sslRedirect = require('heroku-ssl-redirect');
 const passportSetup = require('./config/passport-setup');
+const cookieSession = require('cookie-session');
+const keys = require('./config/keys');
 
 /* Definizione app */
 const app = express();
@@ -30,6 +33,15 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 /* Impostazione del motore di rendering - Non è quindi necessario specificare l'estensione dei file nel 'res.render('nomeFile)' */
 app.set('view engine', 'ejs');
+
+app.use(cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.session.cookieKey]
+}));
+
+/*Initializing passport*/
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* Impostazione del middleware di body-parser - Ci permette di ottenere un oggetto dalla POST di un form HTML debitamente costruito */
 app.use(

@@ -3,6 +3,17 @@ const GoogleStrategy = require('passport-google-oauth20');
 const keys = require('./keys');
 const User = require('../models/User');
 
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+    User.findById(id).then((user) =>{
+        done(null, user);
+    })
+    
+});
+
 
 passport.use(
     new GoogleStrategy({
@@ -12,22 +23,32 @@ passport.use(
         clientSecret: keys.google.clientSecret
 
     },(accessToken, refreshToken, profile, done) =>{
-        /*Callback*/
-        console.log("IMPIANTI-TRASPARENTI | User information received ");
-        console.log(profile);
         
-        new User({
-            username: profile.displayName,
-            fName: profile.name.familyName,
-            lName: profile.name.givenName,
-            Id: profile.id,
-            picture: profile.photos[0].value,
-            role: 2
+        /*Callback*/
+        User.findOne({Id: profile.id}).then((currentUser) =>{
+            if(currentUser){
+                /*Already on db*/
+                console.log('User is' + currentUser);
+                done(null, currentUser);
+            }else{
+                new User({
+                username: profile.displayName,
+                fName: profile.name.givenName,
+                lName: profile.name.firstName,
+                Id: profile.id,
+                picture: profile.photos[0].value,
+                role: 2
+    
+    
+    
+            }).save().then((newUser) =>{
+                console.log('Impianti-Trasparenti | Nuovo utente creato ' + newUser );
+                done(null, newUser);
+            });
 
+            }
+        });
 
-
-        }).save().then((newUser) =>{
-            console.log('Impianti-Trasparenti | Nuovo utente creato ' + newUser );
-        })
+        
     })
 )

@@ -33,7 +33,7 @@ router.get('/google', passport.authenticate('google', {
 }));
 
 router.get('/google/redirect', passport.authenticate('google'), (req, res) =>{
-    res.send("Callback");
+    res.send(req.user);
 });
 
 /* Esportazione modulo router per app.js */

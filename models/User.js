@@ -10,9 +10,12 @@ const userSchema = new Schema({
     username: String,
     fName: String,
     lName: String,
+    cf: String,
+    email: String,
     Id: String,
     picture: String,
-    role: Number 
+    role: Number,
+    office: Array
 
     /*ROLE DEF:
         _0: simple user;
