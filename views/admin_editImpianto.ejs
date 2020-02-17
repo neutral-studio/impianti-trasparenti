@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nuovo Impianto</title>
+    <title>Modifica -
+        <%= impianto.name %>
+    </title>
+    <link rel="icon" type="image/png" href="../../../../../../admin-pages/assets/img/favicon.png">
 
     <script src="https://kit.fontawesome.com/cf6028255a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -81,44 +84,32 @@
                                     <form action="/admin/impianti/edit/<%= impianto._id %>" method="POST">
                                         <div class="customRow100">
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <input type="text" name="name" required="required" value="<%= impianto.name %>">
-                                                    <span class="text">Nome</span>
-                                                    <span class="line"></span>
-                                                </div>
+                                                <h4 name="" class="text">Nome</h4>
+                                                <input class="form-control" type="text" name="name" required="required" value="<%= impianto.name %>">
+                                                <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <input type="text" name="address" required="required" value="<%= impianto.address %>">
-                                                    <span class="text">Indirizzo</span>
-                                                    <span class="line"></span>
-                                                </div>
+                                                <h4 name="" class="text">Indirizzo</h4>
+                                                <input type="text" class="form-control" name="address" required="required" value="<%= impianto.address %>">
+                                                <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <input type="text" name="iFrame" required="required" value="<%= impianto.iFrame %>">
-                                                    <span class="text">iFrame mappa</span>
-                                                    <span class="line"></span>
-                                                </div>
+                                                <h4 name="" class="text">iFrame mappa</h4>
+                                                <input class="form-control" type="text" name="iFrame" required="required" value="<%= impianto.iFrame %>">
+                                                <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <input type="text" name="managementType" required="required" value="<%= impianto.managementType %>">
-                                                    <span class="text">Management</span>
-                                                    <span class="line"></span>
-                                                </div>
+                                                <h4 name="" class="text">Management</h4>
+                                                <input class="form-control" type="text" name="managementType" required="required" value="<%= impianto.managementType %>">
+                                                <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <input type="text" name="manager" required="required" value="<%= impianto.manager %>">
-                                                    <span class="text">Chi è il gestore?</span>
-                                                    <span class="line"></span>
-                                                </div>
+                                                <h4 name="" class="text">Da chi è gestito?</h4>
+                                                <input class="form-control" type="text" name="manager" required="required" value="<%= impianto.manager %>">
+                                                <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <span name="descrizione" class="text">Descrizione</span>
-                                                </div>
+                                                <h4 name="descrizione" class="text">Descrizione</h4>
                                             </div>
                                         </div>
                                         <div class="customRow100" style="margin-left: 1%;">
@@ -126,15 +117,15 @@
                                                 <textarea name="desc" id="mytextarea" style="margin-top: 20%;"><% this.value %><%= impianto.desc %></textarea>
                                                 <div style="margin-top: 4%;">
                                                     <a onclick="re_toggle()"><button type="button" class="customBtn2"
-                                                    style="margin-right: 2%;">Inserisci Immagini</button></a>
+                                                    style="margin-right: 2%;">Modifica Immagini</button></a>
                                                     <a onclick="toggle()"><button type="button" class="customBtn2"
-                                                    style="margin-right: 2%;">Inserisci Tags</button></a>
-                                                    <a onclick="re_re_toggle(), btnsport()"><button type="button"
-                                                    class="customBtn2">Inserisci Sport</button></a>
+                                                    style="margin-right: 2%;">Modifica Tags</button></a>
+                                                    <a onclick="re_re_toggle()"><button type="button"
+                                                    class="customBtn2">Modifica Sport</button></a>
                                                 </div>
                                                 <div style="margin-top: 4%;">
                                                     <a>
-                                                        <button type="submit" class="btn btn-success">Apporta modifiche</button>
+                                                        <button type="" class="btn btn-success">Apporta modifiche</button>
                                                     </a>
                                     </form>
                                     <form action="/admin/impianti/<%= impianto._id %>" method="POST">
@@ -146,9 +137,11 @@
                                     </div>
                                     </div>
 
-                                    <input type="hidden" name="sport" id="arrSpo" <% this.value %>">
-                                    <input type="hidden" name="imgs" id="arrImm" <% this.value %>">
-                                    <input type="hidden" name="tags" id="arrTag" <% this.value %>">
+
+
+                                    <input type="hidden" name="sport" id="arrSpo" value="<%= impianto.sport %>" <% this.value %>>
+                                    <input type="hidden" name="imgs" id="arrImm" value="<%= impianto.imgs %>" <% this.value %>>
+                                    <input type="hidden" name="tags" id="arrTag" value="<%= impianto.tags %>" <% this.value %>>
 
                                     </div>
                                 </div>
@@ -186,18 +179,14 @@
                                                 <% }) %>
                             </table>
                             <div class="customCol">
-                                <div class="customInputBox">
-                                    <input type="text" name="" required="required" id="tag">
-                                    <span class="text">Nome Tag</span>
-                                    <span class="line"></span>
-                                </div>
+                                <h4 name="" class="text">Nome Tag</h4>
+                                <input type="text" class="form-control" name="" required="required" id="tag">
+                                <span class="line"></span>
                             </div>
                             <div class="customCol">
-                                <div class="customInputBox">
-                                    <input type="text" name="" required="required" id="valore">
-                                    <span class="text">Valore Tag</span>
-                                    <span class="line"></span>
-                                </div>
+                                <h4 name="" class="text">Valore Tag</h4>
+                                <input type="text" class="form-control" name="" required="required" id="valore">
+                                <span class="line"></span>
                             </div>
                         </div>
                     </div>
@@ -233,11 +222,9 @@
                                 <% }) %>
                         </table>
                         <div class="customCol">
-                            <div class="customInputBox">
-                                <input type="text" name="immagine" required="required" id="immagine">
-                                <span class="text">Inserire URL</span>
-                                <span class="line"></span>
-                            </div>
+                            <h4 name="" class="text">URL immagine</h4>
+                            <input type="text" class="form-control" name="immagine" required="required" id="immagine">
+                            <span class="line"></span>
                         </div>
                     </div>
                     <div>
@@ -272,11 +259,9 @@
                                 <% }) %>
                         </table>
                         <div class="customCol">
-                            <div class="customInputBox">
-                                <input type="text" name="sport" required="required" id="sport">
-                                <span class="text">Inserire Sport</span>
-                                <span class="line"></span>
-                            </div>
+                            <h4 name="" class="text">Inserisci Sport</h4>
+                            <input type="text" class="form-control" name="sport" required="required" id="sport">
+                            <span class="line"></span>
                         </div>
                     </div>
                     <div>
@@ -344,7 +329,6 @@
         for (var i = 1; i < table.rows.length; i++) {
             table.rows[i].onclick = function() {
                 rIndex = this.rowIndex;
-                /*TODO: Rendering spazi precedenti al valore sport */
                 document.getElementById('sport').value = '';
                 document.getElementById('sport').value = this.cells[0].innerHTML.replace(/\s/g, '');
             };
@@ -396,6 +380,8 @@
                 rIndexImm = this.rowIndex;
                 document.getElementById('immagine').value = '';
                 document.getElementById('immagine').value = this.cells[0].innerHTML.replace(/\s/g, '');
+                document.getElementById('immagine').value = document.getElementById('immagine').value.replace('<imgsrc="', '');
+                document.getElementById('immagine').value = document.getElementById('immagine').value.replace('"alt="">', '');
             };
         }
     }

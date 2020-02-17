@@ -282,15 +282,7 @@
     transition: 0.5s;
 }
 
-.customContainer2 .customRow100 .customInputBox {
-    position: relative;
-    width: 100%;
-    height: 40px;
-    color: rgba(0, 0, 0, 0.705);
-}
-
-.customContainer2 .customRow100 .customInputBox input,
-.customContainer2 .customRow100 .customInputBox.customTextarea textarea {
+.customContainer2 .customRow100 .customTextarea textarea {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -302,41 +294,6 @@
     padding: 0 10px;
     z-index: 1;
     color: #000;
-}
-
-.customContainer2 .customRow100 .customInputBox .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    line-height: 40px;
-    font-size: 18px;
-    padding: 0 10px;
-    display: block;
-    transition: 0.5s;
-    pointer-events: none;
-}
-
-.customContainer2 .customRow100 .customInputBox input:focus+.text,
-.customContainer2 .customRow100 .customInputBox input:valid+.text {
-    top: -35px;
-    left: -10px;
-}
-
-.customContainer2 .customRow100 .customInputBox .line {
-    position: absolute;
-    bottom: 0;
-    display: block;
-    width: 100%;
-    height: 2px;
-    background: #4BAE4E;
-    transition: 0.5s;
-    border-radius: 6px;
-    pointer-events: none;
-}
-
-.customContainer2 .customRow100 .customInputBox input:focus~.line,
-.customContainer2 .customRow100 .customInputBox input:valid~.line {
-    height: 2px;
 }
 
 .customBtn {

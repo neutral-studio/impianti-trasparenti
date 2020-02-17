@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nuovo Impianto</title>
+    <link rel="icon" type="image/png" href="../../../../../../admin-pages/assets/img/favicon.png">
 
     <script src="https://kit.fontawesome.com/cf6028255a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -80,169 +81,150 @@
                                     <form action="/admin/impianti/new" method="POST">
                                         <div class="customRow100">
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <input type="text" name="name" required="required">
-                                                    <span class="text">Nome</span>
-                                                    <span class="line"></span>
-                                                </div>
+                                                <h4 name="" class="text">Nome</h4>
+                                                <input class="form-control" type="text" name="name" required="required">
+                                                <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <input type="text" name="address" required="required">
-                                                    <span class="text">Indirizzo</span>
-                                                    <span class="line"></span>
-                                                </div>
+                                                <h4 name="" class="text">Indirizzo</h4>
+                                                <input type="text" class="form-control" name="address" required="required">
+                                                <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <input type="text" name="iFrame" required="required">
-                                                    <span class="text">iFrame mappa</span>
-                                                    <span class="line"></span>
-                                                </div>
+                                                <h4 name="" class="text">iFrame mappa</h4>
+                                                <input class="form-control" type="text" name="iFrame" required="required">
+                                                <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <input type="text" name="managementType" required="required">
-                                                    <span class="text">Management</span>
-                                                    <span class="line"></span>
-                                                </div>
+                                                <h4 name="" class="text">Management</h4>
+                                                <input class="form-control" type="text" name="managementType" required="required">
+                                                <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <input type="text" name="manager" required="required">
-                                                    <span class="text">Chi è il gestore?</span>
-                                                    <span class="line"></span>
-                                                </div>
+                                                <h4 name="" class="text">Da chi è gestito?</h4>
+                                                <input class="form-control" type="text" name="manager" required="required">
+                                                <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <div class="customInputBox">
-                                                    <span name="descrizione" class="text">Descrizione</span>
-                                                </div>
+                                                <span name="descrizione" class="text">Descrizione</span>
                                             </div>
                                         </div>
-                                        <div class="customRow100" style="margin-left: 1%;">
-                                            <div>
-                                                <textarea name="desc" id="mytextarea" style="margin-top: 20%;"><% this.value %></textarea>
-                                                <div style="margin-top: 4%;">
-                                                    <a onclick="re_toggle()"><button type="button" class="customBtn2" style="margin-right: 2%;">Inserisci Immagini</button></a>
-                                                    <a onclick="toggle()"><button type="button" class="customBtn2" style="margin-right: 2%;">Inserisci Tags</button></a>
-                                                    <a onclick="re_re_toggle()"><button type="button" class="customBtn2">Inserisci Sport</button></a>
-                                                </div>
-                                                <div style="margin-top: 4%;">
-                                                    <a>
-                                                        <button type="submit" class="btn btn-success">Pronto</button>
-                                                    </a>
-                                                </div>
-
-                                                <input type="hidden" name="sport" id="arrSpo" <% this.value %>">
-                                                <input type="hidden" name="imgs" id="arrImm" <% this.value %>">
-                                                <input type="hidden" name="tags" id="arrTag" <% this.value %>">
-
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
+                                <div class="customRow100" style="margin-left: 1%;">
+                                    <div>
+                                        <textarea name="desc" id="mytextarea" style="margin-top: 20%;"></textarea>
+                                        <div style="margin-top: 4%;">
+                                            <a onclick="re_toggle()"><button type="button" class="customBtn2" style="margin-right: 2%;">Inserisci Immagini</button></a>
+                                            <a onclick="toggle()"><button type="button" class="customBtn2" style="margin-right: 2%;">Inserisci Tags</button></a>
+                                            <a onclick="re_re_toggle()"><button type="button" class="customBtn2">Inserisci Sport</button></a>
+                                        </div>
+                                        <div style="margin-top: 4%;">
+                                            <a>
+                                                <button type="submit" class="btn btn-success">Pronto</button>
+                                            </a>
+                                        </div>
+
+                                        <input type="hidden" name="sport" id="arrSpo" <% this.value %>">
+                                        <input type="hidden" name="imgs" id="arrImm" <% this.value %>">
+                                        <input type="hidden" name="tags" id="arrTag" <% this.value %>">
+
+                                    </div>
+                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="customContainer2" id="popup1">
-                    <div class="customRow100">
-                        <div class="customContainerTable">
-                            <table id="tableTag" class="customers">
-                                <tr>
-                                    <th>
-                                        Nome Tag
-                                    </th>
-                                    <th>
-                                        Valore Tag
-                                    </th>
-                                </tr>
-                            </table>
-                            <div class="customCol">
-                                <div class="customInputBox">
-                                    <input type="text" name="" required="required" id="tag">
-                                    <span class="text">Nome Tag</span>
-                                    <span class="line"></span>
-                                </div>
-                            </div>
-                            <div class="customCol">
-                                <div class="customInputBox">
-                                    <input type="text" name="" required="required" id="valore">
-                                    <span class="text">Valore Tag</span>
-                                    <span class="line"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowTag()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowTag()" style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowTag()" style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arrayTag()"><button class="customBtn2" style="margin-top: 2%;"  margin-left: 2%;>Chiudi</button></a></div>
                 </div>
             </div>
-
-            <div class="customContainer2" id="popup2">
-
+            <div class="customContainer2" id="popup1">
                 <div class="customRow100">
                     <div class="customContainerTable">
-                        <table id="tableImm" class="customers">
+                        <table id="tableTag" class="customers">
                             <tr>
                                 <th>
-                                    URL immagine
+                                    Nome Tag
+                                </th>
+                                <th>
+                                    Valore Tag
                                 </th>
                             </tr>
                         </table>
                         <div class="customCol">
-                            <div class="customInputBox">
-                                <input type="text" name="immagine" required="required" id="immagine">
-                                <span class="text">Inserire URL</span>
-                                <span class="line"></span>
-                            </div>
+                            <h4 name="" class="text">Nome Tag</h4>
+                            <input type="text" class="form-control" name="" required="required" id="tag">
+                            <span class="line"></span>
                         </div>
-                    </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowImmagine()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowImmagine()" style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowImmagine()" style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arrayImm()"><button class="customBtn2" style="margin-top: 2%;"  margin-left: 2%;>Chiudi</button></a></div>
-                </div>
-            </div>
-
-            <div class="customContainer2" id="popup3">
-
-                <div class="customRow100">
-                    <div class="customContainerTable">
-                        <table id="table" class="customers">
-                            <tr>
-                                <th>
-                                    Sport
-                                </th>
-                            </tr>
-                        </table>
                         <div class="customCol">
-                            <div class="customInputBox">
-                                <input type="text" name="sport" required="required" id="sport">
-                                <span class="text">Inserire Sport</span>
-                                <span class="line"></span>
-                            </div>
+                            <h4 name="" class="text">Valore Tag</h4>
+                            <input type="text" class="form-control" name="" required="required" id="valore">
+                            <span class="line"></span>
                         </div>
                     </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowSport()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowSport()" style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowSport()" style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arraySport()"><button class="customBtn2" style="margin-top: 2%;"  margin-left: 2%;>Chiudi</button></a></div>
                 </div>
+                <div>
+                    <a><button class="customBtn" onclick="addRowTag()" style="margin-top: 2%;">Aggiungi</button></a>
+                    <a><button class="customBtn4" onclick="editSelectedRowTag()" style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+                    <a><button class="customBtn3" onclick="deleteSelectedRowTag()" style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+                </div>
+                <div>
+                    <a onclick="arrayTag()"><button class="customBtn2" style="margin-top: 2%;"  margin-left: 2%;>Chiudi</button></a></div>
             </div>
         </div>
+
+        <div class="customContainer2" id="popup2">
+
+            <div class="customRow100">
+                <div class="customContainerTable">
+                    <table id="tableImm" class="customers">
+                        <tr>
+                            <th>
+                                URL immagine
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="customCol">
+                        <h4 name="" class="text">URL immagine</h4>
+                        <input type="text" class="form-control" name="immagine" required="required" id="immagine">
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div>
+                    <a><button class="customBtn" onclick="addRowImmagine()" style="margin-top: 2%;">Aggiungi</button></a>
+                    <a><button class="customBtn4" onclick="editSelectedRowImmagine()" style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+                    <a><button class="customBtn3" onclick="deleteSelectedRowImmagine()" style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+                </div>
+                <div>
+                    <a onclick="arrayImm()"><button class="customBtn2" style="margin-top: 2%;"  margin-left: 2%;>Chiudi</button></a></div>
+            </div>
+        </div>
+
+        <div class="customContainer2" id="popup3">
+
+            <div class="customRow100">
+                <div class="customContainerTable">
+                    <table id="table" class="customers">
+                        <tr>
+                            <th>
+                                Sport
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="customCol">
+                        <h4 name="" class="text">Inserire Sport</h4>
+                        <input type="text" class="form-control" name="sport" required="required" id="sport">
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div>
+                    <a><button class="customBtn" onclick="addRowSport()" style="margin-top: 2%;">Aggiungi</button></a>
+                    <a><button class="customBtn4" onclick="editSelectedRowSport()" style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+                    <a><button class="customBtn3" onclick="deleteSelectedRowSport()" style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+                </div>
+                <div>
+                    <a onclick="arraySport()"><button class="customBtn2" style="margin-top: 2%;"  margin-left: 2%;>Chiudi</button></a></div>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 
