@@ -11,6 +11,7 @@ const app = express();
 /* Importazione Router */
 const router_user = require('./routes/router_user');
 const router_admin_impiantos = require('./routes/router_admin_impiantos');
+const router_admin_society = require('./routes/router_admin_society');
 
 /* Costanti utils */
 const path = require('path');
@@ -41,7 +42,8 @@ app.use(
 );
 
 /* Richiamo dei diversi router precedentemente importati */
-app.use('/admin', router_admin_impiantos);
+app.use('/admin/impianti', router_admin_impiantos);
+app.use('/admin/society', router_admin_society);
 app.use('/user', router_user);
 
 /* Esportazione modulo app per l'utilizzo in server.js */

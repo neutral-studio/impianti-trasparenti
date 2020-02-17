@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Modifica -
-        <%= impianto.name %>
+        <%= society.name %>
     </title>
     <link rel="icon" type="image/png" href="../../../../../../admin-pages/assets/img/favicon.png">
 
@@ -44,49 +44,28 @@
                         <div class="customContainer2" id="blur3">
                             <h2>
                                 Modifica -
-                                <%= impianto.name %>
+                                <%= society.name %>
                             </h2>
                             <div class="card data-card">
                                 <div class="card-body">
-                                    <form action="/admin/impianti/edit/<%= impianto._id %>" method="POST">
+                                    <form action="/admin/society/edit/<%= society._id %>" method="POST">
                                         <div class="customRow100">
                                             <div class="customCol">
                                                 <h4 name="" class="text">Nome</h4>
-                                                <input class="form-control" type="text" name="name" required="required" value="<%= impianto.name %>">
+                                                <input class="form-control" type="text" name="name" required="required" value="<%= society.name %>">
                                                 <span class="line"></span>
                                             </div>
                                             <div class="customCol">
                                                 <h4 name="" class="text">Indirizzo</h4>
-                                                <input type="text" class="form-control" name="address" required="required" value="<%= impianto.address %>">
+                                                <input type="text" class="form-control" name="address" required="required" value="<%= society.address %>">
                                                 <span class="line"></span>
                                             </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">iFrame mappa</h4>
-                                                <input class="form-control" type="text" name="iFrame" required="required" value="<%= impianto.iFrame %>">
-                                                <span class="line"></span>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">Management</h4>
-                                                <input class="form-control" type="text" name="managementType" required="required" value="<%= impianto.managementType %>">
-                                                <span class="line"></span>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">Da chi è gestito?</h4>
-                                                <input class="form-control" type="text" name="manager" required="required" value="<%= impianto.manager %>">
-                                                <span class="line"></span>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="descrizione" class="text">Descrizione</h4>
-                                            </div>
+
                                         </div>
                                         <div class="customRow100" style="margin-left: 1%;">
                                             <div>
-                                                <textarea name="desc" id="mytextarea" style="margin-top: 20%;"><% this.value %><%= impianto.desc %></textarea>
+
                                                 <div style="margin-top: 4%;">
-                                                    <a onclick="re_toggle()"><button type="button" class="customBtn2"
-                                                    style="margin-right: 2%;">Modifica Immagini</button></a>
-                                                    <a onclick="toggle()"><button type="button" class="customBtn2"
-                                                    style="margin-right: 2%;">Modifica Tags</button></a>
                                                     <a onclick="re_re_toggle()"><button type="button"
                                                     class="customBtn2">Modifica Sport</button></a>
                                                 </div>
@@ -95,10 +74,10 @@
                                                         <button type="" class="btn btn-success">Apporta modifiche</button>
                                                     </a>
                                     </form>
-                                    <form action="/admin/impianti/<%= impianto._id %>" method="POST">
+                                    <form action="/admin/society/<%= society._id %>" method="POST">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <a>
-                                            <button type="submit" class="btn btn-danger">Elimina impianto</button>
+                                            <button type="submit" class="btn btn-danger">Elimina società</button>
                                         </a>
                                     </form>
                                     </div>
@@ -106,9 +85,9 @@
 
 
 
-                                    <input type="hidden" name="sport" id="arrSpo" value="<%= impianto.sport %>" <% this.value %>>
-                                    <input type="hidden" name="imgs" id="arrImm" value="<%= impianto.imgs %>" <% this.value %>>
-                                    <input type="hidden" name="tags" id="arrTag" value="<%= impianto.tags %>" <% this.value %>>
+                                    <input type="hidden" name="sport" id="arrSpo" value="<%= society.sport %>" <% this.value %>>
+                                    <input type="hidden" name="imgs" id="arrImm" value="<%= society.imgs %>" <% this.value %>>
+                                    <input type="hidden" name="tags" id="arrTag" value="<%= society.tags %>" <% this.value %>>
 
                                     </div>
                                 </div>
@@ -118,134 +97,46 @@
                     </div>
                 </div>
 
-                <div class="customContainer2" id="popup1">
+
+
+                <div class="customContainer2" id="popup3">
                     <div class="customRow100">
                         <div class="customContainerTable">
-                            <table id="tableTag" class="customers">
+                            <table id="table" class="customers">
                                 <tr>
                                     <th>
-                                        Nome Tag
-                                    </th>
-                                    <th>
-                                        Valore Tag
+                                        Sport
                                     </th>
                                 </tr>
-                                <% impianto.tags.forEach((tag) => { %>
-                                    <% var keys = Object.keys(tag);%>
-                                        <% keys.forEach((key) => { %>
-                                            <tr>
-                                                <td>
-                                                    <%= key %>
-                                                </td>
-                                                <td>
-                                                    <% if (tag[key] != 'true') { %>
-                                                        <%= tag[key] %>
-                                                            <% } %>
-                                                </td>
-                                            </tr>
-                                            <% }) %>
-                                                <% }) %>
+                                <% society.sport.forEach((spo) => { %>
+                                    <tr>
+                                        <td>
+                                            <%= spo %>
+                                        </td>
+                                    </tr>
+
+                                    <% }) %>
                             </table>
                             <div class="customCol">
-                                <h4 name="" class="text">Nome Tag</h4>
-                                <input type="text" class="form-control" name="" required="required" id="tag">
-                                <span class="line"></span>
-                            </div>
-                            <div class="customCol">
-                                <h4 name="" class="text">Valore Tag</h4>
-                                <input type="text" class="form-control" name="" required="required" id="valore">
+                                <h4 name="" class="text">Inserisci Sport</h4>
+                                <input type="text" class="form-control" name="sport" required="required" id="sport">
                                 <span class="line"></span>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowTag()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowTag()"
-                    style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowTag()"
-                    style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arrayTag()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
-                    2%;>Chiudi</button></a></div>
-                </div>
-            </div>
-
-            <div class="customContainer2" id="popup2">
-
-                <div class="customRow100">
-                    <div class="customContainerTable">
-                        <table id="tableImm" class="customers">
-                            <tr>
-                                <th>
-                                    URL immagine
-                                </th>
-                            </tr>
-                            <% impianto.imgs.forEach((img) => { %>
-                                <tr>
-                                    <td>
-                                        <%= img %>
-                                    </td>
-                                </tr>
-                                <% }) %>
-                        </table>
-                        <div class="customCol">
-                            <h4 name="" class="text">URL immagine</h4>
-                            <input type="text" class="form-control" name="immagine" required="required" id="immagine">
-                            <span class="line"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowImmagine()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowImmagine()"
+                        <div>
+                            <a><button class="customBtn" onclick="addRowSport()" style="margin-top: 2%;">Aggiungi</button></a>
+                            <a><button class="customBtn4" onclick="editSelectedRowSport()"
                         style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowImmagine()"
+                            <a><button class="customBtn3" onclick="deleteSelectedRowSport()"
                         style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arrayImm()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
-                        2%;>Chiudi</button></a></div>
-                </div>
-            </div>
-
-            <div class="customContainer2" id="popup3">
-                <div class="customRow100">
-                    <div class="customContainerTable">
-                        <table id="table" class="customers">
-                            <tr>
-                                <th>
-                                    Sport
-                                </th>
-                            </tr>
-                            <% impianto.sport.forEach((spo) => { %>
-                                <tr>
-                                    <td>
-                                        <%= spo %>
-                                    </td>
-                                </tr>
-
-                                <% }) %>
-                        </table>
-                        <div class="customCol">
-                            <h4 name="" class="text">Inserisci Sport</h4>
-                            <input type="text" class="form-control" name="sport" required="required" id="sport">
-                            <span class="line"></span>
                         </div>
-                    </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowSport()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowSport()"
-                        style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowSport()"
-                        style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arraySport()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
+                        <div>
+                            <a onclick="arraySport()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
                         2%;>Chiudi</button></a></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
 <script>
     tinymce.init({
