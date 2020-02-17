@@ -11,12 +11,14 @@
     <meta name="description" content="Aree pubblico-sportive Cuneo">
     <meta name="keywords" content="sport, cuneo, impianti, area, comune">
     <meta name="author" content="ITIS Mario Delpozzo Cuneo">
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
     <link rel="apple-touch-icon" sizes="76x76" href="../../../../../../admin-pages/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../../../../../../admin-pages/assets/img/favicon.png">
     <title>NEVTRAL-ADMIN</title>
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="../../../../../../admin-pages/assets/css/admin/material-dashboard.css?v=2.1.1" rel="stylesheet" />
@@ -25,14 +27,14 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-background-color="white" data-color="danger">
+        <div class="sidebar" data-color="white">
             <!--
             Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
  
             Tip 2: you can also add an image using data-image tag
             -->
             <div class="logo">
-                <a href="http://127.0.0.1:5500/html/home.html" class="simple-text logo-normal myLogo">nevtral</a>
+                <a href="/admin/dashboard" class="simple-text logo-normal myLogo">nevtral</a>
             </div>
 
             <%- include('./partials/sidebar'); %>
@@ -62,12 +64,12 @@
                                 <div class="card-header card-header-success card-header-icon">
 
                                     <div class="card-icon">
-                                        <i class="fas fa-ring"></i>
+                                        <i class="far fa-building"></i>
                                     </div>
                                     <p class="card-category">Impianti presenti</p>
                                     <h3 class="card-title">
                                         <% var counterImpianti = impianti.length %>
-                                            <%= counterImpianti %>
+                                        <%= counterImpianti %>
                                     </h3>
                                 </div>
                                 <div class="card-footer">
@@ -87,7 +89,7 @@
                                     <p class="card-category">Società presenti</p>
                                     <h3 class="card-title">
                                         <% var counterSociety = society.length %>
-                                            <%= counterSociety %>
+                                        <%= counterSociety %>
                                     </h3>
                                 </div>
                                 <div class="card-footer">
@@ -123,7 +125,7 @@
                             <div class="card dataCard">
                                 <div class="card-header card-header-success">
                                     <h3 class="card-title">
-                                        <i class="fas fa-ring"></i> Impianti
+                                        Impianti
                                     </h3>
                                 </div>
                                 <div class="card-body">
@@ -136,12 +138,12 @@
                                             </thead>
                                             <tbody>
                                                 <% impianti.forEach((impianto) => { %>
-                                                    <tr>
-                                                        <td>
-                                                            <%= impianto.name %>
-                                                        </td>
-                                                    </tr>
-                                                    <% }) %>
+                                                <tr>
+                                                    <td>
+                                                        <%= impianto.name %>
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
                                             </tbody>
                                         </table>
                                     </div>
@@ -152,7 +154,7 @@
                             <div class="card dataCard">
                                 <div class="card-header card-header-rose">
                                     <h3 class="card-title">
-                                        <i class="fas fa-user"></i> Società
+                                        <i class="fas fa-users"></i> Società
                                     </h3>
                                 </div>
                                 <div class="card-body">
@@ -165,12 +167,12 @@
                                             </thead>
                                             <tbody>
                                                 <% society.forEach((societ) => { %>
-                                                    <tr>
-                                                        <td>
-                                                            <%= societ.name %>
-                                                        </td>
-                                                    </tr>
-                                                    <% }) %>
+                                                <tr>
+                                                    <td>
+                                                        <%= societ.name %>
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
                                             </tbody>
                                         </table>
                                     </div>
@@ -181,7 +183,7 @@
                             <div class="card dataCard">
                                 <div class="card-header card-header-warning">
                                     <h3 class="card-title">
-                                        <i class="fas fa-users"></i> Utenti
+                                        <i class="fas fa-user"></i> Utenti
                                     </h3>
                                 </div>
                                 <div class="card-body">
@@ -257,14 +259,15 @@
     <!--  Notifications Plugin    -->
     <script src="../../../../../../admin-pages/assets/js/admin/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../../../../../../admin-pages/assets/js/admin/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+    <script src="../../../../../../admin-pages/assets/js/admin/material-dashboard.js?v=2.1.1" type="text/javascript">
+    </script>
 
     <!--     Fonts and icons     -->
     <script src="https://kit.fontawesome.com/cf6028255a.js" crossorigin="anonymous"></script>
 
     <script>
-        $(document).ready(function() {
-            $().ready(function() {
+        $(document).ready(function () {
+            $().ready(function () {
                 $sidebar = $('.sidebar');
 
                 $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -284,7 +287,7 @@
 
                 }
 
-                $('.fixed-plugin a').click(function(event) {
+                $('.fixed-plugin a').click(function (event) {
                     // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
                     if ($(this).hasClass('switch-trigger')) {
                         if (event.stopPropagation) {
@@ -295,7 +298,7 @@
                     }
                 });
 
-                $('.fixed-plugin .active-color span').click(function() {
+                $('.fixed-plugin .active-color span').click(function () {
                     $full_page_background = $('.full-page-background');
 
                     $(this).siblings().removeClass('active');
@@ -316,7 +319,7 @@
                     }
                 });
 
-                $('.fixed-plugin .background-color .badge').click(function() {
+                $('.fixed-plugin .background-color .badge').click(function () {
                     $(this).siblings().removeClass('active');
                     $(this).addClass('active');
 
@@ -327,7 +330,7 @@
                     }
                 });
 
-                $('.fixed-plugin .img-holder').click(function() {
+                $('.fixed-plugin .img-holder').click(function () {
                     $full_page_background = $('.full-page-background');
 
                     $(this).parent('li').siblings().removeClass('active');
@@ -336,28 +339,37 @@
 
                     var new_image = $(this).find("img").attr('src');
 
-                    if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                        $sidebar_img_container.fadeOut('fast', function() {
-                            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                    if ($sidebar_img_container.length != 0 && $(
+                            '.switch-sidebar-image input:checked').length != 0) {
+                        $sidebar_img_container.fadeOut('fast', function () {
+                            $sidebar_img_container.css('background-image', 'url("' +
+                                new_image + '")');
                             $sidebar_img_container.fadeIn('fast');
                         });
                     }
 
-                    if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+                    if ($full_page_background.length != 0 && $(
+                            '.switch-sidebar-image input:checked').length != 0) {
+                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
+                            'img').data('src');
 
-                        $full_page_background.fadeOut('fast', function() {
-                            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                        $full_page_background.fadeOut('fast', function () {
+                            $full_page_background.css('background-image', 'url("' +
+                                new_image_full_page + '")');
                             $full_page_background.fadeIn('fast');
                         });
                     }
 
                     if ($('.switch-sidebar-image input:checked').length == 0) {
-                        var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+                        var new_image = $('.fixed-plugin li.active .img-holder').find("img")
+                            .attr('src');
+                        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
+                            'img').data('src');
 
-                        $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                        $sidebar_img_container.css('background-image', 'url("' + new_image +
+                            '")');
+                        $full_page_background.css('background-image', 'url("' +
+                            new_image_full_page + '")');
                     }
 
                     if ($sidebar_responsive.length != 0) {
@@ -365,7 +377,7 @@
                     }
                 });
 
-                $('.switch-sidebar-image input').change(function() {
+                $('.switch-sidebar-image input').change(function () {
                     $full_page_background = $('.full-page-background');
 
                     $input = $(this);
@@ -397,7 +409,7 @@
                     }
                 });
 
-                $('.switch-sidebar-mini input').change(function() {
+                $('.switch-sidebar-mini input').change(function () {
                     $body = $('body');
 
                     $input = $(this);
@@ -412,7 +424,7 @@
 
                         $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
 
-                        setTimeout(function() {
+                        setTimeout(function () {
                             $('body').addClass('sidebar-mini');
 
                             md.misc.sidebar_mini_active = true;
@@ -420,12 +432,12 @@
                     }
 
                     // we simulate the window Resize so the charts will get updated in realtime.
-                    var simulateWindowResize = setInterval(function() {
+                    var simulateWindowResize = setInterval(function () {
                         window.dispatchEvent(new Event('resize'));
                     }, 180);
 
                     // we stop the simulation of Window Resize after the animations are completed
-                    setTimeout(function() {
+                    setTimeout(function () {
                         clearInterval(simulateWindowResize);
                     }, 1000);
 
@@ -434,7 +446,7 @@
         });
     </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Javascript method's body can be found in assets/js/demos.js
             md.initDashboardPageCharts();
 
