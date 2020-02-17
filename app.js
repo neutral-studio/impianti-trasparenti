@@ -9,9 +9,7 @@ const sslRedirect = require('heroku-ssl-redirect');
 const app = express();
 
 /* Importazione Router */
-const userRouter = require('./routes/router_user');
-const basicRouter = require('./routes/router_basic');
-const errorRouter = require('./routes/router_error');
+const userRouter = require('./routes/userRouter');
 
 /* Costanti utils */
 const path = require('path');
@@ -42,10 +40,7 @@ app.use(
 );
 
 /* Richiamo dei diversi router precedentemente importati */
-app.use('/err', errorRouter);
 app.use('/user', userRouter);
-app.use('/', basicRouter);
-
 
 /* Esportazione modulo app per l'utilizzo in server.js */
 module.exports = app;
