@@ -5,11 +5,6 @@ const controller_admin_society = require('../controllers/controller_admin_societ
 /* Definizione router dall'oggetto express */
 const router = express.Router();
 
-/* Routes - Ricordiamo che anteposto al contenuto di 'router.route('/url)' è presente la route chiamante '/admin' */
-router
-    .route('/dashboard')
-    .get(controller_admin_society.get_dashboard);
-
 /* */
 router
     .route('/new')

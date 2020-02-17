@@ -5,11 +5,6 @@ const controller_admin_impiantos = require('../controllers/controller_admin_impi
 /* Definizione router dall'oggetto express */
 const router = express.Router();
 
-/* Routes - Ricordiamo che anteposto al contenuto di 'router.route('/url)' è presente la route chiamante '/admin' */
-router
-    .route('/dashboard')
-    .get(controller_admin_impiantos.get_dashboard);
-
 /* */
 router
     .route('/new')
