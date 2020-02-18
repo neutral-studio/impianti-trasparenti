@@ -9,7 +9,7 @@ const sslRedirect = require('heroku-ssl-redirect');
 const app = express();
 
 /* Importazione Router */
-const userRouter = require('./routes/userRouter');
+const userRouter = require('./routes/router_user');
 
 /* Costanti utils */
 const path = require('path');
@@ -22,8 +22,13 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(methodOverride('_method'));
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.json({
+    limit: '50mb'
+}));
+app.use(bodyParser.urlencoded({
+    limit: '50mb',
+    extended: true
+}));
 
 /* Impostazione del motore di rendering - Non è quindi necessario specificare l'estensione dei file nel 'res.render('nomeFile)' */
 app.set('view engine', 'ejs');
