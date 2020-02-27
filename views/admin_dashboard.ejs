@@ -106,12 +106,13 @@
                                     <div class="card-icon">
                                         <i class="fas fa-user"></i>
                                     </div>
-                                    <p class="card-category">Utenti presenti</p>
-                                    <h3 class="card-title">N/A
+                                    <p class="card-category">Responsabili presenti</p>
+                                    <h3 class="card-title">
+                                        <%= resps.length %>
                                     </h3>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="#">
+                                    <a href="/admin/resps">
                                         <div class="stats">Vai agli utenti
                                         </div>
                                     </a>
@@ -183,7 +184,7 @@
                             <div class="card dataCard">
                                 <div class="card-header card-header-warning">
                                     <h3 class="card-title">
-                                        <i class="fas fa-user"></i> Utenti
+                                        <i class="fas fa-user"></i> Responsabili
                                     </h3>
                                 </div>
                                 <div class="card-body">
@@ -198,11 +199,17 @@
                                                 </th>
                                             </thead>
                                             <tbody>
-                                                <!-- DA IMPLEMENTARE CON DATI DB USERS -->
+                                                <% resps.forEach((item) => { %>
                                                 <tr>
-                                                    <td>N/A</td>
-                                                    <td>N/A</td>
+                                                    <td>
+                                                        <%=item.firstName%>
+                                                    </td>
+                                                    <td>
+                                                        <%=item.lastName%>
+                                                    </td>
                                                 </tr>
+                                                <% }) %>
+
                                             </tbody>
                                         </table>
                                     </div>

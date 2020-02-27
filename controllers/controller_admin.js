@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const Impianto = require('../models/Impianto');
 const Society = require('../models/Society');
+const Resp = require('../models/Resp');
 
 const app = express();
 
@@ -20,7 +21,17 @@ exports.get_dashboard = (req, res) => {
                     res.status(404).render('404');
                 } else {
                     /* Impostazione dello stato HTTP success e rendering della pagina degli impianti (admin_impianti.ejs) */
-                    res.render('admin_dashboard', { impianti: dataImp, society: dataSoc });
+                    Resp.find((err, dataResps) => {
+                        if (err) {
+                            res.status(404).render('404');
+                        } else {
+                            res.render('admin_dashboard', {
+                                impianti: dataImp,
+                                society: dataSoc,
+                                resps: dataResps
+                            });
+                        }
+                    })
                 }
             })
         }

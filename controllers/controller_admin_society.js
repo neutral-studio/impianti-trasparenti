@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const Society = require('../models/Society');
-
+const Resp = require('../models/Resp');
 const app = express();
 
 
@@ -22,7 +22,9 @@ exports.get_society = (req, res) => {
             res.status(404).render('404');
         } else {
             /* Impostazione dello stato HTTP success e rendering della pagina degli impianti (admin_impianti.ejs) */
-            res.render('admin_society', { society: data });
+            res.render('admin_society', {
+                society: data
+            });
         }
     })
 }
@@ -31,35 +33,28 @@ exports.get_society = (req, res) => {
 /* creating a new Impianto */
 exports.new = (req, res) => {
     /* Getting data from forms */
+    let requestName = req.body.contact.split(' ');
+    // res.send(requestName);
+    var contactID = new mongoose.Types.ObjectId()
+    Resp.find({
+        firstName: requestName[0]
+    }, (err, data) => {
+        // res.send(data);
+        if (err) {
+            res.send('Fra, non funziona');
+        } else {
+            contactID = data._id;
+        }
+    })
+
     const newSociety = {
         name: req.body.name,
         address: req.body.address,
-        sport: req.body.sport.replace(/\s+/g, '').split(',')
-            /*iFrame: req.body.iFrame,
-            ,
-            managementType: req.body.managementType * 1,
-            manager: req.body.manager,
-            desc: req.body.desc.replace('<p>', ''),
-            imgs: req.body.imgs.replace(/\s+/g, '').split(','),
-            tags: req.body.tags.replace(/\s+/g, '').split(',')*/
+        sport: req.body.sport.replace(/\s+/g, '').split(','),
+        activities: req.body.activities.replace(/\s+/g, '').split(','),
+        contact: contactID
     };
-    /* newSociety.desc = newSociety.desc.replace('</p > ', ''); */
-
-    /* Split tags */
-    /*for (var i = 0; i < newImpianto.tags.length; i++) {
-        newImpianto.tags[i] = newImpianto.tags[i].replace(/\s+/g, '').split('-');
-    }*/
-    /* Array to Object */
-    /*var obj = {};
-    newSociety.tags.forEach(item => {
-        item.forEach(function(val, i) {
-            if (i % 2 === 1) return
-            if (item[i + 1] == '') obj[val] = 'true';
-            else obj[val] = item[i + 1];
-        })
-    })
-    newSociety.tags = obj;*/
-
+    // res.send(newSociety);
     /* Creating the Impianto */
     Society.create(newSociety, (err, data) => {
         if (err) {
@@ -78,84 +73,104 @@ exports.new = (req, res) => {
 
 /* creating Society page */
 exports.get_new = (req, res) => {
+    let namesArr = [];
     /* Impostazione dello stato HTTP success e rendering della pagina dedicata alla creazione di un nuovo impianto (newImpianto.ejs) */
-    res.status(200).render('admin_newSociety');
+    Resp.find((err, data) => {
+        data.forEach((item, index) => {
+            namesArr.push(item.firstName + " " + item.lastName);
+        })
+        if (err) {
+            res.status(404).render('404');
+        } else {
+            res.status(200).render('admin_newSociety', {
+                resps: namesArr
+            });
+        }
+    })
 };
-
 
 /* editing an Society */
 exports.edit = (req, res) => {
     let id = req.params.id;
-    const updated = {
-            name: req.body.name,
-            address: req.body.address,
-            sport: req.body.sport.replace(/\s+/g, '').split(',')
-
-
-            /*iFrame: req.body.iFrame,
-            ,
-            managementType: req.body.managementType * 1,
-            manager: req.body.manager,
-            desc: req.body.desc.replace('<p>', ''),
-            imgs: req.body.imgs.replace(/\s+/g, '').split(','),
-            tags: req.body.tags.replace(/\s+/g, '').split(',')*/
+    let requestName = req.body.contact.split(' ')[0];
+    var contactID = new mongoose.Types.ObjectId;
+    Resp.find({
+        firstName: requestName
+    }, (err, data) => {
+        if (err) {
+            res.send('Fra, non funziona');
+        } else {
+            contactID = data._id;
         }
-        /* updated.desc = updated.desc.replace('</p>', ''); */
-
-    /* Split tags */
-    /*for (var i = 0; i < updated.tags.length; i++) {
-        updated.tags[i] = updated.tags[i].replace(/\s+/g, '').split('-');
-    }*/
-    /* Array to Object */
-    /*var obj = {};
-    updated.tags.forEach(item => {
-        item.forEach(function(val, i) {
-            if (i % 2 === 1) return
-            if (item[i + 1] == '') obj[val] = 'true';
-            else obj[val] = item[i + 1];
-        })
     })
-    updated.tags = obj;*/
-
-
+    const updated = {
+        name: req.body.name,
+        address: req.body.address,
+        sport: req.body.sport.replace(/\s+/g, '').split(','),
+        activities: req.body.activities.replace(/\s+/g, '').split(','),
+        contact: contactID
+    }
 
     Society.findById(id, (err, data) => {
         if (err) {
             res.status(404).json({
                 status: 'failed',
                 message: 'Society does not exist | Invalid ID'
-            })
+            });
         }
         data.replaceOne(updated, err => {
             if (err) {
                 res.status(500).json({
                     status: 'failed',
                     message: 'Society could not edited'
-                })
+                });
             } else {
                 res.redirect('/admin/society');
             }
-        })
-    })
+        });
+    });
 }
 
 
 /* editing Society page */
 exports.get_edit = (req, res) => {
-    Society.findById(req.params.id, (err, data) => {
+    let namesArr = [];
+    /* Impostazione dello stato HTTP success e rendering della pagina dedicata alla creazione di un nuovo impianto (newImpianto.ejs) */
+    Resp.find((err, data) => {
+        data.forEach((item, index) => {
+            namesArr.push(item.firstName + " " + item.lastName);
+        })
         if (err) {
             res.status(404).render('404');
         } else {
-            res.render('admin_editSociety', { society: data });
+            Society.findById(req.params.id, (err, socData) => {
+                if (err) {
+                    res.status(404).render('404');
+                } else {
+                    res.send(socData);
+                    Resp.findById(socData.contact, (err, resp) => {
+                        res.render('admin_editSociety', {
+                            society: socData,
+                            resps: namesArr,
+                            respName: resp.firstName + " " + resp.lastName
+                        });
+                    })
+
+                }
+            })
         }
-    })
+    });
+
+
 }
 
 
 /* deleting Society */
 exports.remove = (req, res) => {
     let id = req.params.id;
-    Society.deleteOne({ _id: id }, (err, data) => {
+    Society.deleteOne({
+        _id: id
+    }, (err, data) => {
         if (err) {
             res.status(500).json({
                 status: 'fail',

@@ -13,6 +13,7 @@ const router_user = require('./routes/router_user');
 const router_admin_impiantos = require('./routes/router_admin_impiantos');
 const router_admin_society = require('./routes/router_admin_society');
 const router_admin = require('./routes/router_admin');
+const router_admin_resps = require('./routes/router_admin_users');
 
 /* Costanti utils */
 const path = require('path');
@@ -25,8 +26,13 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(methodOverride('_method'));
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.json({
+    limit: '50mb'
+}));
+app.use(bodyParser.urlencoded({
+    limit: '50mb',
+    extended: true
+}));
 
 /* Impostazione del motore di rendering - Non è quindi necessario specificare l'estensione dei file nel 'res.render('nomeFile)' */
 app.set('view engine', 'ejs');
@@ -45,6 +51,7 @@ app.use(
 /* Richiamo dei diversi router precedentemente importati */
 app.use('/admin/impianti', router_admin_impiantos);
 app.use('/admin/society', router_admin_society);
+app.use('/admin/resps', router_admin_resps);
 app.use('/admin', router_admin);
 app.use('/user', router_user);
 
