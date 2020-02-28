@@ -5,7 +5,7 @@ var schema = new mongoose.Schema({
     address: String,
     sport: Array,
     activities: Array,
-    contact: mongoose.Schema.Types.ObjectId
+    contact: String
 });
 
 var Society = mongoose.model('Society', schema);

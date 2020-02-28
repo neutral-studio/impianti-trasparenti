@@ -9,10 +9,12 @@ const sslRedirect = require('heroku-ssl-redirect');
 const app = express();
 
 /* Importazione Router */
-const userRouter = require('./routes/router_user');
-const basicRouter = require('./routes/router_basic');
-const errorRouter = require('./routes/router_error');
-const impiantiRouter = require('./routes/router_impianti');
+const router_user = require('./routes/router_user');
+const router_admin_impiantos = require('./routes/router_admin_impiantos');
+const router_admin_society = require('./routes/router_admin_society');
+const router_admin = require('./routes/router_admin');
+const router_admin_resps = require('./routes/router_admin_users');
+const router_basic = require('./routes/router_basic');
 
 /* Costanti utils */
 const path = require('path');
@@ -48,10 +50,11 @@ app.use(
 );
 
 /* Richiamo dei diversi router precedentemente importati */
-app.use('/user', userRouter);
-app.use('/err', errorRouter);
-app.use('/impianti', impiantiRouter);
-app.use('/', basicRouter);
-
+app.use('/admin/impianti', router_admin_impiantos);
+app.use('/admin/society', router_admin_society);
+app.use('/admin/resps', router_admin_resps);
+app.use('/admin', router_admin);
+app.use('/user', router_user);
+app.use('/', router_basic);
 /* Esportazione modulo app per l'utilizzo in server.js */
 module.exports = app;
