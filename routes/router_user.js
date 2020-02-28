@@ -1,6 +1,6 @@
 /* Importazione pacchetti necessari */
 const express = require('express');
-const userController = require('./../controllers/userController');
+const userController = require('./../controllers/controller_user');
 
 /* Definizione router dall'oggetto express */
 const router = express.Router();
