@@ -7,14 +7,13 @@ const Schema = mongoose.Schema;
 
 /*User schema*/
 const userSchema = new Schema({
-    username: String,
-    fName: String,
-    lName: String,
-    cf: String,
-    email: String,
+    username: String, //
+    fName: String, //
+    cf: String, //
+    email: String, //
     Id: String,
-    picture: String,
-    role: Number,
+    picture: String, //
+    role: Number, //
     office: Array
 
     /*ROLE DEF:
@@ -25,7 +24,7 @@ const userSchema = new Schema({
 
 
         _2: admin
-    */ 
+    */
 
 
 });

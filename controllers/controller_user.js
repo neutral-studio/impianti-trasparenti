@@ -1,4 +1,3 @@
-
 /* Definizione delle funzioni disponibili per il lato user dell'applicazione */
 exports.get_home = (req, res) => {
     /* Impostazione dello stato HTTP success e rendering della pagina home (home.ejs) */
@@ -14,6 +13,18 @@ exports.get_register = (req, res) => {
 
 exports.get_about = (req, res) => {
     res.render('about');
+};
+
+exports.get_admin = (req, res) => {
+    res.render('admin');
+};
+
+exports.get_superUser = (req, res) => {
+    res.render('superUser');
+};
+
+exports.get_user = (req, res) => {
+    res.render('user');
 };
 
 

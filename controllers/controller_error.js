@@ -7,7 +7,7 @@ exports.errPage = (req, res) => {
     if (!isNaN(req.params.code)) {
         res.render("error", { err: req.params.code });
     } else {
-        res.redirect("/user/");
+        res.redirect("/home/");
     }
 };
 
