@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const Impianto = require('../models/Impianto');
+const Society = require('./../models/Society');
 
 const app = express();
 
@@ -22,7 +23,9 @@ exports.get_impianti = (req, res) => {
             res.status(404).render('404');
         } else {
             /* Impostazione dello stato HTTP success e rendering della pagina degli impianti (admin_impianti.ejs) */
-            res.render('admin_impianti', { impianti: data });
+            res.render('admin_impianti', {
+                impianti: data
+            });
         }
     })
 }
@@ -43,7 +46,7 @@ exports.new = (req, res) => {
         tags: req.body.tags.replace(/\s+/g, '').split(',')
     };
     newImpianto.desc = newImpianto.desc.replace('</p>', '');
-
+    // res.send(newImpianto);
     /* Split tags */
     for (var i = 0; i < newImpianto.tags.length; i++) {
         newImpianto.tags[i] = newImpianto.tags[i].replace(/\s+/g, '').split('-');
@@ -51,7 +54,7 @@ exports.new = (req, res) => {
     /* Array to Object */
     var obj = {};
     newImpianto.tags.forEach(item => {
-        item.forEach(function(val, i) {
+        item.forEach(function (val, i) {
             if (i % 2 === 1) return
             if (item[i + 1] == '') obj[val] = 'true';
             else obj[val] = item[i + 1];
@@ -77,8 +80,21 @@ exports.new = (req, res) => {
 
 /* creating Impianto page */
 exports.get_new = (req, res) => {
+    let namesArr = [];
     /* Impostazione dello stato HTTP success e rendering della pagina dedicata alla creazione di un nuovo impianto (newImpianto.ejs) */
-    res.status(200).render('admin_newImpianto');
+    Society.find((err, data) => {
+        data.forEach((item, index) => {
+            namesArr.push(item.name);
+            console.log(item.name);
+        })
+        if (err) {
+            console.log(err);
+        } else {
+            res.status(200).render('admin_newImpianto', {
+                resps: namesArr
+            });
+        }
+    })
 };
 
 
@@ -105,7 +121,7 @@ exports.edit = (req, res) => {
     /* Array to Object */
     var obj = {};
     updated.tags.forEach(item => {
-        item.forEach(function(val, i) {
+        item.forEach(function (val, i) {
             if (i % 2 === 1) return
             if (item[i + 1] == '') obj[val] = 'true';
             else obj[val] = item[i + 1];
@@ -142,7 +158,9 @@ exports.get_edit = (req, res) => {
         if (err) {
             res.status(404).render('404');
         } else {
-            res.render('admin_editImpianto', { impianto: data });
+            res.render('admin_editImpianto', {
+                impianto: data
+            });
         }
     })
 }
@@ -151,7 +169,9 @@ exports.get_edit = (req, res) => {
 /* deleting Impianto */
 exports.remove = (req, res) => {
     let id = req.params.id;
-    Impianto.deleteOne({ _id: id }, (err, data) => {
+    Impianto.deleteOne({
+        _id: id
+    }, (err, data) => {
         if (err) {
             res.status(500).json({
                 status: 'fail',

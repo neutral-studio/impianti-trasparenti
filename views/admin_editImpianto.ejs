@@ -11,13 +11,15 @@
     <link rel="icon" type="image/png" href="../../../../../../admin-pages/assets/img/favicon.png">
 
     <script src="https://kit.fontawesome.com/cf6028255a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="../../../../../admin-pages/assets/css/admin/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../../../../../admin-pages/assets/css/style.css">
 
-    <script src="https://cdn.tiny.cloud/1/qbg8aqvvm4rcofj7peoqelpx2ggev08nhkv2aiar5kpvssr9/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/qbg8aqvvm4rcofj7peoqelpx2ggev08nhkv2aiar5kpvssr9/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
 
 
 </head>
@@ -52,47 +54,66 @@
                                         <div class="customRow100">
                                             <div class="customCol">
                                                 <h4 name="" class="text">Nome</h4>
-                                                <input class="form-control" type="text" name="name" required="required" value="<%= impianto.name %>">
+                                                <input class="form-control" type="text" name="name" required="required"
+                                                    value="<%= impianto.name %>">
                                                 <span class="line"></span>
                                             </div>
                                             <div class="customCol">
                                                 <h4 name="" class="text">Indirizzo</h4>
-                                                <input type="text" class="form-control" name="address" required="required" value="<%= impianto.address %>">
+                                                <input type="text" class="form-control" name="address"
+                                                    required="required" value="<%= impianto.address %>">
                                                 <span class="line"></span>
                                             </div>
                                             <div class="customCol">
                                                 <h4 name="" class="text">iFrame mappa</h4>
-                                                <input class="form-control" type="text" name="iFrame" required="required" value="<%= impianto.iFrame %>">
+                                                <input class="form-control" type="text" name="iFrame"
+                                                    required="required" value="<%= impianto.iFrame %>">
                                                 <span class="line"></span>
                                             </div>
                                             <div class="customCol">
-                                                <h4 name="" class="text">Management</h4>
-                                                <input class="form-control" type="text" name="managementType" required="required" value="<%= impianto.managementType %>">
-                                                <span class="line"></span>
+                                                <h4 name="" class="text">Gestione</h4>
+                                                <div class=" my-1">
+
+                                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"
+                                                        name="managementType">
+                                                        <option selected>Seleziona gestione...</option>
+                                                        <option id="mgt1" value="1">Diretta</option>
+                                                        <option id="mgt2" value="2">Diretta Esterna</option>
+                                                        <option id="mgt3" value="3">In Convenzione</option>
+                                                        <option id="mgt4" value="4">Scolastico - Diretta</option>
+                                                        <option id="mgt5" value="5">Scolastico - In Convenzione</option>
+                                                        <option id="mgt6" value="6">Gruppo Sportivo Concessionario
+                                                        </option>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="customCol">
                                                 <h4 name="" class="text">Da chi è gestito?</h4>
-                                                <input class="form-control" type="text" name="manager" required="required" value="<%= impianto.manager %>">
+                                                <input class="form-control" type="text" name="manager"
+                                                    required="required" value="<%= impianto.manager %>">
                                                 <span class="line"></span>
                                             </div>
                                             <div class="customCol">
                                                 <h4 name="descrizione" class="text">Descrizione</h4>
+                                                <textarea name="desc" id="mytextarea"
+                                                    style="margin-top: 20%;"><% this.value %><%= impianto.desc %></textarea>
                                             </div>
                                         </div>
                                         <div class="customRow100" style="margin-left: 1%;">
                                             <div>
-                                                <textarea name="desc" id="mytextarea" style="margin-top: 20%;"><% this.value %><%= impianto.desc %></textarea>
+
                                                 <div style="margin-top: 4%;">
                                                     <a onclick="re_toggle()"><button type="button" class="customBtn2"
-                                                    style="margin-right: 2%;">Modifica Immagini</button></a>
+                                                            style="margin-right: 2%;">Modifica Immagini</button></a>
                                                     <a onclick="toggle()"><button type="button" class="customBtn2"
-                                                    style="margin-right: 2%;">Modifica Tags</button></a>
+                                                            style="margin-right: 2%;">Modifica Tags</button></a>
                                                     <a onclick="re_re_toggle()"><button type="button"
-                                                    class="customBtn2">Modifica Sport</button></a>
+                                                            class="customBtn2">Modifica Sport</button></a>
                                                 </div>
                                                 <div style="margin-top: 4%;">
                                                     <a>
-                                                        <button type="" class="btn btn-success">Apporta modifiche</button>
+                                                        <button type="" class="btn btn-success">Apporta
+                                                            modifiche</button>
                                                     </a>
                                     </form>
                                     <form action="/admin/impianti/<%= impianto._id %>" method="POST">
@@ -101,157 +122,163 @@
                                             <button type="submit" class="btn btn-danger">Elimina impianto</button>
                                         </a>
                                     </form>
-                                    </div>
-                                    </div>
-
-
-
-                                    <input type="hidden" name="sport" id="arrSpo" value="<%= impianto.sport %>" <% this.value %>>
-                                    <input type="hidden" name="imgs" id="arrImm" value="<%= impianto.imgs %>" <% this.value %>>
-                                    <input type="hidden" name="tags" id="arrTag" value="<%= impianto.tags %>" <% this.value %>>
-
-                                    </div>
                                 </div>
-                                </form>
                             </div>
+
+
+
+                            <input type="hidden" name="sport" id="arrSpo" value="<%= impianto.sport %>"
+                                <% this.value %>>
+                            <input type="hidden" name="imgs" id="arrImm" value="<%= impianto.imgs %>" <% this.value %>>
+                            <input type="hidden" name="tags" id="arrTag" value="<%= impianto.tags %>" <% this.value %>>
+
                         </div>
                     </div>
-                </div>
-
-                <div class="customContainer2" id="popup1">
-                    <div class="customRow100">
-                        <div class="customContainerTable">
-                            <table id="tableTag" class="customers">
-                                <tr>
-                                    <th>
-                                        Nome Tag
-                                    </th>
-                                    <th>
-                                        Valore Tag
-                                    </th>
-                                </tr>
-                                <% impianto.tags.forEach((tag) => { %>
-                                    <% var keys = Object.keys(tag);%>
-                                        <% keys.forEach((key) => { %>
-                                            <tr>
-                                                <td>
-                                                    <%= key %>
-                                                </td>
-                                                <td>
-                                                    <% if (tag[key] != 'true') { %>
-                                                        <%= tag[key] %>
-                                                            <% } %>
-                                                </td>
-                                            </tr>
-                                            <% }) %>
-                                                <% }) %>
-                            </table>
-                            <div class="customCol">
-                                <h4 name="" class="text">Nome Tag</h4>
-                                <input type="text" class="form-control" name="" required="required" id="tag">
-                                <span class="line"></span>
-                            </div>
-                            <div class="customCol">
-                                <h4 name="" class="text">Valore Tag</h4>
-                                <input type="text" class="form-control" name="" required="required" id="valore">
-                                <span class="line"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowTag()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowTag()"
-                    style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowTag()"
-                    style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arrayTag()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
-                    2%;>Chiudi</button></a></div>
-                </div>
-            </div>
-
-            <div class="customContainer2" id="popup2">
-
-                <div class="customRow100">
-                    <div class="customContainerTable">
-                        <table id="tableImm" class="customers">
-                            <tr>
-                                <th>
-                                    URL immagine
-                                </th>
-                            </tr>
-                            <% impianto.imgs.forEach((img) => { %>
-                                <tr>
-                                    <td>
-                                        <%= img %>
-                                    </td>
-                                </tr>
-                                <% }) %>
-                        </table>
-                        <div class="customCol">
-                            <h4 name="" class="text">URL immagine</h4>
-                            <input type="text" class="form-control" name="immagine" required="required" id="immagine">
-                            <span class="line"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowImmagine()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowImmagine()"
-                        style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowImmagine()"
-                        style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arrayImm()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
-                        2%;>Chiudi</button></a></div>
-                </div>
-            </div>
-
-            <div class="customContainer2" id="popup3">
-                <div class="customRow100">
-                    <div class="customContainerTable">
-                        <table id="table" class="customers">
-                            <tr>
-                                <th>
-                                    Sport
-                                </th>
-                            </tr>
-                            <% impianto.sport.forEach((spo) => { %>
-                                <tr>
-                                    <td>
-                                        <%= spo %>
-                                    </td>
-                                </tr>
-
-                                <% }) %>
-                        </table>
-                        <div class="customCol">
-                            <h4 name="" class="text">Inserisci Sport</h4>
-                            <input type="text" class="form-control" name="sport" required="required" id="sport">
-                            <span class="line"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <a><button class="customBtn" onclick="addRowSport()" style="margin-top: 2%;">Aggiungi</button></a>
-                        <a><button class="customBtn4" onclick="editSelectedRowSport()"
-                        style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                        <a><button class="customBtn3" onclick="deleteSelectedRowSport()"
-                        style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                    </div>
-                    <div>
-                        <a onclick="arraySport()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
-                        2%;>Chiudi</button></a></div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="customContainer2" id="popup1">
+        <div class="customRow100">
+            <div class="customContainerTable">
+                <table id="tableTag" class="customers">
+                    <tr>
+                        <th>
+                            Nome Tag
+                        </th>
+                        <th>
+                            Valore Tag
+                        </th>
+                    </tr>
+                    <% impianto.tags.forEach((tag) => { %>
+                    <% var keys = Object.keys(tag);%>
+                    <% keys.forEach((key) => { %>
+                    <tr>
+                        <td>
+                            <%= key %>
+                        </td>
+                        <td>
+                            <% if (tag[key] != 'true') { %>
+                            <%= tag[key] %>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                    <% }) %>
+                </table>
+                <div class="customCol">
+                    <h4 name="" class="text">Nome Tag</h4>
+                    <input type="text" class="form-control" name="" required="required" id="tag">
+                    <span class="line"></span>
+                </div>
+                <div class="customCol">
+                    <h4 name="" class="text">Valore Tag</h4>
+                    <input type="text" class="form-control" name="" required="required" id="valore">
+                    <span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a><button class="customBtn" onclick="addRowTag()" style="margin-top: 2%;">Aggiungi</button></a>
+            <a><button class="customBtn4" onclick="editSelectedRowTag()"
+                    style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+            <a><button class="customBtn3" onclick="deleteSelectedRowTag()"
+                    style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+        </div>
+        <div>
+            <a onclick="arrayTag()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
+                    2%;>Chiudi</button></a></div>
+    </div>
+    </div>
+
+    <div class="customContainer2" id="popup2">
+
+        <div class="customRow100">
+            <div class="customContainerTable">
+                <table id="tableImm" class="customers">
+                    <tr>
+                        <th>
+                            URL immagine
+                        </th>
+                    </tr>
+                    <% impianto.imgs.forEach((img) => { %>
+                    <tr>
+                        <td>
+                            <%= img %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </table>
+                <div class="customCol">
+                    <h4 name="" class="text">URL immagine</h4>
+                    <input type="text" class="form-control" name="immagine" required="required" id="immagine">
+                    <span class="line"></span>
+                </div>
+            </div>
+            <div>
+                <a><button class="customBtn" onclick="addRowImmagine()" style="margin-top: 2%;">Aggiungi</button></a>
+                <a><button class="customBtn4" onclick="editSelectedRowImmagine()"
+                        style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+                <a><button class="customBtn3" onclick="deleteSelectedRowImmagine()"
+                        style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+            </div>
+            <div>
+                <a onclick="arrayImm()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
+                        2%;>Chiudi</button></a></div>
+        </div>
+    </div>
+
+    <div class="customContainer2" id="popup3">
+        <div class="customRow100">
+            <div class="customContainerTable">
+                <table id="table" class="customers">
+                    <tr>
+                        <th>
+                            Sport
+                        </th>
+                    </tr>
+                    <% impianto.sport.forEach((spo) => { %>
+                    <tr>
+                        <td>
+                            <%= spo %>
+                        </td>
+                    </tr>
+
+                    <% }) %>
+                </table>
+                <div class="customCol">
+                    <h4 name="" class="text">Inserisci Sport</h4>
+                    <input type="text" class="form-control" name="sport" required="required" id="sport">
+                    <span class="line"></span>
+                </div>
+            </div>
+            <div>
+                <a><button class="customBtn" onclick="addRowSport()" style="margin-top: 2%;">Aggiungi</button></a>
+                <a><button class="customBtn4" onclick="editSelectedRowSport()"
+                        style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+                <a><button class="customBtn3" onclick="deleteSelectedRowSport()"
+                        style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+            </div>
+            <div>
+                <a onclick="arraySport()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
+                        2%;>Chiudi</button></a></div>
+        </div>
+    </div>
+    </div>
+    </div>
 </body>
+<script>
+    (function loadMgt() {
+        var mgt = 'mgt' + '<%= impianto.managementType %>';
+        document.getElementById(mgt).setAttribute("selected", "");
+
+    })();
+</script>
 <script>
     tinymce.init({
         selector: 'textarea',
-        plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinydrive tinymcespellchecker',
-        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter insertfile pageembed permanentpen table',
         toolbar_drawer: 'floating',
         tinycomments_mode: 'embedded',
         tinycomments_author: 'Author name',
@@ -295,7 +322,7 @@
 
     function selectedToInputSport() {
         for (var i = 1; i < table.rows.length; i++) {
-            table.rows[i].onclick = function() {
+            table.rows[i].onclick = function () {
                 rIndex = this.rowIndex;
                 document.getElementById('sport').value = '';
                 document.getElementById('sport').value = this.cells[0].innerHTML.replace(/\s/g, '');
@@ -344,12 +371,14 @@
 
     function selectedToInputImmagine() {
         for (var i = 1; i < tableImm.rows.length; i++) {
-            tableImm.rows[i].onclick = function() {
+            tableImm.rows[i].onclick = function () {
                 rIndexImm = this.rowIndex;
                 document.getElementById('immagine').value = '';
                 document.getElementById('immagine').value = this.cells[0].innerHTML.replace(/\s/g, '');
-                document.getElementById('immagine').value = document.getElementById('immagine').value.replace('<imgsrc="', '');
-                document.getElementById('immagine').value = document.getElementById('immagine').value.replace('"alt="">', '');
+                document.getElementById('immagine').value = document.getElementById('immagine').value.replace(
+                    '<imgsrc="', '');
+                document.getElementById('immagine').value = document.getElementById('immagine').value.replace(
+                    '"alt="">', '');
             };
         }
     }
@@ -399,7 +428,7 @@
 
     function selectedToInputTag() {
         for (var i = 1; i < tableTag.rows.length; i++) {
-            tableTag.rows[i].onclick = function() {
+            tableTag.rows[i].onclick = function () {
                 rIndexTag = this.rowIndex;
                 document.getElementById('tag').value = this.cells[0].innerHTML.replace(/\s/g, '');
                 document.getElementById('valore').value = this.cells[1].innerHTML.replace(/\s/g, '');
@@ -491,8 +520,8 @@
 <script src="https://kit.fontawesome.com/cf6028255a.js " crossorigin="anonymous "></script>
 
 <script>
-    $(document).ready(function() {
-        $().ready(function() {
+    $(document).ready(function () {
+        $().ready(function () {
             $sidebar = $('.sidebar');
             $sidebar_img_container = $sidebar.find('.sidebar-background');
             $full_page = $('.full-page');
@@ -504,7 +533,7 @@
                     $('.fixed-plugin .dropdown').addClass('open');
                 }
             }
-            $('.fixed-plugin a').click(function(event) {
+            $('.fixed-plugin a').click(function (event) {
                 // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
                 if ($(this).hasClass('switch-trigger')) {
                     if (event.stopPropagation) {
@@ -514,7 +543,7 @@
                     }
                 }
             });
-            $('.fixed-plugin .active-color span').click(function() {
+            $('.fixed-plugin .active-color span').click(function () {
                 $full_page_background = $('.full-page-background');
                 $(this).siblings().removeClass('active');
                 $(this).addClass('active');
@@ -529,7 +558,7 @@
                     $sidebar_responsive.attr('data-color', new_color);
                 }
             });
-            $('.fixed-plugin .background-color .badge').click(function() {
+            $('.fixed-plugin .background-color .badge').click(function () {
                 $(this).siblings().removeClass('active');
                 $(this).addClass('active');
                 var new_color = $(this).data('background-color');
@@ -537,14 +566,14 @@
                     $sidebar.attr('data-background-color', new_color);
                 }
             });
-            $('.fixed-plugin .img-holder').click(function() {
+            $('.fixed-plugin .img-holder').click(function () {
                 $full_page_background = $('.full-page-background');
                 $(this).parent('li').siblings().removeClass('active');
                 $(this).parent('li').addClass('active');
                 var new_image = $(this).find("img ").attr('src');
                 if ($sidebar_img_container.length != 0 && $(
                         '.switch-sidebar-image input:checked').length != 0) {
-                    $sidebar_img_container.fadeOut('fast', function() {
+                    $sidebar_img_container.fadeOut('fast', function () {
                         $sidebar_img_container.css('background-image', 'url(" ' +
                             new_image + ' ")');
                         $sidebar_img_container.fadeIn('fast');
@@ -554,7 +583,7 @@
                         '.switch-sidebar-image input:checked').length != 0) {
                     var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
                         'img').data('src');
-                    $full_page_background.fadeOut('fast', function() {
+                    $full_page_background.fadeOut('fast', function () {
                         $full_page_background.css('background-image', 'url(" ' +
                             new_image_full_page + ' ")');
                         $full_page_background.fadeIn('fast');
@@ -574,7 +603,7 @@
                     $sidebar_responsive.css('background-image', 'url(" ' + new_image + ' ")');
                 }
             });
-            $('.switch-sidebar-image input').change(function() {
+            $('.switch-sidebar-image input').change(function () {
                 $full_page_background = $('.full-page-background');
                 $input = $(this);
                 if ($input.is(':checked')) {
@@ -599,7 +628,7 @@
                     background_image = false;
                 }
             });
-            $('.switch-sidebar-mini input').change(function() {
+            $('.switch-sidebar-mini input').change(function () {
                 $body = $('body');
                 $input = $(this);
                 if (md.misc.sidebar_mini_active == true) {
@@ -608,17 +637,17 @@
                     $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
                 } else {
                     $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('body').addClass('sidebar-mini');
                         md.misc.sidebar_mini_active = true;
                     }, 300);
                 }
                 // we simulate the window Resize so the charts will get updated in realtime.
-                var simulateWindowResize = setInterval(function() {
+                var simulateWindowResize = setInterval(function () {
                     window.dispatchEvent(new Event('resize'));
                 }, 180);
                 // we stop the simulation of Window Resize after the animations are completed
-                setTimeout(function() {
+                setTimeout(function () {
                     clearInterval(simulateWindowResize);
                 }, 1000);
             });
@@ -626,7 +655,7 @@
     });
 </script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Javascript method's body can be found in assets/js/demos.js
         md.initDashboardPageCharts();
     });

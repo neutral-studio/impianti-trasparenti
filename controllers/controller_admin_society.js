@@ -35,39 +35,39 @@ exports.new = (req, res) => {
     /* Getting data from forms */
     let requestName = req.body.contact.split(' ');
     // res.send(requestName);
-    var contactID = new mongoose.Types.ObjectId()
+    // let contactID;
     Resp.find({
         firstName: requestName[0]
     }, (err, data) => {
-        // res.send(data);
-        if (err) {
-            res.send('Fra, non funziona');
-        } else {
-            contactID = data._id;
-        }
+        contactID = data[0]._id;
+        const newSociety = {
+            name: req.body.name,
+            address: req.body.address,
+            sport: req.body.sport.replace(/\s+/g, '').split(','),
+            activities: req.body.activities.replace(/\s+/g, '').split(','),
+            contact: contactID
+        };
+
+        Society.create(newSociety, (err, data2) => {
+            if (err) {
+                res.status(400).json({
+                    status: 'fail',
+                    message: 'Society could not be created'
+                });
+            } else {
+                /* Society created */
+                /* res.send('Society has been created successfully'); */
+                // res.send(data);
+                res.redirect('/admin/society');
+                //console.log('Sono arrivato qui...');
+            }
+        })
     })
 
-    const newSociety = {
-        name: req.body.name,
-        address: req.body.address,
-        sport: req.body.sport.replace(/\s+/g, '').split(','),
-        activities: req.body.activities.replace(/\s+/g, '').split(','),
-        contact: contactID
-    };
+
     // res.send(newSociety);
     /* Creating the Impianto */
-    Society.create(newSociety, (err, data) => {
-        if (err) {
-            res.status(400).json({
-                status: 'fail',
-                message: 'Society could not be created'
-            });
-        } else {
-            /* Society created */
-            /* res.send('Society has been created successfully'); */
-            res.redirect('/admin/society');
-        }
-    })
+
 };
 
 
@@ -147,7 +147,7 @@ exports.get_edit = (req, res) => {
                 if (err) {
                     res.status(404).render('404');
                 } else {
-                    res.send(socData);
+                    //res.send(socData);
                     Resp.findById(socData.contact, (err, resp) => {
                         res.render('admin_editSociety', {
                             society: socData,

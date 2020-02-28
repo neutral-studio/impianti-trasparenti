@@ -25,6 +25,21 @@
 
 <body>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.js"></script>
+
+    <script>
+        $(function () {
+            var availableTags = '<%= resps %>'
+            availableTags = availableTags.split(',');
+
+            $(".autocomplete").autocomplete({
+                source: availableTags
+            });
+        });
+    </script>
+
 
     <div class="wrapper">
         <div class="sidebar" data-color="orange" data-background-color="white">
@@ -71,28 +86,32 @@
                                                 <h4 name="" class="text">Gestione</h4>
                                                 <div class=" my-1">
 
-                                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                                        <option selected>Seleziona...</option>
+                                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"
+                                                        name="managementType">
+                                                        <option selected>Seleziona gestione...</option>
                                                         <option value="1">Diretta</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
+                                                        <option value="2">Diretta Esterna</option>
+                                                        <option value="3">In Convenzione</option>
+                                                        <option value="3">Scolastico - Diretta</option>
+                                                        <option value="3">Scolastico - In Convenzione</option>
+                                                        <option value="3">Gruppo Sportivo Concessionario</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="customCol">
                                                 <h4 name="" class="text">Da chi è gestito?</h4>
-                                                <input class="form-control" type="text" name="manager"
-                                                    required="required">
-                                                <span class="line"></span>
+                                                <input class=" form-control autocomplete" name="manager"
+                                                    placeholder="Inserisci il gestore" />
+
                                             </div>
                                             <div class="customCol">
                                                 <span name="descrizione" class="text">Descrizione</span>
+                                                <textarea name="desc" style="margin-top: 20%;"></textarea>
                                             </div>
                                         </div>
                                 </div>
                                 <div class="customRow100" style="margin-left: 1%;">
                                     <div>
-                                        <textarea name="desc" id="mytextarea" style="margin-top: 20%;"></textarea>
                                         <div style="margin-top: 4%;">
                                             <a onclick="re_toggle()"><button type="button" class="customBtn2"
                                                     style="margin-right: 2%;">Inserisci Immagini</button></a>
@@ -221,11 +240,13 @@
     </div>
 </body>
 
+
+
 <script>
     tinymce.init({
         selector: 'textarea',
-        plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinydrive tinymcespellchecker',
-        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter insertfile pageembed permanentpen table',
+        // plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinydrive tinymcespellchecker',
+        //toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter insertfile pageembed permanentpen table',
         toolbar_drawer: 'floating',
         tinycomments_mode: 'embedded',
         tinycomments_author: 'Author name',
@@ -415,8 +436,8 @@
 <script src="../../../../../../../../../../admin-pages/assets/js/admin/style.js "></script>
 
 <!--   Core JS Files   -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/core/jquery.min.js "></script>
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/core/popper.min.js "></script>
+<!-- <script src="../../../../../../../../../../admin-pages/assets/js/admin/core/jquery.min.js "></script>
+<script src="../../../../../../../../../../admin-pages/assets/js/admin/core/popper.min.js "></script> -->
 <script src="../../../../../../../../../../admin-pages/assets/js/admin/core/bootstrap-material-design.min.js "></script>
 <script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/perfect-scrollbar.jquery.min.js ">
 </script>
