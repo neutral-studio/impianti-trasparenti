@@ -7,7 +7,11 @@ const methodOverride = require('method-override');
 const sslRedirect = require('heroku-ssl-redirect');
 const passportSetup = require('./config/passport-setup');
 const cookieSession = require('cookie-session');
+const bcrypt = require('bcrypt');
+const flash = require('connect-flash');
+const session = require('express-session');
 const keys = require('./config/keys');
+
 
 /* Definizione app */
 const app = express();
@@ -30,6 +34,25 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(methodOverride('_method'));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
+/*app.use(session({
+    secret: 'Amistad',
+    resave: true,
+    saveUninitialized: true,
+}));
+*/
+app.use(passport.initialize());
+app.use(passport.session());
+/*
+app.use(flash());
+
+app.use((req, res, next) =>{
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.console_msg = req.flash('errorr_msg');
+    next();
+});
+*/
+
 
 /* Impostazione del motore di rendering - Non è quindi necessario specificare l'estensione dei file nel 'res.render('nomeFile)' */
 app.set('view engine', 'ejs');
