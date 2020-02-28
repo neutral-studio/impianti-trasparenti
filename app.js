@@ -14,6 +14,7 @@ const router_admin_impiantos = require('./routes/router_admin_impiantos');
 const router_admin_society = require('./routes/router_admin_society');
 const router_admin = require('./routes/router_admin');
 const router_admin_resps = require('./routes/router_admin_users');
+const router_basic = require('./routes/router_basic');
 
 /* Costanti utils */
 const path = require('path');
@@ -54,6 +55,6 @@ app.use('/admin/society', router_admin_society);
 app.use('/admin/resps', router_admin_resps);
 app.use('/admin', router_admin);
 app.use('/user', router_user);
-
+app.use('/', router_basic);
 /* Esportazione modulo app per l'utilizzo in server.js */
 module.exports = app;
