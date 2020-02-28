@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.route('/').get(controller_impianti.get_impianti);
 
+router.route('/:id').get(controller_impianti.get_impianto);
+
 module.exports = router;

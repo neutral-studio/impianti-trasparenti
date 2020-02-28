@@ -56,6 +56,12 @@
     color: rgb(255, 33, 33) !important;
 }
 
+.custom-titolo-impianto {
+    color: #000000 !important;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+}
+
 .custom-p {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
