@@ -6,5 +6,5 @@ Now the link to home page works flawlessly
 Now the 404 and custom error pages work
 
 # login_features
-.Storing user's gData on mongoDB collection.
-.Can login with both local and oAuth strategies (TODO FLASH MESSAGES and LANDING SCREENS)
+Storing user's gData on mongoDB collection
+Can login with both local and oAuth strategies (TODO FLASH MESSAGES and LANDING SCREENS)
