@@ -26,6 +26,8 @@ exports.get_register = (req, res) => {
 
 exports.post_register = async (req, res) =>{
    //TODO error message
+            
+
     if(req.body.password[0] === req.body.password[1] ){
         
         
@@ -37,30 +39,49 @@ exports.post_register = async (req, res) =>{
                            /*Account already on db*/
                            res.render("login");
                       }else{
+
+                        /*Check for upperCase and number chars*/
+                            if(hasUpperCase(req.body.password[0]) && hasNumber(req.body.password[0])){
+
+                                /*Check for pwd length*/
+
+                                if(req.body.password[0].length < 6 ){
+                                    console.log("PWD TROPPO CORTA");
+                                    res.render("register")
+                                }else{
+                                
+                                    /*New user*/
+                                  const newUser = new User({
+                                      mail: req.body.mail,
+                                      password:req.body.password[0]
+                                  });
+
+                                  /*Hashing pwd*/
+                                  bcrypt.genSalt(10, (err, salt) =>{
+                                  bcrypt.hash(newUser.password, salt, (err, hash) => { 
+                                     if(err){res.render("404")};
+                                     /*PWD TO HASHED*/
+                                     newUser.password = hash;
+                                     newUser.save()
+                                       .then(user =>{
+                                           console.log('Impianti-Trasparenti | Nuovo utente creato ' + newUser);
+                                           /*REDIRECT*/
+                                           res.redirect('/user/login');
+                                       })
+                                       .catch(err => console.log(err));
+                                 });
+           
+                                  
+                               });
+           
+                                     }
+                            } else{
+                                console.log("PWD NON CONTIENE UN NUMERO O UNA MAIUSCOLA");
+                                res.render("register")
+                            }
+
                         
-                          const newUser = new User({
-                              mail: req.body.mail,
-                              password:req.body.password[0]
-                          });
-                          bcrypt.genSalt(10, (err, salt) =>{
-                          bcrypt.hash(newUser.password, salt, (err, hash) => { 
-                             if(err){res.render("404")};
-                             /*PWD TO HASHED*/
-                             newUser.password = hash;
-                             newUser.save()
-                               .then(user =>{
-                                   console.log('Impianti-Trasparenti | Nuovo utente creato ' + newUser);
-                                   /*REDIRECT*/
-                                   res.redirect('/user/login');
-                               })
-                               .catch(err => console.log(err));
-                         });
-   
-                          
-                       });
-   
-   
-          }
+        }
                    });
         }
 
@@ -76,6 +97,21 @@ exports.post_register = async (req, res) =>{
     }
 
 };
+
+function hasUpperCase(str) {
+    return (/[A-Z]/.test(str));
+}
+
+function hasNumber(str){
+    var contaChar;
+    var hasNumber = false;
+    for(contaChar =0; contaChar < str.length; contaChar++){
+        if(!isNaN(parseInt(str.charAt(contaChar), 10))){
+            hasNumber  = true;
+        }
+    }
+    return hasNumber;
+}
 
 /*Test validita' email inserita*/
 function emailIsValid (email) {
