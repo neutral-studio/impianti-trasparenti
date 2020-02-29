@@ -41,14 +41,16 @@ exports.post_register = async (req, res) =>{
                       }else{
 
                         /*Check for upperCase and number chars*/
+
+                        /*Check for pwd length*/
+
+                        if(req.body.password[0].length < 6 ){
+                            console.log("PWD TROPPO CORTA");
+                            res.render("register")
+                        }else{
+
                             if(hasUpperCase(req.body.password[0]) && hasNumber(req.body.password[0])){
 
-                                /*Check for pwd length*/
-
-                                if(req.body.password[0].length < 6 ){
-                                    console.log("PWD TROPPO CORTA");
-                                    res.render("register")
-                                }else{
                                 
                                     /*New user*/
                                   const newUser = new User({
@@ -74,11 +76,12 @@ exports.post_register = async (req, res) =>{
                                   
                                });
            
-                                     }
+                                
                             } else{
                                 console.log("PWD NON CONTIENE UN NUMERO O UNA MAIUSCOLA");
                                 res.render("register")
                             }
+                        }
 
                         
         }
