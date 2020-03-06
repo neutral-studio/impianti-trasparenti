@@ -181,3 +181,20 @@ exports.remove = (req, res) => {
         }
     })
 }
+
+exports.api_society = (req, res) => {
+    Society.find((err, data) => {
+        if (err) {
+            res.send(err);
+        } else {
+            let namesArr = [];
+            data.forEach(manager => {
+                namesArr.push(manager.name);
+            });
+            res.status(200).json({
+                status: 'success',
+                data: namesArr
+            });
+        }
+    })
+}

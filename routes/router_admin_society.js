@@ -2,6 +2,8 @@
 const express = require('express');
 const controller_admin_society = require('../controllers/controller_admin_society');
 
+// const Sosciety = require('./../models/Society');
+
 /* Definizione router dall'oggetto express */
 const router = express.Router();
 
@@ -28,6 +30,8 @@ router
 router
     .route('/')
     .get(controller_admin_society.get_society);
+
+router.route('/api').get(controller_admin_society.api_society);
 
 
 /* Esportazione modulo router per app.js */

@@ -30,19 +30,18 @@ exports.get_impianti = (req, res) => {
     })
 }
 
-
 /* creating a new Impianto */
 exports.new = (req, res) => {
     /* Getting data from forms */
     const newImpianto = {
         name: req.body.name,
         address: req.body.address,
-        iFrame: req.body.iFrame,
+        iFrame: 'dev',
         sport: req.body.sport.replace(/\s+/g, '').split(','),
         managementType: req.body.managementType * 1,
         manager: req.body.manager,
-        desc: req.body.desc.replace('<p>', ''),
-        imgs: req.body.imgs.replace(/\s+/g, '').split(','),
+        desc: req.body.desc,
+        imgs: 'dev',
         tags: req.body.tags.replace(/\s+/g, '').split(',')
     };
     newImpianto.desc = newImpianto.desc.replace('</p>', '');
@@ -85,13 +84,12 @@ exports.get_new = (req, res) => {
     Society.find((err, data) => {
         data.forEach((item, index) => {
             namesArr.push(item.name);
-            console.log(item.name);
         })
         if (err) {
             console.log(err);
         } else {
             res.status(200).render('admin_newImpianto', {
-                resps: namesArr
+                resps: data
             });
         }
     })
