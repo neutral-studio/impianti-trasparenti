@@ -33,6 +33,10 @@ exports.get_impianti = (req, res) => {
 /* creating a new Impianto */
 exports.new = (req, res) => {
     /* Getting data from forms */
+
+
+    console.log(req.body.sport);
+
     const newImpianto = {
         name: req.body.name,
         address: req.body.address,
@@ -44,7 +48,7 @@ exports.new = (req, res) => {
         imgs: 'dev',
         tags: req.body.tags.replace(/\s+/g, '').split(',')
     };
-    newImpianto.desc = newImpianto.desc.replace('</p>', '');
+    //newImpianto.desc = newImpianto.desc.replace('</p>', '');
     // res.send(newImpianto);
     /* Split tags */
     for (var i = 0; i < newImpianto.tags.length; i++) {
@@ -53,7 +57,7 @@ exports.new = (req, res) => {
     /* Array to Object */
     var obj = {};
     newImpianto.tags.forEach(item => {
-        item.forEach(function (val, i) {
+        item.forEach(function(val, i) {
             if (i % 2 === 1) return
             if (item[i + 1] == '') obj[val] = 'true';
             else obj[val] = item[i + 1];
@@ -119,7 +123,7 @@ exports.edit = (req, res) => {
     /* Array to Object */
     var obj = {};
     updated.tags.forEach(item => {
-        item.forEach(function (val, i) {
+        item.forEach(function(val, i) {
             if (i % 2 === 1) return
             if (item[i + 1] == '') obj[val] = 'true';
             else obj[val] = item[i + 1];
