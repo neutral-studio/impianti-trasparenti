@@ -1,9 +1,25 @@
 <div class="page-header " data-parallax="true">
-    <div class="container ">
-        <div class="row ">
-            <div class="col-sm-8 ml-auto mr-auto ">
-                <h1 class="text-center poppins custom-h1">Your Story Starts With Us. Cerca Confronta Recensisci Prenota.</h1>
+    <div class="container">
+        <div id="scene">
+
+            <div class="row justify-content-between">
+                <div class="col">
+                    <div class="parallax-div layer" data-depth="0.<%=Math.floor((Math.random() * 4) + 2);%>"></div>
+                </div>
+                <div class="col">
+                    <div class="parallax-div layer" data-depth="0.<%=Math.floor((Math.random() * 4) + 2);%>"></div>
+                </div>
             </div>
+
+            <div class="row justify-content-between">
+                <div class="col">
+                    <div class="parallax-div layer" data-depth="0.<%=Math.floor((Math.random() * 4) + 2);%>"></div>
+                </div>
+                <div class="col">
+                    <div class="parallax-div layer" data-depth="0.<%=Math.floor((Math.random() * 4) + 2);%>"></div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -11,7 +27,7 @@
 <div class="main main-raised mx-5" style="border-radius: 15px; ">
     <div class="container">
         <div class="section text-center">
-            <h1>Cos'è Questo Sito ?</h1>
+            <h1 class="fanculo">Cos'è Questo Sito ?</h1>
             <p>Impianti Sportivi ti permette di accedere alla tua rubrica preferita quando vuoi e dove vuoi, da PC, Smartphone o Tablet. Entra a far parte della nostra Community. Tutto a portata di mano. Accedi se hai già un tuo account oppure registrati
                 ! Sfoglia in modo facile e immediato tra centinaia di opzioni, scegli quella che fa per te, selezione un Tag e comincia ora !</p>
         </div>
@@ -59,3 +75,7 @@
         </div>
     </div>
 </div>
+<script>
+    var scene = document.getElementById('scene');
+    var parallax = new Parallax(scene);
+</script>
