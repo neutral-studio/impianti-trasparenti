@@ -218,9 +218,9 @@ var KTDashboard = function () {
                     yPadding: 10,
                     xPadding: 10,
                     caretPadding: 0,
-                    displayColors: false,
-                    backgroundColor: KTApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff',
+                    displayColors: true,
+                    backgroundColor: '#F2F3F8',
+                    titleFontColor: '#000000',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0

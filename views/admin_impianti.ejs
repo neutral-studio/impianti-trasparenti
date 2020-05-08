@@ -334,20 +334,22 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <thead>
                                                 <tr>
                                                     <!-- <th>ID</th> -->
-                                                    <th>Nome</th>
-                                                    <th>Indirizzo</th>
-                                                    <th>Gestione</th>
-                                                    <th>Gestore</th>
-                                                    <th>Stato</th>
-                                                    <th>Azioni</th>
+                                                    <th><strong>Nome</strong></th>
+                                                    <th><strong>Indirizzo</strong></th>
+                                                    <th><strong>Gestione</strong></th>
+                                                    <th><strong>Gestore</strong></th>   
+                                                    <th><strong>Stato</strong></th>
+                                                    <th style="font-weight: bold !important;"><strong>Azioni</strong></th>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
+                                            </thead>    
+                                            <tbody> 
                                                 <% impianti.forEach((impianto) => { %>
                                                 <tr>
                                                     <!-- <td></td> -->
                                                     <td>
+                                                        <a href="impianti/edit/<%= impianto._id %>">
                                                         <%= impianto.name %>
+                                                        </a>
                                                     </td>
                                                     <td>
                                                         <%= impianto.address %>
@@ -356,7 +358,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <%= impianto.managementType %>
                                                     </td>
                                                     <td>
-                                                        <%= impianto.manager %>
+                                                        <% societies.forEach((society) => { %>
+                                                            <% if (society._id == impianto.manager) { %>
+                                                                <%= society.name %>
+                                                            <% } %>
+                                                        <% }) %>
                                                     </td>
                                                     <td>
                                                         <span
@@ -371,17 +377,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                                             </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <!-- <th>ID</th> -->
-                                                    <th>Nome</th>
-                                                    <th>Indirizzo</th>
-                                                    <th>Gestione</th>
-                                                    <th>Gestore</th>
-                                                    <th>Stato</th>
-                                                    <th>Azioni</th>
-                                                </tr>
-                                            </tfoot>
                                         </table>
 
                                         <!--end: Datatable -->

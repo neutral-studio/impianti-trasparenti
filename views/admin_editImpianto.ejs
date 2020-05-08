@@ -19,7 +19,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
     <base href="/public">
     <meta charset="utf-8" />
-    <title>Nuovo Impianto | Impianti-Trasparenti</title>
+    <title>Modifica Impianto | <%= impianto.name %></title>
     <meta name="description" content="Updates and statistics">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -91,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         Impianti </a>
                                                 <span class="kt-subheader__breadcrumbs-separator"></span>
                                                 <a href="/admin/impianti" class="kt-subheader__breadcrumbs-link">
-                                        Nuovo Impianto </a>
+                                        Modifica Impianto </a>
 
 
                                                 <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
@@ -149,7 +149,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
 
 
-                                    <form class="kt-form" action="/admin/impianti/new" method="POST">
+                                    <form class="kt-form" action="/admin/impianti/edit/<%= impianto._id %>" method="POST">
                                         <!--Begin::Row-->
                                         <div class="row">
                                             <!--begin::Form-->
@@ -169,14 +169,14 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                         <div class="form-group">
                                                             <label>Nome</label>
-                                                            <input name="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome dell'impianto">
+                                                            <input name="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome dell'impianto" value="<%= impianto.name %>">
                                                             <span class="form-text text-muted">Il nome che verrà visualizzato
-                                                    dall'utenza e nelle tabelle dell'app</span>
+                                                                dall'utenza e nelle tabelle dell'app</span>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="address">Indirizzo</label>
-                                                            <input name="address" type="text" class="form-control Autocomplete" placeholder="Inserisci l'indirizzo dell'impianto">
+                                                            <input name="address" type="text" class="form-control Autocomplete" placeholder="Inserisci l'indirizzo dell'impianto" value="<%= impianto.address %>">
                                                         </div>
 
 
@@ -184,19 +184,52 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <label for="address">Gestione</label>
 
                                                             <select class="form-control kt-bootstrap-select" id="kt_bootstrap_select" multiple name="managementType" data-max-options="1">
-                                                    <optgroup label="Standard">
-                                                        <option value="1">Diretta</option>
-                                                        <option value="2">Diretta Esterna</option>
-                                                        <option value="3">Convenzione</option>
-                                                        <option value="6">G.S. Conc.</option>
-                                                    </optgroup>
-                                                    <optgroup label="Scolastico">
-                                                        <option value="4">Scolastico | Diretta</option>
-                                                        <option value="5">Scolastico | Convenzione</option>
-                                                    </optgroup>
-                                                </select>
+                                                                <!-- <script> 
+                                                                    let a = document.getElementById("kt_bootstrap_select").firstChild.firstChild;
+                                                                    let c = document.getElementById("kt_bootstrap_select").firstChild.nextElementSibling.firstChild;
+
+                                                                    switch (impianto.managementType) {
+                                                                        case 1:
+                                                                            a.innerHTML = "selected"
+                                                                            break;
+                                                                            
+                                                                        case 2:
+                                                                            a.nextElementSibling.innerHTML = "selected";
+                                                                            break;
+
+                                                                        case 3:
+                                                                            a.nextElementSibling.nextElementSibling.innerHTML = "selected";
+                                                                            break;
+
+                                                                        case 6:
+                                                                            a.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML = "selected";
+                                                                            break;
+
+                                                                        case 4:
+                                                                            c.innerHTML = "selected";
+                                                                            break;
+
+                                                                        case 5:
+                                                                            c.nextElementSibling.innerHTML = "selected"
+                                                                            break;
+
+                                                                        default:
+                                                                            break;
+                                                                    }  -->
+                                                                </script> 
+                                                                <optgroup label="Standard">
+                                                                    <option value="1" <%= impianto.managementType == 1 ? "selected" : null %>>Diretta</option>
+                                                                    <option value="2" <%= impianto.managementType == 2 ? "selected" : null %>>Diretta Esterna</option>
+                                                                    <option value="3" <%= impianto.managementType == 3 ? "selected" : null %>>Convenzione</option>
+                                                                    <option value="6" <%= impianto.managementType == 6 ? "selected" : null %>>G.S. Conc.</option>
+                                                                </optgroup>
+                                                                <optgroup label="Scolastico">
+                                                                    <option value="4" <%= impianto.managementType == 4 ? "selected" : null %>>Scolastico | Diretta</option>
+                                                                    <option value="5" <%= impianto.managementType == 5 ? "selected" : null %>>Scolastico | Convenzione</option>
+                                                                </optgroup>
+                                                            </select>
                                                             <span class="form-text text-muted">Seleziona la tipologia di
-                                                    gestione dell'impianto</span>
+                                                                gestione dell'impianto</span>
 
                                                         </div>
 
@@ -204,9 +237,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <label>Gestore</label>
 
                                                             <select class="form-control kt-select2" id="kt_select2_1" name="manager">
-                                                    <option></option>
+                                                                <option></option>
                                                     <% societies.forEach((item) => { %>
-                                                    <option value="<%= item._id %>"><%= item.name %></option>
+                                                    <option value="<%= item._id %>" <%= impianto.manager == item._id ? "selected" : null %>><%= item.name %></option>
                                                     <% }) %>
                                                     <!-- <option value="test">test</option> -->
                                                 </select>
@@ -230,7 +263,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <div class="kt-portlet__body">
                                                         <div class="form-group">
 
-                                                            <input id="kt_tagify_1" name='sport' placeholder='scrivi...' autofocus data-blacklist='.NET,PHP'>
+                                                            <input id="kt_tagify_1" name='sport' placeholder='scrivi...' autofocus data-blacklist='.NET,PHP' value="<%= impianto.sport %> ">
                                                             <div class="kt-margin-t-10">
                                                                 <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-soft btn-sm btn-label-brand">Rimuovi tutti</a>
                                                             </div>
@@ -355,21 +388,33 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <div class="kt-portlet__body ">
                                                         <div class="form-group form-group-last mt-3 ">
                                                             <label for="exampleTextarea ">Descrizione Impianto</label>
-                                                            <textarea name="desc" class="form-control " id="exampleTextarea " rows="3 "></textarea>
+                                                            <textarea name="desc" class="form-control " id="exampleTextarea " rows="3" ><%= impianto.desc %></textarea>
 
                                                         </div>
+                                               
                                                     </div>
                                                     <div class="kt-portlet__foot">
                                                         <div class="kt-form__actions">
-                                                            <button onclick="toTag()" type="submit" class="btn btn-primary">Submit</button>
-                                                            <button type="reset" class="btn btn-secondary">Cancel</button>
-                                                        </div>
+                                                            <button onclick="toTag()" type="submit" class="btn btn-primary">Conferma modifica</button>
+                                                        </form>
+                                                    </div>
+
+                                                            <form action="/admin/impianti/<%= impianto._id %>" method="POST">
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                <a>
+                                                                    <button type="submit" class="btn btn-danger">Elimina impianto</button>
+                                                                </a>
+                                                            </form>
+                                                            <!-- <button type="reset" class="btn btn-secondary">Cancel</button> -->
+                                                        
+
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                    </form>
+                                    
 
 
                                 </div>
@@ -390,6 +435,18 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <!--[html-partial:include:{"file ":"partials/_chat.html "}]/-->
                         <%- include('./partials/_chat') %>
+
+                        
+
+                        
+                            <!-- <script>
+                                document.getElementById("exampleTextarea").value = 'ciao';
+                            </script> -->
+
+
+
+
+
 
                             <!-- begin::Global Config(global config for global JS sciprts) -->
                             <script>
