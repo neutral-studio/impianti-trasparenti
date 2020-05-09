@@ -134,8 +134,21 @@ exports.edit = (req, res) => {
 
 /* editing Society page */
 exports.get_edit = (req, res) => {
-    let namesArr = [];
-    /* Impostazione dello stato HTTP success e rendering della pagina dedicata alla creazione di un nuovo impianto (newImpianto.ejs) */
+
+    Society.findById(req.params.id, (err, dataSociety) => {
+        if (err) {
+            res.status(404).render('404');
+        } else {
+            console.log(dataSociety)
+            res.render('admin_editSociety', {
+                society: dataSociety
+            })
+        }
+    })
+
+
+    /* let namesArr = [];
+    
     Resp.find((err, data) => {
         data.forEach((item, index) => {
             namesArr.push(item.firstName + " " + item.lastName);
@@ -148,18 +161,22 @@ exports.get_edit = (req, res) => {
                     res.status(404).render('404');
                 } else {
                     //res.send(socData);
+                    res.render('admin_editSociety', {
+                        society: socData
+                    })
+
                     Resp.findById(socData.contact, (err, resp) => {
                         res.render('admin_editSociety', {
                             society: socData,
                             resps: namesArr,
                             respName: resp.firstName + " " + resp.lastName
                         });
-                    })
+                    }) 
 
                 }
             })
         }
-    });
+    }); */
 
 
 }
