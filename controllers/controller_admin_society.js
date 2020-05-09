@@ -16,15 +16,22 @@ exports.get_dashboard = (req, res) => {
 /* get page impianti */
 exports.get_society = (req, res) => {
     /* */
-    Society.find((err, data) => {
+    Society.find((err, dataSociety) => {
         if (err) {
             /* */
             res.status(404).render('404');
         } else {
-            /* Impostazione dello stato HTTP success e rendering della pagina degli impianti (admin_impianti.ejs) */
-            res.render('admin_society', {
-                society: data
-            });
+            Resp.find((err, dataResp) => {
+                if (err) {
+                    res.status(404).render('404')
+                } else {
+                    /* Impostazione dello stato HTTP success e rendering della pagina degli impianti (admin_impianti.ejs) */
+                    res.render('admin_society', {
+                        society: dataSociety,
+                        resp: dataResp
+                    });
+                }  
+            })
         }
     })
 }
@@ -135,11 +142,11 @@ exports.edit = (req, res) => {
 /* editing Society page */
 exports.get_edit = (req, res) => {
 
+    console.log(req.params.id)
     Society.findById(req.params.id, (err, dataSociety) => {
         if (err) {
             res.status(404).render('404');
         } else {
-            console.log(dataSociety)
             res.render('admin_editSociety', {
                 society: dataSociety
             })

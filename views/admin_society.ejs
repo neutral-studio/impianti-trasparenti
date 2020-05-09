@@ -303,9 +303,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <thead>
                                                 <tr>
                                                     <!-- <th>ID</th> -->
-                                                    <th>Nome</th>
-                                                    <th>Indirizzo</th>
-                                                    <th>Responsabile</th>
+                                                    <th><strong>Nome</strong></th>
+                                                    <th><strong>Indirizzo</strong></th>
+                                                    <th><strong>Responsabile</strong></th>
+                                                    <th style="font-weight: bold !important;"><strong>Azioni</strong></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -313,29 +314,35 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <tr>
                                                     <!-- <td></td> -->
                                                     <td>
+                                                        <a href="society/edit/<%= manager._id %>">
                                                         <%= manager.name %>
+                                                        </a>
                                                     </td>
                                                     <td>
                                                         <%= manager.address %>
                                                     </td>
 
                                                     <td>
-                                                        <%= manager.contact %>
+                                                        <% resp.forEach((res) => { %>
+                                                            <% if (manager.contact == res._id) { %>
+                                                                <%= res.firstName + ' ' + res.lastName %>
+                                                            <% } %>
+                                                        <% }) %>
                                                     </td>
-
+                                                    <td>
+                                                        <%= manager._id %>
+                                                    </td>
                                                 </tr>
                                                 <% }) %>
-
-
                                             </tbody>
-                                            <tfoot>
+                                            <!-- <tfoot>
                                                 <tr>
-                                                    <!-- <th>ID</th> -->
+                                                    
                                                     <th>Nome</th>
                                                     <th>Indirizzo</th>
                                                     <th>Responsabile</th>
                                                 </tr>
-                                            </tfoot>
+                                            </tfoot> -->
                                         </table>
 
                                         <!--end: Datatable -->

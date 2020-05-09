@@ -213,7 +213,12 @@ var KTDatatablesExtensionButtons = function() {
 						</a>\
 						<div class="dropdown-menu dropdown-menu-right">\
 							<a class="dropdown-item" href="/admin/society/edit/' + data + '"><i class="la la-edit"></i> Modifica Gestore</a>\
-							<a class="dropdown-item" href="/admin/society/delete/' + data + '"><i class="la la-trash"></i> Elimina Gestore</a>\
+                            <form action="/admin/society/' + data + '" method="POST">\
+                            <input type="hidden" name="_method" value="DELETE">\
+                                <a class="dropdown-item">\
+                                    <button type="submit" class="btn btn-danger">Elimina gestore</button>\
+                                </a>\
+                        </form>\
 						</div>\
 					</span>';
                 },
