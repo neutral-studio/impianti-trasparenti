@@ -13,8 +13,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
     User.findById(id).then((user) => {
         done(null, user);
-    })
-
+    });
 });
 
 passport.use(
@@ -30,7 +29,7 @@ passport.use(
             bcrypt.compare(password, user.password, (err, isMatch) =>{
                 if(err){throw err};
 
-                /*EMAIL+PWD MATCH*/
+                /*EMAIL + PWD MATCH*/
                 if(isMatch){
                     console.log("ACCESSO EFFETTUATO");
                     return done(null, user);
@@ -70,7 +69,9 @@ passport.use(
                     lName: profile.name.familyName,
                     Id: profile.id,
                     picture: profile.photos[0].value,
-                    role: 2
+                    role: 2,
+                    isOnBoard: true
+
 
 
 

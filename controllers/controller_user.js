@@ -57,7 +57,8 @@ exports.post_register = async (req, res) =>{
                                   const newUser = new User({
                                       mail: req.body.mail,
                                       password:req.body.password[0],
-                                      role : 2
+                                      role : 2,
+                                      isOnBoard: false
                                   });
 
                                   /*Hashing pwd*/
@@ -141,7 +142,8 @@ exports.get_user = (req, res) => {
 
 
 exports.get_logout = (req, res) => {
-    res.send("Logging out");
+    req.logout();
+    res.redirect('/user/login')
 };
 
 

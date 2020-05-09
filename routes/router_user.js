@@ -3,8 +3,6 @@ const passport = require('passport');
 const express = require('express');
 const controller_user = require('./../controllers/controller_user');
 
-
-
 /* Definizione router dall'oggetto express */
 const router = express.Router();
 
@@ -26,9 +24,10 @@ router.route('/login').get(controller_user.get_login).post(controller_user.post_
 router.route('/register').get(controller_user.get_register).post(controller_user.post_register);
 router.route('/about').get(controller_user.get_about);
 router.route('/logout').get(controller_user.get_logout);
-router.route('/admin').get(controller_user.get_admin);
+
+/* router.route('/admin').get(controller_user.get_admin);
 router.route('/superUser').get(controller_user.get_superUser);
-router.route('/basicUser').get(controller_user.get_user);
+router.route('/basicUser').get(controller_user.get_user); */
 
 
 /*using passport*/
@@ -41,7 +40,7 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 
     switch(req.user.role) {
         case 0:
-          res.redirect("/user/simpleUser") /*?*/
+          res.redirect("/user/profile") 
           break;
         case 1:
             res.redirect("/admin/dashboard")
@@ -54,8 +53,6 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
       }
 
 });
-
-
 
 /* Esportazione modulo router per app.js */
 module.exports = router;

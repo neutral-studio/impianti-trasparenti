@@ -15,7 +15,9 @@ const userSchema = new Schema({
     picture: String, //
     role: Number, //
     office: Array,
-    password: String
+    password: String,
+    isOnBoard: Boolean
+
 
     /*ROLE DEF:
         _0: simple user;
