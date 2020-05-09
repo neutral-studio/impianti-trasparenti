@@ -47,8 +47,6 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
             res.redirect("/user/superUser")
           break;
         case 2:
-            /*/user/basicUser*/
-            /*URI changed for presentation*/
             res.redirect("/admin/dashboard")
             break;
         default:

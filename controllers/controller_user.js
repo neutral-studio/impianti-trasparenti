@@ -15,7 +15,6 @@ exports.get_login = (req, res) => {
 exports.post_login = (req, res, next) =>{
     passport.authenticate('local', {
         /*TOCHANGE, JUST FOR PRESENTATION PURPOSES*/
-
         successRedirect: '/admin/dashboard',
         failureRedirect: '/user/login',
        // failureFlash: true
