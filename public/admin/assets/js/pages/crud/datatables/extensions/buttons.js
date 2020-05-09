@@ -146,7 +146,7 @@ var KTDatatablesExtensionButtons = function() {
 						</a>\
 						<div class="dropdown-menu dropdown-menu-right">\
 							<a class="dropdown-item" href="/admin/impianti/edit/' + data + '"><i class="la la-edit"></i> Modifica Impianto</a>\
-                            <form action="/admin/impianti/<%= impianto._id %>" method="POST">\
+                            <form action="/admin/impianti/' + data + '" method="POST">\
                                 <input type="hidden" name="_method" value="DELETE">\
                                     <a class="dropdown-item">\
                                         <button type="submit" class="btn btn-danger">Elimina impianto</button>\
