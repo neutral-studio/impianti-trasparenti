@@ -169,21 +169,21 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                         <div class="form-group">
                                                             <label>Nome</label>
-                                                            <input name="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome dell'impianto">
+                                                            <input name="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome dell'impianto" required>
                                                             <span class="form-text text-muted">Il nome che verrà visualizzato
                                                     dall'utenza e nelle tabelle dell'app</span>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="address">Indirizzo</label>
-                                                            <input name="address" type="text" class="form-control Autocomplete" placeholder="Inserisci l'indirizzo dell'impianto">
+                                                            <input name="address" type="text" class="form-control Autocomplete" placeholder="Inserisci l'indirizzo dell'impianto" required>
                                                         </div>
 
 
                                                         <div class="form-group">
                                                             <label for="address">Gestione</label>
 
-                                                            <select class="form-control kt-bootstrap-select" id="kt_bootstrap_select" multiple name="managementType" data-max-options="1">
+                                                            <select class="form-control kt-bootstrap-select" id="kt_bootstrap_select" multiple name="managementType" data-max-options="1" required>
                                                     <optgroup label="Standard">
                                                         <option value="1">Diretta</option>
                                                         <option value="2">Diretta Esterna</option>
@@ -203,7 +203,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <div class="form-group">
                                                             <label>Gestore</label>
 
-                                                            <select class="form-control kt-select2" id="kt_select2_1" name="manager">
+                                                            <select class="form-control kt-select2" id="kt_select2_1" name="manager" required>
                                                     <option></option>
                                                     <% societies.forEach((item) => { %>
                                                     <option value="<%= item._id %>"><%= item.name %></option>
@@ -229,11 +229,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
                                                     <div class="kt-portlet__body">
                                                         <div class="form-group">
-
-                                                            <input id="kt_tagify_1" name='sport' placeholder='scrivi...' autofocus data-blacklist='.NET,PHP'>
+                                                            <input id="kt_tagify_1" name='sport' placeholder='scrivi...'>
                                                             <div class="kt-margin-t-10">
                                                                 <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-soft btn-sm btn-label-brand">Rimuovi tutti</a>
                                                             </div>
+                                                            <p style="margin-top: 13px; margin-bottom: 0px;">
+                                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">HOW TO</span>&nbsp;&nbsp;
+                                                                <br>&emsp;1) Scrivere il nome dello sport desiderato
+                                                                <br>&emsp;2) Premere la virgola (,) oppure premere il tasto invio
+                                                                <br>&emsp;3) Procedere con l'aggiunta di eventuali altri impianti
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -282,7 +287,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                                                                 <a href="javascript:;" data-repeater-create="" class="btn btn-soft btn-sm btn-label-brand">
-                                                                    <i class="la la-plus"></i> Aggiungi
+                                                                    <i class="la la-plus"></i> Conferma o Aggiungi Tag
                                                                 </a>
                                                                 <input type="text" name="tags" id="tags" hidden>
                                                             </div>
@@ -361,8 +366,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
                                                     <div class="kt-portlet__foot">
                                                         <div class="kt-form__actions">
-                                                            <button onclick="toTag()" type="submit" class="btn btn-primary">Submit</button>
-                                                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                                                            <button onclick="toTag()" type="submit" class="btn btn-primary">Conferma creazione</button>
+                                                            <button type="reset" class="btn btn-secondary">Annulla creazione</button>
                                                         </div>
                                                     </div>
                                                 </div>
