@@ -20,6 +20,10 @@ const app = express();
 const userRouter = require('./routes/router_user');
 const basicRouter = require('./routes/router_basic');
 const errorRouter = require('./routes/router_error');
+const router_admin_impiantos = require('./routes/router_admin_impiantos');
+const router_admin_society = require('./routes/router_admin_society');
+const router_admin = require('./routes/router_admin');
+const router_admin_resps = require('./routes/router_admin_users');
 
 /* Costanti utils */
 const path = require('path');
@@ -78,6 +82,12 @@ app.use(
 );
 
 /* Richiamo dei diversi router precedentemente importati */
+
+
+app.use('/admin/impianti', router_admin_impiantos);
+app.use('/admin/society', router_admin_society);
+app.use('/admin/resps', router_admin_resps);
+app.use('/admin', router_admin);
 app.use('/err', errorRouter);
 app.use('/user', userRouter);
 app.use('/', basicRouter);
