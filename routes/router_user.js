@@ -41,10 +41,10 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 
     switch(req.user.role) {
         case 0:
-          res.redirect("/user/admin")
+          res.redirect("/user/simpleUser") /*?*/
           break;
         case 1:
-            res.redirect("/user/superUser")
+            res.redirect("/admin/dashboard")
           break;
         case 2:
             res.redirect("/admin/dashboard")

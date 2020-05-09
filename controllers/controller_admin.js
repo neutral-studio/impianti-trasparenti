@@ -28,7 +28,8 @@ exports.get_dashboard = (req, res) => {
                             res.render('admin_dashboard', {
                                 impianti: dataImp,
                                 society: dataSoc,
-                                resps: dataResps
+                                resps: dataResps,
+                                user: req.user
                             });
                         }
                     })

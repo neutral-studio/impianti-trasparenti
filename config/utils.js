@@ -1,0 +1,17 @@
+exports.adminCheck = (req, res, next) => {
+    if (!req.user) {
+      res.redirect('/err/403');
+    } else if (req.user.role < 1) {
+      res.redirect('/err/403');
+    } else {
+      next();
+    }
+  };
+  
+  exports.userCheck = (req, res, next) => {
+    if (!req.user) {
+      res.redirect('/err/403');
+    } else {
+      next();
+    }
+  };

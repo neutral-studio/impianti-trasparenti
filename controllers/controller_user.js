@@ -56,7 +56,8 @@ exports.post_register = async (req, res) =>{
                                     /*New user*/
                                   const newUser = new User({
                                       mail: req.body.mail,
-                                      password:req.body.password[0]
+                                      password:req.body.password[0],
+                                      role : 2
                                   });
 
                                   /*Hashing pwd*/
