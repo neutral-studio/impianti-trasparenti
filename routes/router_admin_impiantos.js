@@ -5,6 +5,12 @@ const controller_admin_impiantos = require('../controllers/controller_admin_impi
 /* Definizione router dall'oggetto express */
 const router = express.Router();
 
+
+router
+    .route('/delete/:id')
+    .delete(controller_admin_impiantos.remove); 
+
+
 /* */
 router
     .route('/new')
@@ -20,7 +26,9 @@ router
 
 /* deleting an Impianto */
 router
-    .route('/:id')
+
+    .route('/:id')  
+
     .delete(controller_admin_impiantos.remove);
 
 

@@ -1,633 +1,474 @@
 <!DOCTYPE html>
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4 & Angular 8
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
 <html lang="en">
 
+<!-- begin::Head -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nuovo Impianto</title>
-    <link rel="icon" type="image/png" href="../../../../../../admin-pages/assets/img/favicon.png">
+    <base href="/public">
+    <meta charset="utf-8" />
+    <title>Nuovo Impianto | Impianti-Trasparenti</title>
+    <meta name="description" content="Updates and statistics">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://kit.fontawesome.com/cf6028255a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-    <link href="../../../../../../../../../../admin-pages/assets/css/admin/material-dashboard.css?v=2.1.1"
-        rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="../../../../../../../../../../admin-pages/assets/css/style.css">
+    <!--begin::Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
 
-    <script src="https://cdn.tiny.cloud/1/qbg8aqvvm4rcofj7peoqelpx2ggev08nhkv2aiar5kpvssr9/tinymce/5/tinymce.min.js"
-        referrerpolicy="origin"></script>
+    <!--end::Fonts -->
 
+    <!--begin::Page Vendors Styles(used by this page) -->
+    <link href="../admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="../admin/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
 
+    <!--end::Page Vendors Styles -->
+
+    <!--begin::Global Theme Styles(used by all pages) -->
+    <link href="../admin/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="../admin/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+
+    <!--end::Global Theme Styles -->
+
+    <!--begin::Layout Skins(used by all pages) -->
+    <link href="../admin/assets/css/skins/header/base/dark.css" rel="stylesheet" type="text/css" />
+    <link href="../admin/assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+    <link href="../admin/assets/css/skins/brand/dark.css" rel="stylesheet" type="text/css" />
+    <link href="../admin/assets/css/skins/aside/light.css" rel="stylesheet" type="text/css" />
+
+    <!--end::Layout Skins -->
+    <link rel="shortcut icon" href="" />
 </head>
 
-<body>
+<!-- end::Head -->
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.js"></script>
+<!-- begin::Body -->
 
-    <script>
-        $(function () {
-            var availableTags = '<%= resps %>'
-            availableTags = availableTags.split(',');
+<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-footer--fixed kt-page--loading">
 
-            $(".autocomplete").autocomplete({
-                source: availableTags
-            });
-        });
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUPeHfR_ZmL4ts5BUmIAs2jRQUvxYXngw&libraries=places">
     </script>
+    <!-- begin:: Page -->
+
+    <!--[html-partial:include:{"file":"partials/_header/base-mobile.html"}]/-->
+    <%- include('./partials/_header/base-mobile') %>
+        <div class="kt-grid kt-grid--hor kt-grid--root">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+
+                <!--[html-partial:include:{"file":"partials/_aside/base.html"}]/-->
+                <%- include('./partials/_aside/base') %>
+                    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+
+                        <!--[html-partial:include:{"file":"partials/_header/base.html"}]/-->
+                        <%- include('./partials/_header/base') %>
+                            <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+                                <!-- begin:: Subheader -->
+                                <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+                                    <div class="kt-container ">
+                                        <div class="kt-subheader__main">
+                                            <h3 class="kt-subheader__title">
+                                                Impianti </h3>
+                                            <span class="kt-subheader__separator kt-hidden"></span>
+                                            <div class="kt-subheader__breadcrumbs">
+                                                <a href="/admin/dashboard" class="kt-subheader__breadcrumbs-home"><i
+                                            class="flaticon2-shelter"></i></a>
+                                                <span class="kt-subheader__breadcrumbs-separator"></span>
+                                                <a href="" class="kt-subheader__breadcrumbs-link">
+                                        Entità </a>
+                                                <span class="kt-subheader__breadcrumbs-separator"></span>
+                                                <a href="/admin/impianti" class="kt-subheader__breadcrumbs-link">
+                                        Impianti </a>
+                                                <span class="kt-subheader__breadcrumbs-separator"></span>
+                                                <a href="/admin/impianti" class="kt-subheader__breadcrumbs-link">
+                                        Nuovo Impianto </a>
 
 
-    <div class="wrapper">
-        <div class="sidebar" data-color="orange" data-background-color="white">
-            <!--
-         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
- 
-         Tip 2: you can also add an image using data-image tag
-     -->
-            <div class="logo">
-                <a href="home.html" class="simple-text logo-normal">nevtral</a>
-            </div>
-            <%- include('partials/sidebar'); %>
-        </div>
-        <div class="main-panel bgAdmin">
-            <div class="content">
-                <div class="customContainer2" id="blur">
-                    <div class="customContainer2" id="blur2">
-                        <div class="customContainer2" id="blur3">
-                            <h2>
-                                Nuovo Impianto
-                            </h2>
-                            <div class="card data-card">
-                                <div class="card-body">
-                                    <form action="/admin/impianti/new" method="POST">
-                                        <div class="customRow100">
-                                            <div class="customCol">
-                                                <h4 name="" class="text">Nome</h4>
-                                                <input class="form-control" type="text" name="name" required="required">
-                                                <span class="line"></span>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">Indirizzo</h4>
-                                                <input type="text" class="form-control" name="address"
-                                                    required="required">
-                                                <span class="line"></span>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">iFrame mappa</h4>
-                                                <input class="form-control" type="text" name="iFrame"
-                                                    required="required">
-                                                <span class="line"></span>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">Gestione</h4>
-                                                <div class=" my-1">
-
-                                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"
-                                                        name="managementType">
-                                                        <option selected>Seleziona gestione...</option>
-                                                        <option value="1">Diretta</option>
-                                                        <option value="2">Diretta Esterna</option>
-                                                        <option value="3">In Convenzione</option>
-                                                        <option value="3">Scolastico - Diretta</option>
-                                                        <option value="3">Scolastico - In Convenzione</option>
-                                                        <option value="3">Gruppo Sportivo Concessionario</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">Da chi è gestito?</h4>
-                                                <input class=" form-control autocomplete" name="manager"
-                                                    placeholder="Inserisci il gestore" />
-
-                                            </div>
-                                            <div class="customCol">
-                                                <span name="descrizione" class="text">Descrizione</span>
-                                                <textarea name="desc" style="margin-top: 20%;"></textarea>
+                                                <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
                                             </div>
                                         </div>
-                                </div>
-                                <div class="customRow100" style="margin-left: 1%;">
-                                    <div>
-                                        <div style="margin-top: 4%;">
-                                            <a onclick="re_toggle()"><button type="button" class="customBtn2"
-                                                    style="margin-right: 2%;">Inserisci Immagini</button></a>
-                                            <a onclick="toggle()"><button type="button" class="customBtn2"
-                                                    style="margin-right: 2%;">Inserisci Tags</button></a>
-                                            <a onclick="re_re_toggle()"><button type="button"
-                                                    class="customBtn2">Inserisci Sport</button></a>
-                                        </div>
-                                        <div style="margin-top: 4%;">
-                                            <a>
-                                                <button type="submit" class="btn btn-success">Pronto</button>
-                                            </a>
-                                        </div>
+                                        <div class="kt-subheader__toolbar">
+                                            <div class="kt-subheader__wrapper">
+                                                <a href="#" class="btn kt-subheader__btn-primary">
+                                                    <span class="mr-2">Aiuto</span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <rect fill="#000000" opacity="0.3" x="2" y="2" width="20" height="20"
+                                                    rx="10" />
+                                                <path
+                                                    d="M6.16794971,14.5547002 C5.86159725,14.0951715 5.98577112,13.4743022 6.4452998,13.1679497 C6.90482849,12.8615972 7.52569784,12.9857711 7.83205029,13.4452998 C8.9890854,15.1808525 10.3543313,16 12,16 C13.6456687,16 15.0109146,15.1808525 16.1679497,13.4452998 C16.4743022,12.9857711 17.0951715,12.8615972 17.5547002,13.1679497 C18.0142289,13.4743022 18.1384028,14.0951715 17.8320503,14.5547002 C16.3224187,16.8191475 14.3543313,18 12,18 C9.64566871,18 7.67758127,16.8191475 6.16794971,14.5547002 Z"
+                                                    fill="#000000" />
+                                            </g>
+                                        </svg>
+                                                </a>
 
-                                        <input type="hidden" name="sport" id="arrSpo" <% this.value %>">
-                                        <input type="hidden" name="imgs" id="arrImm" <% this.value %>">
-                                        <input type="hidden" name="tags" id="arrTag" <% this.value %>">
-
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                </form>
+
+                                <!-- end:: Subheader -->
+
+                                <!--[html-partial:include:{"file":"partials/_content/base.html"}]/-->
+
+                                <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+
+                                    <!--[html-partial:begin:{"id":"demo1/dist/inc/view/demos/pages/index","page":"index"}]/-->
+
+                                    <!--[html-partial:begin:{"id":"demo1/dist/inc/view/partials/content/dashboards/dashboard-1","page":"index"}]/-->
+
+                                    <!--Begin::Dashboard 1-->
+
+                                    <div class="alert alert-light alert-elevate" role="alert">
+                                        <div class="alert-icon alert-icon-top"><i class="flaticon-info kt-font-brand"></i></div>
+                                        <div class="alert-text">
+                                            <p>
+                                                Gli impianti costituiscono l'entità principale dell'applicazion e dispongono di diversi attributi e stati da impostare, per saperne di più consulta la <a href="/docs/admin/impianti"><i class="fas fa-external-link-alt"></i>
+                                        documentazione degli
+                                        impianti</a>
+                                                <br> Puoi personalizzare i contenuti visualizzati <a href="/admin/contattaci"><i
+                                            class="fas fa-external-link-alt"></i> contattandoci</a>
+                                            </p>
+                                            <p>
+                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">NOTA</span>&nbsp;&nbsp;La disposizione attuale della pagina è sperimentale e in fase di sviluppo. Potrà subire variazioni
+                                                grafiche e logiche. Fai riferimento al <a href="/changelog/admin"><i
+                                            class="fas fa-external-link-alt"></i> changelog</a> per essere aggiornato.
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                    <form class="kt-form" action="/admin/impianti/new" method="POST">
+                                        <!--Begin::Row-->
+                                        <div class="row">
+                                            <!--begin::Form-->
+                                            <div class="col-xl-6">
+
+
+                                                <div class="kt-portlet">
+                                                    <div class="kt-portlet__head">
+                                                        <div class="kt-portlet__head-label">
+                                                            <h3 class="kt-portlet__head-title">
+                                                                Dati
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="kt-portlet__body">
+
+                                                        <div class="form-group">
+                                                            <label>Nome</label>
+                                                            <input name="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome dell'impianto">
+                                                            <span class="form-text text-muted">Il nome che verrà visualizzato
+                                                    dall'utenza e nelle tabelle dell'app</span>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="address">Indirizzo</label>
+                                                            <input name="address" type="text" class="form-control Autocomplete" placeholder="Inserisci l'indirizzo dell'impianto">
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <label for="address">Gestione</label>
+
+                                                            <select class="form-control kt-bootstrap-select" id="kt_bootstrap_select" multiple name="managementType" data-max-options="1">
+                                                    <optgroup label="Standard">
+                                                        <option value="1">Diretta</option>
+                                                        <option value="2">Diretta Esterna</option>
+                                                        <option value="3">Convenzione</option>
+                                                        <option value="6">G.S. Conc.</option>
+                                                    </optgroup>
+                                                    <optgroup label="Scolastico">
+                                                        <option value="4">Scolastico | Diretta</option>
+                                                        <option value="5">Scolastico | Convenzione</option>
+                                                    </optgroup>
+                                                </select>
+                                                            <span class="form-text text-muted">Seleziona la tipologia di
+                                                    gestione dell'impianto</span>
+
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Gestore</label>
+
+                                                            <select class="form-control kt-select2" id="kt_select2_1" name="manager">
+                                                    <option></option>
+                                                    <% societies.forEach((item) => { %>
+                                                    <option value="<%= item._id %>"><%= item.name %></option>
+                                                    <% }) %>
+                                                    <!-- <option value="test">test</option> -->
+                                                </select>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6">
+                                                <div class="kt-portlet">
+                                                    <div class="kt-portlet__head">
+                                                        <div class="kt-portlet__head-label">
+                                                            <h3 class="kt-portlet__head-title">
+                                                                Sport
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kt-portlet__body">
+                                                        <div class="form-group">
+
+                                                            <input id="kt_tagify_1" name='sport' placeholder='scrivi...' autofocus data-blacklist='.NET,PHP'>
+                                                            <div class="kt-margin-t-10">
+                                                                <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-soft btn-sm btn-label-brand">Rimuovi tutti</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="kt-portlet">
+                                                    <div class="kt-portlet__head">
+                                                        <div class="kt-portlet__head-label">
+                                                            <h3 class="kt-portlet__head-title">
+                                                                Tags
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kt-portlet__body">
+                                                        <div id="kt_repeater_1">
+                                                            <div class="form-group" id="kt_repeater_1">
+
+                                                                <div data-repeater-list="">
+                                                                    <div data-repeater-item class="form-group row align-items-center">
+                                                                        <div class="col-md-4">
+                                                                            <div class="kt-form__group--inline">
+
+                                                                                <div class="kt-form__control">
+                                                                                    <input type="text" class="form-control" name="tag_name" id="tag_name" placeholder="Nome del tag">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="d-md-none kt-margin-b-10"></div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="kt-form__group--inline">
+
+                                                                                <div class="kt-form__control">
+                                                                                    <input type="text" class="form-control" name="tag_value" id="tag_value" placeholder="Valore del tag">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="d-md-none kt-margin-b-10"></div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <a href="javascript:;" data-repeater-delete="" class="btn-sm btn btn-label-danger btn-bold">
+                                                                                <i class="la la-trash-o"></i> Elimina
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+
+
+                                                                <a href="javascript:;" data-repeater-create="" class="btn btn-soft btn-sm btn-label-brand">
+                                                                    <i class="la la-plus"></i> Aggiungi
+                                                                </a>
+                                                                <input type="text" name="tags" id="tags" hidden>
+                                                            </div>
+                                                            <script>
+                                                                var tags_str = ""
+
+                                                                function toTag() {
+                                                                    while (document.getElementById('tag_name').value != '') {
+                                                                        tags_str = tags_str + document.getElementById('tag_name').value + "-" + document.getElementById('tag_value').value + ",";
+                                                                        document.getElementById('tag_name').id = "vecchio_name";
+                                                                        document.getElementById('tag_value').id = "vecchio_value";
+                                                                    }
+                                                                    tags_str = tags_str.substring(0, tags_str.length - 1);
+                                                                    document.getElementById('tags').value = tags_str;
+                                                                }
+                                                            </script>
+
+
+
+
+
+
+
+                                                            <!-- <div
+                                                    class="kt-separator kt-separator--border-dashed kt-separator--space-lg">
+                                                </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- <div class="col">
+                                        <div class="kt-portlet">
+                                            <div class="kt-portlet__head">
+                                                <div class="kt-portlet__head-label">
+                                                    <h3 class="kt-portlet__head-title">
+                                                        Immagini
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="kt-portlet__body">
+                                                <div class="form-group">
+    
+                                                    <input id="immagine" name='immagine' type="file" autofocus
+                                                        data-blacklist='.NET,PHP'>
+    
+                                                </div>
+                                                <div class="form-group">
+    
+    
+                                                    <a href="javascript:;" data-repeater-create=""
+                                                        class="btn btn-soft btn-sm btn-label-brand">
+                                                        <i class="la la-plus"></i> Aggiungi
+                                                    </a>
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                            <div class="col-xl-12">
+                                                <div class=" kt-portlet ">
+                                                    <div class="kt-portlet__head ">
+                                                        <div class="kt-portlet__head-label ">
+                                                            <h3 class="kt-portlet__head-title ">
+                                                                Descrizione
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kt-portlet__body ">
+                                                        <div class="form-group form-group-last mt-3 ">
+                                                            <label for="exampleTextarea ">Descrizione Impianto</label>
+                                                            <textarea name="desc" class="form-control " id="exampleTextarea " rows="3 "></textarea>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="kt-portlet__foot">
+                                                        <div class="kt-form__actions">
+                                                            <button onclick="toTag()" type="submit" class="btn btn-primary">Submit</button>
+                                                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+
+                                </div>
+
+
+
+
+                                <!--end::Form-->
+                                <!--[html-partial:include:{"file ":"partials/_footer/base.html "}]/-->
+                                <%- include('./partials/_footer/base') %>
                             </div>
-                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="customContainer2" id="popup1">
-                <div class="customRow100">
-                    <div class="customContainerTable">
-                        <table id="tableTag" class="customers">
-                            <tr>
-                                <th>
-                                    Nome Tag
-                                </th>
-                                <th>
-                                    Valore Tag
-                                </th>
-                            </tr>
-                        </table>
-                        <div class="customCol">
-                            <h4 name="" class="text">Nome Tag</h4>
-                            <input type="text" class="form-control" name="" required="required" id="tag">
-                            <span class="line"></span>
-                        </div>
-                        <div class="customCol">
-                            <h4 name="" class="text">Valore Tag</h4>
-                            <input type="text" class="form-control" name="" required="required" id="valore">
-                            <span class="line"></span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <a><button class="customBtn" onclick="addRowTag()" style="margin-top: 2%;">Aggiungi</button></a>
-                    <a><button class="customBtn4" onclick="editSelectedRowTag()"
-                            style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                    <a><button class="customBtn3" onclick="deleteSelectedRowTag()"
-                            style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                </div>
-                <div>
-                    <a onclick="arrayTag()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
-                            2%;>Chiudi</button></a></div>
-            </div>
-        </div>
 
-        <div class="customContainer2" id="popup2">
+                    <!-- end:: Page -->
 
-            <div class="customRow100">
-                <div class="customContainerTable">
-                    <table id="tableImm" class="customers">
-                        <tr>
-                            <th>
-                                URL immagine
-                            </th>
-                        </tr>
-                    </table>
-                    <div class="customCol">
-                        <h4 name="" class="text">URL immagine</h4>
-                        <input type="text" class="form-control" name="immagine" required="required" id="immagine">
-                        <span class="line"></span>
-                    </div>
-                </div>
-                <div>
-                    <a><button class="customBtn" onclick="addRowImmagine()"
-                            style="margin-top: 2%;">Aggiungi</button></a>
-                    <a><button class="customBtn4" onclick="editSelectedRowImmagine()"
-                            style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                    <a><button class="customBtn3" onclick="deleteSelectedRowImmagine()"
-                            style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                </div>
-                <div>
-                    <a onclick="arrayImm()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
-                            2%;>Chiudi</button></a></div>
-            </div>
-        </div>
+                    <!--[html-partial:include:{"file ":"partials/_scrolltop.html "}]/-->
+                    <%- include('./partials/_scrolltop') %>
 
-        <div class="customContainer2" id="popup3">
+                        <!--[html-partial:include:{"file ":"partials/_chat.html "}]/-->
+                        <%- include('./partials/_chat') %>
 
-            <div class="customRow100">
-                <div class="customContainerTable">
-                    <table id="table" class="customers">
-                        <tr>
-                            <th>
-                                Sport
-                            </th>
-                        </tr>
-                    </table>
-                    <div class="customCol">
-                        <h4 name="" class="text">Inserire Sport</h4>
-                        <input type="text" class="form-control" name="sport" required="required" id="sport">
-                        <span class="line"></span>
-                    </div>
-                </div>
-                <div>
-                    <a><button class="customBtn" onclick="addRowSport()" style="margin-top: 2%;">Aggiungi</button></a>
-                    <a><button class="customBtn4" onclick="editSelectedRowSport()"
-                            style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
-                    <a><button class="customBtn3" onclick="deleteSelectedRowSport()"
-                            style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
-                </div>
-                <div>
-                    <a onclick="arraySport()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
-                            2%;>Chiudi</button></a></div>
-            </div>
-        </div>
-    </div>
-    </div>
+                            <!-- begin::Global Config(global config for global JS sciprts) -->
+                            <script>
+                                var KTAppOptions = {
+                                    "colors ": {
+                                        "state ": {
+                                            "brand ": "#5d78ff ",
+                                            "dark ": "#282a3c ",
+                                            "light ": "#ffffff ",
+                                            "primary ": "#5867dd ",
+                                            "success ": "#34bfa3 ",
+                                            "info ": "#36a3f7 ",
+                                            "warning ": "#ffb822 ",
+                                            "danger ": "#fd3995 "
+                                        },
+                                        "base ": {
+                                            "label ": [
+                                                "#c5cbe3 ",
+                                                "#a1a8c3 ",
+                                                "#3d4465 ",
+                                                "#3e4466 "
+                                            ],
+                                            "shape ": [
+                                                "#f0f3ff ",
+                                                "#d9dffa ",
+                                                "#afb4d4 ",
+                                                "#646c9a "
+                                            ]
+                                        }
+                                    }
+                                };
+                            </script>
+
+                            <!-- end::Global Config -->
+                            <!-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js " type="text/javascript "></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js " type=></script> -->
+
+
+                            <!--begin::Global Theme Bundle(used by all pages) -->
+                            <script src="../admin/assets/plugins/global/plugins.bundle.js " type="text/javascript "></script>
+                            <script src="../admin/assets/js/scripts.bundle.js " type="text/javascript "></script>
+                            <script src="../admin/assets/js/pages/my-script.js " type="text/javascript "></script>
+
+                            <!--end::Global Theme Bundle -->
+
+                            <!--begin::Page Vendors(used by this page) -->
+                            <script src="../admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js " type="text/javascript ">
+                            </script>
+                            <script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM " type="text/javascript ">
+                            </script>
+                            <script src="../admin/assets/plugins/custom/gmaps/gmaps.js " type="text/javascript "></script>
+
+                            <!--end::Page Vendors -->
+                            <!--begin::Page Vendors(used by this page) -->
+                            <!-- <script src="../admin/assets/plugins/custom/datatables/datatables.bundle.js " type="text/javascript "> -->
+                            </script>
+                            <!--end::Page Vendors -->
+
+                            <!--begin::Page Scripts(used by this page) -->
+                            <!-- <script src="../admin/assets/js/pages/crud/datatables/extensions/buttons.js " type="text/javascript "> -->
+                            <script src="../admin/assets/js/pages/crud/forms/validation/form-widgets.js " type="text/javascript ">
+                            </script>
+
+                            <script src="../admin/assets/js/pages/crud/forms/widgets/select2.js " type="text/javascript "></script>
+                            <!-- </script> -->
+                            <!--end::Page Scripts -->
+                            <!-- <script src="../admin/assets/js/pages/crud/forms/widgets/typeahead.js " type="text/javascript "></script> -->
+                            <script src="../admin/assets/js/pages/crud/forms/widgets/form-repeater.js " type="text/javascript ">
+                            </script>
+                            <script src="../admin/assets/js/pages/crud/forms/widgets/tagify.js " type="text/javascript "></script>
+
+
+
+                            <!--begin::Page Scripts(used by this page) -->
+                            <!-- <script src="../admin/assets/js/pages/dashboard.js " type="text/javascript "></script> -->
+
+                            <!--end::Page Scripts -->
 </body>
 
-
-
-<script>
-    tinymce.init({
-        selector: 'textarea',
-        // plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinydrive tinymcespellchecker',
-        //toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter insertfile pageembed permanentpen table',
-        toolbar_drawer: 'floating',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-    });
-</script>
-<script type="text/javascript">
-    function toggle() {
-        var blur = document.getElementById('blur');
-        blur.classList.toggle('active');
-        var popup1 = document.getElementById('popup1');
-        popup1.classList.toggle('active');
-    }
-</script>
-<script type="text/javascript">
-    function re_toggle() {
-        var blur2 = document.getElementById('blur2');
-        blur2.classList.toggle('attivo');
-        var popup2 = document.getElementById('popup2');
-        popup2.classList.toggle('attivo');
-    }
-</script>
-<script type="text/javascript">
-    function re_re_toggle() {
-        var blur3 = document.getElementById('blur3');
-        blur3.classList.toggle('activo');
-        var popup3 = document.getElementById('popup3');
-        popup3.classList.toggle('activo');
-    }
-</script>
-<script>
-    var rIndex, table = document.getElementById('table');
-
-    function addRowSport() {
-        var newRow = table.insertRow(table.length),
-            cell1 = newRow.insertCell(0),
-            sport = document.getElementById('sport').value;
-        cell1.innerHTML = sport;
-        document.getElementById('sport').value = "";
-        selectedToInputSport();
-    }
-
-    function selectedToInputSport() {
-        for (var i = 1; i < table.rows.length; i++) {
-            table.rows[i].onclick = function () {
-                rIndex = this.rowIndex;
-                document.getElementById('sport').value = this.cells[0].innerHTML;
-            };
-        }
-    }
-    selectedToInputSport();
-
-    function editSelectedRowSport() {
-        var sport = document.getElementById('sport').value;
-        table.rows[rIndex].cells[0].innerHTML = sport;
-        document.getElementById('sport').value = "";
-    }
-
-    function deleteSelectedRowSport() {
-        table.deleteRow(rIndex);
-        document.getElementById('sport').value = "";
-    }
-
-    function arraySport() {
-        var s = [];
-        for (var i = 1; i < table.rows.length; i++) {
-            s.push(table.rows[i].innerText);
-        }
-
-        document.getElementById('arrSpo').value = s;
-
-        console.log(s);
-        var blur3 = document.getElementById('blur3');
-        blur3.classList.toggle('activo');
-        var popup3 = document.getElementById('popup3');
-        popup3.classList.toggle('activo');
-    }
-</script>
-<script>
-    var rIndexImm, tableImm = document.getElementById('tableImm');
-
-    function addRowImmagine() {
-        var newRowImm = tableImm.insertRow(tableImm.length),
-            cell1Imm = newRowImm.insertCell(0),
-            immagine = document.getElementById('immagine').value;
-        cell1Imm.innerHTML = immagine;
-        document.getElementById('immagine').value = "";
-        selectedToInputImmagine();
-    }
-
-    function selectedToInputImmagine() {
-        for (var i = 1; i < tableImm.rows.length; i++) {
-            tableImm.rows[i].onclick = function () {
-                rIndexImm = this.rowIndex;
-                document.getElementById('immagine').value = this.cells[0].innerHTML;
-            };
-        }
-    }
-    selectedToInputImmagine();
-
-    function editSelectedRowImmagine() {
-        var immagine = document.getElementById('immagine').value;
-        tableImm.rows[rIndexImm].cells[0].innerHTML = immagine;
-        document.getElementById('immagine').value = "";
-    }
-
-    function deleteSelectedRowImmagine() {
-        tableImm.deleteRow(rIndexImm);
-        document.getElementById('immagine').value = "";
-    }
-
-    function arrayImm() {
-        var a = [];
-        for (var i = 1; i < tableImm.rows.length; i++) {
-            a.push(tableImm.rows[i].innerText);
-        }
-        console.log(a);
-
-        document.getElementById('arrImm').value = a;
-
-        var blur2 = document.getElementById('blur2');
-        blur2.classList.toggle('attivo');
-        var popup2 = document.getElementById('popup2');
-        popup2.classList.toggle('attivo');
-    }
-</script>
-<script>
-    var rIndexTag, tableTag = document.getElementById('tableTag');
-
-    function addRowTag() {
-        var newRowTag = tableTag.insertRow(tableTag.length),
-            cell1Tag = newRowTag.insertCell(0),
-            tag = document.getElementById('tag').value;
-        cell2Tag = newRowTag.insertCell(1),
-            valore = document.getElementById('valore').value;
-        cell1Tag.innerHTML = tag;
-        cell2Tag.innerHTML = valore;
-        document.getElementById('tag').value = "";
-        document.getElementById('valore').value = "";
-        selectedToInputTag();
-    }
-
-    function selectedToInputTag() {
-        for (var i = 1; i < tableTag.rows.length; i++) {
-            tableTag.rows[i].onclick = function () {
-                rIndexTag = this.rowIndex;
-                document.getElementById('tag').value = this.cells[0].innerHTML;
-                document.getElementById('valore').value = this.cells[1].innerHTML;
-            };
-        }
-    }
-    selectedToInputTag();
-
-    function editSelectedRowTag() {
-        var tag = document.getElementById('tag').value;
-        tableTag.rows[rIndexTag].cells[0].innerHTML = tag;
-        document.getElementById('tag').value = "";
-        var valore = document.getElementById('valore').value;
-        tableTag.rows[rIndexTag].cells[1].innerHTML = valore;
-        document.getElementById('valore').value = "";
-    }
-
-    function deleteSelectedRowTag() {
-        tableTag.deleteRow(rIndexTag);
-        document.getElementById('tag').value = "";
-        document.getElementById('valore').value = "";
-    }
-
-    function arrayTag() {
-        var t = [];
-        for (var i = 1, c = 0; i < tableTag.rows.length; i++, c++) {
-            t[c] = tableTag.rows[i].cells[0].innerHTML;
-            t[c] = t[c] + "-";
-            t[c] = t[c] + tableTag.rows[i].cells[1].innerHTML;
-        }
-        console.log(t);
-
-        document.getElementById('arrTag').value = t;
-
-        var blur = document.getElementById('blur');
-        blur.classList.toggle('active');
-        var popup1 = document.getElementById('popup1');
-        popup1.classList.toggle('active');
-    }
-</script>
-
-<!-- JS Leo  -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/style.js "></script>
-
-<!--   Core JS Files   -->
-<!-- <script src="../../../../../../../../../../admin-pages/assets/js/admin/core/jquery.min.js "></script>
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/core/popper.min.js "></script> -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/core/bootstrap-material-design.min.js "></script>
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/perfect-scrollbar.jquery.min.js ">
-</script>
-<!-- Plugin for the momentJs  -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/moment.min.js "></script>
-<!--  Plugin for Sweet Alert -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/sweetalert2.js "></script>
-<!-- Forms Validations Plugin -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/jquery.validate.min.js "></script>
-<!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/jquery.bootstrap-wizard.js "></script>
-<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/bootstrap-selectpicker.js "></script>
-<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/bootstrap-datetimepicker.min.js ">
-</script>
-<!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/jquery.dataTables.min.js "></script>
-<!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/bootstrap-tagsinput.js "></script>
-<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/jasny-bootstrap.min.js "></script>
-<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/fullcalendar.min.js "></script>
-<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/jquery-jvectormap.js "></script>
-<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/nouislider.min.js "></script>
-<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js "></script>
-<!-- Library for adding dinamically elements -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/arrive.min.js "></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE "></script>
-<!-- Chartist JS -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/chartist.min.js "></script>
-<!--  Notifications Plugin    -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/plugins/bootstrap-notify.js "></script>
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../../../../../../../../../../admin-pages/assets/js/admin/material-dashboard.js?v=2.1.1 "
-    type="text/javascript "></script>
-
-<!--     Fonts and icons     -->
-<script src="https://kit.fontawesome.com/cf6028255a.js " crossorigin="anonymous "></script>
-
-<script>
-    $(document).ready(function () {
-        $().ready(function () {
-            $sidebar = $('.sidebar');
-            $sidebar_img_container = $sidebar.find('.sidebar-background');
-            $full_page = $('.full-page');
-            $sidebar_responsive = $('body > .navbar-collapse');
-            window_width = $(window).width();
-            fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-            if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
-                if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
-                    $('.fixed-plugin .dropdown').addClass('open');
-                }
-            }
-            $('.fixed-plugin a').click(function (event) {
-                // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-                if ($(this).hasClass('switch-trigger')) {
-                    if (event.stopPropagation) {
-                        event.stopPropagation();
-                    } else if (window.event) {
-                        window.event.cancelBubble = true;
-                    }
-                }
-            });
-            $('.fixed-plugin .active-color span').click(function () {
-                $full_page_background = $('.full-page-background');
-                $(this).siblings().removeClass('active');
-                $(this).addClass('active');
-                var new_color = $(this).data('color');
-                if ($sidebar.length != 0) {
-                    $sidebar.attr('data-color', new_color);
-                }
-                if ($full_page.length != 0) {
-                    $full_page.attr('filter-color', new_color);
-                }
-                if ($sidebar_responsive.length != 0) {
-                    $sidebar_responsive.attr('data-color', new_color);
-                }
-            });
-            $('.fixed-plugin .background-color .badge').click(function () {
-                $(this).siblings().removeClass('active');
-                $(this).addClass('active');
-                var new_color = $(this).data('background-color');
-                if ($sidebar.length != 0) {
-                    $sidebar.attr('data-background-color', new_color);
-                }
-            });
-            $('.fixed-plugin .img-holder').click(function () {
-                $full_page_background = $('.full-page-background');
-                $(this).parent('li').siblings().removeClass('active');
-                $(this).parent('li').addClass('active');
-                var new_image = $(this).find("img ").attr('src');
-                if ($sidebar_img_container.length != 0 && $(
-                        '.switch-sidebar-image input:checked').length != 0) {
-                    $sidebar_img_container.fadeOut('fast', function () {
-                        $sidebar_img_container.css('background-image', 'url(" ' +
-                            new_image + ' ")');
-                        $sidebar_img_container.fadeIn('fast');
-                    });
-                }
-                if ($full_page_background.length != 0 && $(
-                        '.switch-sidebar-image input:checked').length != 0) {
-                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
-                        'img').data('src');
-                    $full_page_background.fadeOut('fast', function () {
-                        $full_page_background.css('background-image', 'url(" ' +
-                            new_image_full_page + ' ")');
-                        $full_page_background.fadeIn('fast');
-                    });
-                }
-                if ($('.switch-sidebar-image input:checked').length == 0) {
-                    var new_image = $('.fixed-plugin li.active .img-holder').find("img ").attr(
-                        'src');
-                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
-                        'img').data('src');
-                    $sidebar_img_container.css('background-image', 'url(" ' + new_image +
-                        ' ")');
-                    $full_page_background.css('background-image', 'url(" ' +
-                        new_image_full_page + ' ")');
-                }
-                if ($sidebar_responsive.length != 0) {
-                    $sidebar_responsive.css('background-image', 'url(" ' + new_image + ' ")');
-                }
-            });
-            $('.switch-sidebar-image input').change(function () {
-                $full_page_background = $('.full-page-background');
-                $input = $(this);
-                if ($input.is(':checked')) {
-                    if ($sidebar_img_container.length != 0) {
-                        $sidebar_img_container.fadeIn('fast');
-                        $sidebar.attr('data-image', '#');
-                    }
-                    if ($full_page_background.length != 0) {
-                        $full_page_background.fadeIn('fast');
-                        $full_page.attr('data-image', '#');
-                    }
-                    background_image = true;
-                } else {
-                    if ($sidebar_img_container.length != 0) {
-                        $sidebar.removeAttr('data-image');
-                        $sidebar_img_container.fadeOut('fast');
-                    }
-                    if ($full_page_background.length != 0) {
-                        $full_page.removeAttr('data-image', '#');
-                        $full_page_background.fadeOut('fast');
-                    }
-                    background_image = false;
-                }
-            });
-            $('.switch-sidebar-mini input').change(function () {
-                $body = $('body');
-                $input = $(this);
-                if (md.misc.sidebar_mini_active == true) {
-                    $('body').removeClass('sidebar-mini');
-                    md.misc.sidebar_mini_active = false;
-                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-                } else {
-                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-                    setTimeout(function () {
-                        $('body').addClass('sidebar-mini');
-                        md.misc.sidebar_mini_active = true;
-                    }, 300);
-                }
-                // we simulate the window Resize so the charts will get updated in realtime.
-                var simulateWindowResize = setInterval(function () {
-                    window.dispatchEvent(new Event('resize'));
-                }, 180);
-                // we stop the simulation of Window Resize after the animations are completed
-                setTimeout(function () {
-                    clearInterval(simulateWindowResize);
-                }, 1000);
-            });
-        });
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        // Javascript method's body can be found in assets/js/demos.js
-        md.initDashboardPageCharts();
-    });
-</script>
+<!-- end::Body -->
 
 </html>
-
-
-
-
-select select
+=

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modifica -
+        <%= society.name %>
+    </title>
+    <link rel="icon" type="image/png" href="../../../../../../admin-pages/assets/img/favicon.png">
+
+    <script src="https://kit.fontawesome.com/cf6028255a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="../../../../../../../../../../admin-pages/assets/css/admin/material-dashboard.css?v=2.1.1"
+        rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../../admin-pages/assets/css/style.css">
+    <!-- <link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.css" rel="stylesheet" /> -->
+
+    <!-- <link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.css" rel="stylesheet" /> -->
+    <!-- <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css" rel="stylesheet" /> -->
+
+
+
+    <script src="https://cdn.tiny.cloud/1/qbg8aqvvm4rcofj7peoqelpx2ggev08nhkv2aiar5kpvssr9/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
+</head>
+
+<body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.js"></script>
+
+    <script>
+        $(function () {
+            var availableTags = '<%= resps %>'
+            availableTags = availableTags.split(',');
+
+            $(".autocomplete").autocomplete({
+                source: availableTags
+            });
+        });
+    </script>
+
+    <div class="wrapper">
+        <div class="sidebar" data-color="orange" data-background-color="white">
+            <!--
+         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+ 
+         Tip 2: you can also add an image using data-image tag
+     -->
+            <div class="logo">
+                <a href="home.html" class="simple-text logo-normal">nevtral</a>
+            </div>
+            <%- include('partials/sidebar'); %>
+        </div>
+        <div class="main-panel bgAdmin">
+            <div class="content">
+                <div class="customContainer2" id="blur">
+                    <div class="customContainer2" id="blur2">
+                        <div class="customContainer2" id="blur3">
+                            <h2>
+                                Modifica società -
+                                <%= society.name %>
+                            </h2>
+                            <div class="card data-card">
+                                <div class="card-body">
+                                    <form action="/admin/society/edit/<%= society._id %>" method="POST">
+                                        <div class="customRow100">
+                                            <div class="customCol">
+                                                <h4 name="" class="text">Nome</h4>
+                                                <input class="form-control" type="text" name="name" required="required"
+                                                    value="<%= society.name %>">
+                                                <span class="line"></span>
+                                            </div>
+                                            <div class="customCol">
+                                                <h4 name="" class="text">Indirizzo</h4>
+                                                <input type="text" class="form-control" name="address"
+                                                    required="required" value="<%= society.address %>">
+                                                <span class="line"></span>
+                                            </div>
+
+                                        </div>
+                                        <div class="customRow100" style="margin-left: 1%;">
+                                            <div>
+
+                                                <div style="margin-top: 4%;">
+                                                    <a onclick="re_re_toggle()"><button type="button"
+                                                            class="customBtn2">Modifica Sport</button></a>
+                                                    <a onclick="re_toggle()"><button type="button"
+                                                            class="customBtn2">Modifica Activities</button></a>
+                                                </div>
+
+                                                <div class="form-group" style="margin-top: 4%;">
+                                                    <h4 name="" class="text">Responsabile</h4>
+                                                    <input class=" form-control autocomplete" value="<%= respName %>" />
+                                                </div>
+
+                                                <div style="margin-top: 4%;">
+                                                    <a>
+                                                        <button type="" class="btn btn-success">Apporta
+                                                            modifiche</button>
+                                                    </a>
+                                    </form>
+                                    <form action="/admin/society/<%= society._id %>" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <a>
+                                            <button type="submit" class="btn btn-danger">Elimina società</button>
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+
+
+
+                            <input type="hidden" name="sport" id="arrSpo" value="<%= society.sport %>" <% this.value %>>
+                            <input type="hidden" name="imgs" id="arrActivities" value="<%= society.activities %>"
+                                <% this.value %>>
+
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="customContainer2" id="popup2">
+        <div class="customRow100">
+            <div class="customContainerTable">
+                <table id="tableActivities" class="customers">
+                    <tr>
+                        <th>
+                            Activities
+                        </th>
+                    </tr>
+                    <% society.activities.forEach((act) => { %>
+                    <tr>
+                        <td>
+                            <%= act %>
+                        </td>
+                    </tr>
+
+                    <% }) %>
+                </table>
+                <div class="customCol">
+                    <h4 name="" class="text">Activities</h4>
+                    <input type="text" class="form-control" name="activities" required="required" id="activities">
+                    <span class="line"></span>
+                </div>
+            </div>
+            <div>
+                <a><button class="customBtn" onclick="addRowActivities()" style="margin-top: 2%;">Aggiungi</button></a>
+                <a><button class="customBtn4" onclick="editSelectedRowActivities()"
+                        style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+                <a><button class="customBtn3" onclick="deleteSelectedRowActivities()"
+                        style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+            </div>
+            <div>
+                <a onclick="arrayActivities()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
+                        2%;>Chiudi</button></a></div>
+        </div>
+    </div>
+
+    <div class="customContainer2" id="popup3">
+        <div class="customRow100">
+            <div class="customContainerTable">
+                <table id="table" class="customers">
+                    <tr>
+                        <th>
+                            Sport
+                        </th>
+                    </tr>
+                    <% society.sport.forEach((spo) => { %>
+                    <tr>
+                        <td>
+                            <%= spo %>
+                        </td>
+                    </tr>
+
+                    <% }) %>
+                </table>
+                <div class="customCol">
+                    <h4 name="" class="text">Inserisci Sport</h4>
+                    <input type="text" class="form-control" name="sport" required="required" id="sport">
+                    <span class="line"></span>
+                </div>
+            </div>
+            <div>
+                <a><button class="customBtn" onclick="addRowSport()" style="margin-top: 2%;">Aggiungi</button></a>
+                <a><button class="customBtn4" onclick="editSelectedRowSport()"
+                        style="margin-top: 2%; margin-left: 2%;">Modifica</button></a>
+                <a><button class="customBtn3" onclick="deleteSelectedRowSport()"
+                        style="margin-top: 2%; margin-left: 2%;">Cancella</button></a>
+            </div>
+            <div>
+                <a onclick="arraySport()"><button class="customBtn2" style="margin-top: 2%;" margin-left:
+                        2%;>Chiudi</button></a></div>
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinydrive tinymcespellchecker',
+        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter insertfile pageembed permanentpen table',
+        toolbar_drawer: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+    });
+</script>
+<script type="text/javascript">
+    function toggle() {
+        var blur = document.getElementById('blur');
+        blur.classList.toggle('active');
+        var popup1 = document.getElementById('popup1');
+        popup1.classList.toggle('active');
+    }
+</script>
+<script type="text/javascript">
+    function re_toggle() {
+        var blur2 = document.getElementById('blur2');
+        blur2.classList.toggle('attivo');
+        var popup2 = document.getElementById('popup2');
+        popup2.classList.toggle('attivo');
+    }
+</script>
+<script type="text/javascript">
+    function re_re_toggle() {
+        var blur3 = document.getElementById('blur3');
+        blur3.classList.toggle('activo');
+        var popup3 = document.getElementById('popup3');
+        popup3.classList.toggle('activo');
+    }
+</script>
+<script>
+    var rIndex, table = document.getElementById('table');
+
+    function addRowSport() {
+        var newRow = table.insertRow(table.length),
+            cell1 = newRow.insertCell(0),
+            sport = document.getElementById('sport').value;
+        cell1.innerHTML = sport;
+        document.getElementById('sport').value = "";
+        selectedToInputSport();
+    }
+
+    function selectedToInputSport() {
+        for (var i = 1; i < table.rows.length; i++) {
+            table.rows[i].onclick = function () {
+                rIndex = this.rowIndex;
+                document.getElementById('sport').value = '';
+                document.getElementById('sport').value = this.cells[0].innerHTML.replace(/\s/g, '');
+            };
+        }
+    }
+    selectedToInputSport();
+
+    function editSelectedRowSport() {
+        var sport = document.getElementById('sport').value;
+        table.rows[rIndex].cells[0].innerText = sport;
+        document.getElementById('sport').value = "";
+    }
+
+    function deleteSelectedRowSport() {
+        table.deleteRow(rIndex);
+        document.getElementById('sport').value = "";
+    }
+
+    function arraySport() {
+        var s = [];
+        for (var i = 1; i < table.rows.length; i++) {
+            s.push(table.rows[i].innerText);
+        }
+
+        document.getElementById('arrSpo').value = s;
+
+        console.log(s);
+        var blur3 = document.getElementById('blur3');
+        blur3.classList.toggle('activo');
+        var popup3 = document.getElementById('popup3');
+        popup3.classList.toggle('activo');
+    }
+</script>
+<script>
+    var rIndexActivities, tableActivities = document.getElementById('tableActivities');
+
+    function addRowActivities() {
+        var newRowActivities = tableActivities.insertRow(tableActivities.length),
+            cell1Activities = newRowActivities.insertCell(0),
+            activities = document.getElementById('activities').value;
+        cell1Activities.innerHTML = activities;
+        document.getElementById('activities').value = "";
+        selectedToInputActivities();
+    }
+
+    function selectedToInputActivities() {
+        for (var i = 1; i < tableActivities.rows.length; i++) {
+            tableActivities.rows[i].onclick = function () {
+                rIndexActivities = this.rowIndex;
+                document.getElementById('activities').value = this.cells[0].innerHTML;
+            };
+        }
+    }
+    selectedToInputActivities();
+
+    function editSelectedRowActivities() {
+        var activities = document.getElementById('activities').value;
+        tableActivities.rows[rIndexActivities].cells[0].innerHTML = activities;
+        document.getElementById('activities').value = "";
+    }
+
+    function deleteSelectedRowActivities() {
+        tableActivities.deleteRow(rIndexActivities);
+        document.getElementById('activities').value = "";
+    }
+
+    function arrayActivities() {
+        var a = [];
+        for (var i = 1; i < tableActivities.rows.length; i++) {
+            a.push(tableActivities.rows[i].innerText);
+        }
+        console.log(a);
+
+        document.getElementById('arrActivities').value = a;
+
+        var blur2 = document.getElementById('blur2');
+        blur2.classList.toggle('attivo');
+        var popup2 = document.getElementById('popup2');
+        popup2.classList.toggle('attivo');
+    }
+</script>
+<script>
+    var rIndexTag, tableTag = document.getElementById('tableTag');
+
+    function addRowTag() {
+        var newRowTag = tableTag.insertRow(tableTag.length),
+            cell1Tag = newRowTag.insertCell(0),
+            tag = document.getElementById('tag').value;
+        cell2Tag = newRowTag.insertCell(1),
+            valore = document.getElementById('valore').value;
+        cell1Tag.innerHTML = tag;
+        cell2Tag.innerHTML = valore;
+        document.getElementById('tag').value = "";
+        document.getElementById('valore').value = "";
+        selectedToInputTag();
+    }
+
+    function selectedToInputTag() {
+        for (var i = 1; i < tableTag.rows.length; i++) {
+            tableTag.rows[i].onclick = function () {
+                rIndexTag = this.rowIndex;
+                document.getElementById('tag').value = this.cells[0].innerHTML.replace(/\s/g, '');
+                document.getElementById('valore').value = this.cells[1].innerHTML.replace(/\s/g, '');
+            };
+        }
+    }
+    selectedToInputTag();
+
+    function editSelectedRowTag() {
+        var tag = document.getElementById('tag').value;
+        tableTag.rows[rIndexTag].cells[0].innerHTML = tag;
+        document.getElementById('tag').value = "";
+        var valore = document.getElementById('valore').value;
+        tableTag.rows[rIndexTag].cells[1].innerHTML = valore;
+        document.getElementById('valore').value = "";
+    }
+
+    function deleteSelectedRowTag() {
+        tableTag.deleteRow(rIndexTag);
+        document.getElementById('tag').value = "";
+        document.getElementById('valore').value = "";
+    }
+
+    function arrayTag() {
+        var t = [];
+        for (var i = 1, c = 0; i < tableTag.rows.length; i++, c++) {
+            t[c] = tableTag.rows[i].cells[0].innerHTML;
+            t[c] = t[c] + "-";
+            t[c] = t[c] + tableTag.rows[i].cells[1].innerHTML;
+        }
+        console.log(t);
+
+        document.getElementById('arrTag').value = t;
+
+        var blur = document.getElementById('blur');
+        blur.classList.toggle('active');
+        var popup1 = document.getElementById('popup1');
+        popup1.classList.toggle('active');
+    }
+</script>
+
+<!-- JS Leo  -->
+<script src="../../../../../admin-pages/assets/js/admin/style.js "></script>
+
+<!--   Core JS Files   -->
+<!-- <script src="../../../../../admin-pages/assets/js/admin/core/jquery.min.js "></script>
+<script src="../../../../../admin-pages/assets/js/admin/core/popper.min.js "></script> -->
+<script src="../../../../../admin-pages/assets/js/admin/core/bootstrap-material-design.min.js "></script>
+<script src="../../../../../admin-pages/assets/js/admin/plugins/perfect-scrollbar.jquery.min.js "></script>
+<!-- Plugin for the momentJs  -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/moment.min.js "></script>
+<!--  Plugin for Sweet Alert -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/sweetalert2.js "></script>
+<!-- Forms Validations Plugin -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/jquery.validate.min.js "></script>
+<!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/jquery.bootstrap-wizard.js "></script>
+<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/bootstrap-selectpicker.js "></script>
+<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/bootstrap-datetimepicker.min.js "></script>
+<!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/jquery.dataTables.min.js "></script>
+<!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/bootstrap-tagsinput.js "></script>
+<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/jasny-bootstrap.min.js "></script>
+<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/fullcalendar.min.js "></script>
+<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/jquery-jvectormap.js "></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/nouislider.min.js "></script>
+<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js "></script>
+<!-- Library for adding dinamically elements -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/arrive.min.js "></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE "></script>
+<!-- Chartist JS -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/chartist.min.js "></script>
+<!--  Notifications Plugin    -->
+<script src="../../../../../admin-pages/assets/js/admin/plugins/bootstrap-notify.js "></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../../../../../admin-pages/assets/js/admin/material-dashboard.js?v=2.1.1 " type="text/javascript ">
+</script>
+
+<!--     Fonts and icons     -->
+<script src="https://kit.fontawesome.com/cf6028255a.js " crossorigin="anonymous "></script>
+
+<script>
+    $(document).ready(function () {
+        $().ready(function () {
+            $sidebar = $('.sidebar');
+            $sidebar_img_container = $sidebar.find('.sidebar-background');
+            $full_page = $('.full-page');
+            $sidebar_responsive = $('body > .navbar-collapse');
+            window_width = $(window).width();
+            fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+            if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+                if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+                    $('.fixed-plugin .dropdown').addClass('open');
+                }
+            }
+            $('.fixed-plugin a').click(function (event) {
+                // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                if ($(this).hasClass('switch-trigger')) {
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    } else if (window.event) {
+                        window.event.cancelBubble = true;
+                    }
+                }
+            });
+            $('.fixed-plugin .active-color span').click(function () {
+                $full_page_background = $('.full-page-background');
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+                var new_color = $(this).data('color');
+                if ($sidebar.length != 0) {
+                    $sidebar.attr('data-color', new_color);
+                }
+                if ($full_page.length != 0) {
+                    $full_page.attr('filter-color', new_color);
+                }
+                if ($sidebar_responsive.length != 0) {
+                    $sidebar_responsive.attr('data-color', new_color);
+                }
+            });
+            $('.fixed-plugin .background-color .badge').click(function () {
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+                var new_color = $(this).data('background-color');
+                if ($sidebar.length != 0) {
+                    $sidebar.attr('data-background-color', new_color);
+                }
+            });
+            $('.fixed-plugin .img-holder').click(function () {
+                $full_page_background = $('.full-page-background');
+                $(this).parent('li').siblings().removeClass('active');
+                $(this).parent('li').addClass('active');
+                var new_image = $(this).find("img ").attr('src');
+                if ($sidebar_img_container.length != 0 && $(
+                        '.switch-sidebar-image input:checked').length != 0) {
+                    $sidebar_img_container.fadeOut('fast', function () {
+                        $sidebar_img_container.css('background-image', 'url(" ' +
+                            new_image + ' ")');
+                        $sidebar_img_container.fadeIn('fast');
+                    });
+                }
+                if ($full_page_background.length != 0 && $(
+                        '.switch-sidebar-image input:checked').length != 0) {
+                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
+                        'img').data('src');
+                    $full_page_background.fadeOut('fast', function () {
+                        $full_page_background.css('background-image', 'url(" ' +
+                            new_image_full_page + ' ")');
+                        $full_page_background.fadeIn('fast');
+                    });
+                }
+                if ($('.switch-sidebar-image input:checked').length == 0) {
+                    var new_image = $('.fixed-plugin li.active .img-holder').find("img ").attr(
+                        'src');
+                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find(
+                        'img').data('src');
+                    $sidebar_img_container.css('background-image', 'url(" ' + new_image +
+                        ' ")');
+                    $full_page_background.css('background-image', 'url(" ' +
+                        new_image_full_page + ' ")');
+                }
+                if ($sidebar_responsive.length != 0) {
+                    $sidebar_responsive.css('background-image', 'url(" ' + new_image + ' ")');
+                }
+            });
+            $('.switch-sidebar-image input').change(function () {
+                $full_page_background = $('.full-page-background');
+                $input = $(this);
+                if ($input.is(':checked')) {
+                    if ($sidebar_img_container.length != 0) {
+                        $sidebar_img_container.fadeIn('fast');
+                        $sidebar.attr('data-image', '#');
+                    }
+                    if ($full_page_background.length != 0) {
+                        $full_page_background.fadeIn('fast');
+                        $full_page.attr('data-image', '#');
+                    }
+                    background_image = true;
+                } else {
+                    if ($sidebar_img_container.length != 0) {
+                        $sidebar.removeAttr('data-image');
+                        $sidebar_img_container.fadeOut('fast');
+                    }
+                    if ($full_page_background.length != 0) {
+                        $full_page.removeAttr('data-image', '#');
+                        $full_page_background.fadeOut('fast');
+                    }
+                    background_image = false;
+                }
+            });
+            $('.switch-sidebar-mini input').change(function () {
+                $body = $('body');
+                $input = $(this);
+                if (md.misc.sidebar_mini_active == true) {
+                    $('body').removeClass('sidebar-mini');
+                    md.misc.sidebar_mini_active = false;
+                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+                } else {
+                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+                    setTimeout(function () {
+                        $('body').addClass('sidebar-mini');
+                        md.misc.sidebar_mini_active = true;
+                    }, 300);
+                }
+                // we simulate the window Resize so the charts will get updated in realtime.
+                var simulateWindowResize = setInterval(function () {
+                    window.dispatchEvent(new Event('resize'));
+                }, 180);
+                // we stop the simulation of Window Resize after the animations are completed
+                setTimeout(function () {
+                    clearInterval(simulateWindowResize);
+                }, 1000);
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        md.initDashboardPageCharts();
+    });
+</script>
+
+</html>

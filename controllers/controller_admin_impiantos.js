@@ -17,35 +17,50 @@ exports.get_dashboard = (req, res) => {
 /* get page impianti */
 exports.get_impianti = (req, res) => {
     /* */
-    Impianto.find((err, data) => {
+
+    Impianto.find((err, dataImpianti) => {
+
         if (err) {
             /* */
             res.status(404).render('404');
         } else {
             /* Impostazione dello stato HTTP success e rendering della pagina degli impianti (admin_impianti.ejs) */
-            res.render('admin_impianti', {
-                impianti: data
-            });
+
+            Society.find((err, dataSociety) => {
+                if (err) {
+                    res.status(404).render('404');
+                } else {
+                    res.render('admin_impianti', {
+                        impianti: dataImpianti,
+                        societies: dataSociety
+                    });
+                }
+            })
+
         }
     })
 }
 
-
 /* creating a new Impianto */
 exports.new = (req, res) => {
     /* Getting data from forms */
+
+
+    console.log(req.body.sport);
+
     const newImpianto = {
         name: req.body.name,
         address: req.body.address,
-        iFrame: req.body.iFrame,
+        iFrame: 'dev',
         sport: req.body.sport.replace(/\s+/g, '').split(','),
         managementType: req.body.managementType * 1,
         manager: req.body.manager,
-        desc: req.body.desc.replace('<p>', ''),
-        imgs: req.body.imgs.replace(/\s+/g, '').split(','),
+        desc: req.body.desc,
+        imgs: 'dev',
         tags: req.body.tags.replace(/\s+/g, '').split(',')
     };
-    newImpianto.desc = newImpianto.desc.replace('</p>', '');
+    //newImpianto.desc = newImpianto.desc.replace('</p>', '');
+
     // res.send(newImpianto);
     /* Split tags */
     for (var i = 0; i < newImpianto.tags.length; i++) {
@@ -54,7 +69,9 @@ exports.new = (req, res) => {
     /* Array to Object */
     var obj = {};
     newImpianto.tags.forEach(item => {
-        item.forEach(function (val, i) {
+
+        item.forEach(function(val, i) {
+
             if (i % 2 === 1) return
             if (item[i + 1] == '') obj[val] = 'true';
             else obj[val] = item[i + 1];
@@ -85,13 +102,14 @@ exports.get_new = (req, res) => {
     Society.find((err, data) => {
         data.forEach((item, index) => {
             namesArr.push(item.name);
-            console.log(item.name);
+
         })
         if (err) {
             console.log(err);
         } else {
             res.status(200).render('admin_newImpianto', {
-                resps: namesArr
+                societies: data
+
             });
         }
     })
@@ -104,12 +122,16 @@ exports.edit = (req, res) => {
     const updated = {
         name: req.body.name,
         address: req.body.address,
-        iFrame: req.body.iFrame,
+
+        iFrame: 'dev',
+
         sport: req.body.sport.replace(/\s+/g, '').split(','),
         managementType: req.body.managementType * 1,
         manager: req.body.manager,
         desc: req.body.desc.replace('<p>', ''),
-        imgs: req.body.imgs.replace(/\s+/g, '').split(','),
+
+        imgs: 'dev',
+
         tags: req.body.tags.replace(/\s+/g, '').split(',')
     }
     updated.desc = updated.desc.replace('</p>', '');
@@ -121,7 +143,9 @@ exports.edit = (req, res) => {
     /* Array to Object */
     var obj = {};
     updated.tags.forEach(item => {
-        item.forEach(function (val, i) {
+
+        item.forEach(function(val, i) {
+
             if (i % 2 === 1) return
             if (item[i + 1] == '') obj[val] = 'true';
             else obj[val] = item[i + 1];
@@ -154,13 +178,26 @@ exports.edit = (req, res) => {
 
 /* editing Impianto page */
 exports.get_edit = (req, res) => {
-    Impianto.findById(req.params.id, (err, data) => {
+
+    Impianto.findById(req.params.id, (err, dataImpianto) => {
         if (err) {
             res.status(404).render('404');
         } else {
-            res.render('admin_editImpianto', {
-                impianto: data
-            });
+            let namesArr = [];
+            /* Impostazione dello stato HTTP success e rendering della pagina dedicata alla creazione di un nuovo impianto (newImpianto.ejs) */
+            Society.find((err, dataSociety) => {
+                dataSociety.forEach((item, index) => {
+                    namesArr.push(item.name);
+                })
+                if (err) {
+                    console.log(err);
+                } 
+                res.render('admin_editImpianto', {
+                    impianto: dataImpianto,
+                    societies: dataSociety
+                });
+            })
+
         }
     })
 }

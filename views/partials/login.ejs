@@ -2,13 +2,17 @@
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
 
-            <form class="form" method="" action="">
+
+            <form class="form" method="POST" action="/user/login">
+
                 <div class="card" style="margin-top: 11rem;">
 
 
                     <div class="mx-auto mt-3">
-                        <button class="btn" style="text-transform: none !important;"><i
-                                class="fab fa-google mr-1"></i>Accedi con Google</button>
+
+                        <a class="btn" style="text-transform: none !important;" href = "/user/google"><i
+                                class="fab fa-google mr-1"></i>Accedi con Google</a>
+
                     </div>
 
                     <div class="card-body" style="padding-left: 10px !important;">
@@ -17,13 +21,17 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                             </div>
-                            <input type="mail" class="form-control custom-input" placeholder="Mail"></input>
+
+                            <input type="mail" id="mail" name="mail" class="form-control custom-input" placeholder="Mail" required></input>
+
                         </div>
                         <div class="input-group mt-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control custom-input" placeholder="Password"></input>
+
+                            <input type="password" name="password" class="form-control custom-input" placeholder="Password" required></input>
+
                         </div>
                     </div>
                     <div class="card-footer justify-content-center">

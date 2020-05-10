@@ -30,5 +30,9 @@ router
     .get(controller_admin_society.get_society);
 
 
+router.route('/api').get(controller_admin_society.api_society);
+
+
+
 /* Esportazione modulo router per app.js */
 module.exports = router;

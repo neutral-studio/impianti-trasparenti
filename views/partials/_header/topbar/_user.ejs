@@ -1,0 +1,29 @@
+<!--begin: User Bar -->
+<div class="kt-header__topbar-item kt-header__topbar-item--user">
+	<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
+		<div class="kt-header__topbar-user">
+			<!-- <span class="kt-header__topbar-welcome kt-hidden-mobile">Ciao,</span> -->
+			<% if(user.picture) { %>
+
+				<span class="kt-header__topbar-username kt-hidden-mobile"><%= user.fName%></span>
+				<img  alt="Pic" src="<%=user.picture%>" />
+				<% } else { %>
+					
+					<span class="kt-header__topbar-username kt-hidden-mobile"><%= user.fName%></span>
+					
+					<span
+						class="kt-badge kt-badge--username kt-badge--unified-danger kt-badge--lg kt-badge--rounded kt-badge--bold"><%= user.mail.charAt(0).toUpperCase() %></span>
+				<% }	%>
+
+			<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+		</div>
+	</div>
+	<div
+		class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
+
+		<!--[html-partial:include:{"file":"partials/_topbar/dropdown/user.html"}]/-->
+		<%- include('../../_topbar/dropdown/user') %>
+	</div>
+</div>
+
+<!--end: User Bar -->
