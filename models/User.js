@@ -9,6 +9,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username: String, //
     fName: String, //
+    lName: String,
     cf: String, //
     mail: String, //
     Id: String,
