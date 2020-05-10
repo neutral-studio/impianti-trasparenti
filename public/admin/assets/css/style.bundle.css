@@ -30276,6 +30276,37 @@ strong {
       .kt-subheader .kt-subheader__btn-success:hover:hover g [fill], .kt-subheader .kt-subheader__btn-success.active:hover g [fill], .kt-subheader .kt-subheader__btn-success:active:hover g [fill], .kt-subheader .kt-subheader__btn-success:focus:hover g [fill] {
         -webkit-transition: fill 0.3s ease;
         transition: fill 0.3s ease; }
+  
+
+
+
+
+        .kt-subheader .kt-subheader__btn-warning {
+          background: #f2f3f7;
+          color: #959cb6;
+          font-weight: 500; }
+          .kt-subheader .kt-subheader__btn-warning i {
+            color: #959cb6; }
+          .kt-subheader .kt-subheader__btn-warning:hover, .kt-subheader .kt-subheader__btn-warning.active, .kt-subheader .kt-subheader__btn-warning:active, .kt-subheader .kt-subheader__btn-warning:focus {
+            color: #ffffff;
+            background: #FFCD64; }
+            .kt-subheader .kt-subheader__btn-warning:hover i, .kt-subheader .kt-subheader__btn-warning.active i, .kt-subheader .kt-subheader__btn-warning:active i, .kt-subheader .kt-subheader__btn-warning:focus i {
+              color: #ffffff; }
+            .kt-subheader .kt-subheader__btn-warning:hover g [fill], .kt-subheader .kt-subheader__btn-warning.active g [fill], .kt-subheader .kt-subheader__btn-warning:active g [fill], .kt-subheader .kt-subheader__btn-warning:focus g [fill] {
+              -webkit-transition: fill 0.3s ease;
+              transition: fill 0.3s ease;
+              fill: #ffffff; }
+            .kt-subheader .kt-subheader__btn-warning:hover:hover g [fill], .kt-subheader .kt-subheader__btn-warning.active:hover g [fill], .kt-subheader .kt-subheader__btn-warning:active:hover g [fill], .kt-subheader .kt-subheader__btn-warning:focus:hover g [fill] {
+              -webkit-transition: fill 0.3s ease;
+              transition: fill 0.3s ease; }
+              
+
+
+
+
+
+
+
   .kt-subheader .kt-subheader__btn-secondary {
     color: #959cb6;
     font-weight: 500; }
