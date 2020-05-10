@@ -17,12 +17,15 @@ exports.get_dashboard = (req, res) => {
 /* get page impianti */
 exports.get_impianti = (req, res) => {
     /* */
+
     Impianto.find((err, dataImpianti) => {
+
         if (err) {
             /* */
             res.status(404).render('404');
         } else {
             /* Impostazione dello stato HTTP success e rendering della pagina degli impianti (admin_impianti.ejs) */
+
             Society.find((err, dataSociety) => {
                 if (err) {
                     res.status(404).render('404');
@@ -33,6 +36,7 @@ exports.get_impianti = (req, res) => {
                     });
                 }
             })
+
         }
     })
 }
@@ -56,6 +60,7 @@ exports.new = (req, res) => {
         tags: req.body.tags.replace(/\s+/g, '').split(',')
     };
     //newImpianto.desc = newImpianto.desc.replace('</p>', '');
+
     // res.send(newImpianto);
     /* Split tags */
     for (var i = 0; i < newImpianto.tags.length; i++) {
@@ -64,7 +69,9 @@ exports.new = (req, res) => {
     /* Array to Object */
     var obj = {};
     newImpianto.tags.forEach(item => {
+
         item.forEach(function(val, i) {
+
             if (i % 2 === 1) return
             if (item[i + 1] == '') obj[val] = 'true';
             else obj[val] = item[i + 1];
@@ -95,12 +102,14 @@ exports.get_new = (req, res) => {
     Society.find((err, data) => {
         data.forEach((item, index) => {
             namesArr.push(item.name);
+
         })
         if (err) {
             console.log(err);
         } else {
             res.status(200).render('admin_newImpianto', {
                 societies: data
+
             });
         }
     })
@@ -113,12 +122,16 @@ exports.edit = (req, res) => {
     const updated = {
         name: req.body.name,
         address: req.body.address,
+
         iFrame: 'dev',
+
         sport: req.body.sport.replace(/\s+/g, '').split(','),
         managementType: req.body.managementType * 1,
         manager: req.body.manager,
         desc: req.body.desc.replace('<p>', ''),
+
         imgs: 'dev',
+
         tags: req.body.tags.replace(/\s+/g, '').split(',')
     }
     updated.desc = updated.desc.replace('</p>', '');
@@ -130,7 +143,9 @@ exports.edit = (req, res) => {
     /* Array to Object */
     var obj = {};
     updated.tags.forEach(item => {
+
         item.forEach(function(val, i) {
+
             if (i % 2 === 1) return
             if (item[i + 1] == '') obj[val] = 'true';
             else obj[val] = item[i + 1];
@@ -163,6 +178,7 @@ exports.edit = (req, res) => {
 
 /* editing Impianto page */
 exports.get_edit = (req, res) => {
+
     Impianto.findById(req.params.id, (err, dataImpianto) => {
         if (err) {
             res.status(404).render('404');
@@ -181,6 +197,7 @@ exports.get_edit = (req, res) => {
                     societies: dataSociety
                 });
             })
+
         }
     })
 }

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4 & Angular 8
 Author: KeenThemes
@@ -527,5 +526,119 @@ License: You must have a valid license purchased only from themeforest(the above
 </body>
 
 <!-- end::Body -->
+
+
+
+
+
+
+
+
+
+
+====
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modifica -
+        <%= impianto.name %>
+    </title>
+    <link rel="icon" type="image/png" href="../../../../../../admin-pages/assets/img/favicon.png">
+
+    <script src="https://kit.fontawesome.com/cf6028255a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="../../../../../admin-pages/assets/css/admin/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../../../../../admin-pages/assets/css/style.css">
+
+    <script src="https://cdn.tiny.cloud/1/qbg8aqvvm4rcofj7peoqelpx2ggev08nhkv2aiar5kpvssr9/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+
+</head>
+
+<body>
+
+
+    <div class="wrapper">
+        <div class="sidebar" data-color="orange" data-background-color="white">
+            <!--
+         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+ 
+         Tip 2: you can also add an image using data-image tag
+     -->
+            <div class="logo">
+                <a href="home.html" class="simple-text logo-normal">nevtral</a>
+            </div>
+            <%- include('partials/sidebar'); %>
+        </div>
+        <div class="main-panel bgAdmin">
+            <div class="content">
+                <div class="customContainer2" id="blur">
+                    <div class="customContainer2" id="blur2">
+                        <div class="customContainer2" id="blur3">
+                            <h2>
+                                Modifica impianto -
+                                <%= impianto.name %>
+                            </h2>
+                            <div class="card data-card">
+                                <div class="card-body">
+                                    <form action="/admin/impianti/edit/<%= impianto._id %>" method="POST">
+                                        <div class="customRow100">
+                                            <div class="customCol">
+                                                <h4 name="" class="text">Nome</h4>
+                                                <input class="form-control" type="text" name="name" required="required" value="<%= impianto.name %>">
+                                                <span class="line"></span>
+                                            </div>
+                                            <div class="customCol">
+                                                <h4 name="" class="text">Indirizzo</h4>
+                                                <input type="text" class="form-control" name="address" required="required" value="<%= impianto.address %>">
+                                                <span class="line"></span>
+                                            </div>
+                                            <div class="customCol">
+                                                <h4 name="" class="text">iFrame mappa</h4>
+                                                <input class="form-control" type="text" name="iFrame" required="required" value="<%= impianto.iFrame %>">
+                                                <span class="line"></span>
+                                            </div>
+                                            <div class="customCol">
+                                                <h4 name="" class="text">Gestione</h4>
+                                                <div class=" my-1">
+
+                                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="managementType">
+                                                        <option selected>Seleziona gestione...</option>
+                                                        <option id="mgt1" value="1">Diretta</option>
+                                                        <option id="mgt2" value="2">Diretta Esterna</option>
+                                                        <option id="mgt3" value="3">In Convenzione</option>
+                                                        <option id="mgt4" value="4">Scolastico - Diretta</option>
+                                                        <option id="mgt5" value="5">Scolastico - In Convenzione</option>
+                                                        <option id="mgt6" value="6">Gruppo Sportivo Concessionario
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="customCol">
+                                                <h4 name="" class="text">Da chi è gestito?</h4>
+                                                <input class="form-control" type="text" name="manager" required="required" value="<%= impianto.manager %>">
+                                                <span class="line"></span>
+                                            </div>
+                                            <div class="customCol">
+                                                <h4 name="descrizione" class="text">Descrizione</h4>
+                                                <textarea name="desc" id="mytextarea" style="margin-top: 20%;"><% this.value %><%= impianto.desc %></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="customRow100" style="margin-left: 1%;">
+                                            <div>
+
+                                                <div style="margin-top: 4%;">
+                                                    <a onclick="re_toggle()"><button type="button" class="customBtn2"
+                                                            style="margin-right: 2%;">Modifica Immagini</button></a>
+                                                    <a onclick="toggle()"><button type="button" class="customBtn2"
+                                                            style="margin-right: 2%;">Modifica Tags</button></a>
+                                                    <a onclick="re_re_toggle()"><button type="button"
+                                                            class="customBtn2">Modifica Sport</button></a>
+
 
 </html>

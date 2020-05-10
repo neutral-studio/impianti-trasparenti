@@ -16,7 +16,14 @@ const keys = require('./config/keys');
 const app = express();
 
 /* Importazione Router */
-const userRouter = require('./routes/router_user');
+const router_user = require('./routes/router_user');
+const router_admin_impiantos = require('./routes/router_admin_impiantos');
+const router_admin_society = require('./routes/router_admin_society');
+const router_admin = require('./routes/router_admin');
+const router_admin_resps = require('./routes/router_admin_users');
+const router_basic = require('./routes/router_basic');
+const router_impianti = require('./routes/router_impianti');
+const router_error = require('./routes/router_error');
 
 /* Costanti utils */
 const path = require('path');
@@ -29,8 +36,13 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(methodOverride('_method'));
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.json({
+    limit: '50mb'
+}));
+app.use(bodyParser.urlencoded({
+    limit: '50mb',
+    extended: true
+}));
 
 /*app.use(session({
     secret: 'Amistad',
@@ -66,24 +78,25 @@ app.use(passport.session());
 
 /* Impostazione del middleware di body-parser - Ci permette di ottenere un oggetto dalla POST di un form HTML debitamente costruito */
 app.use(
-  methodOverride((req, res) => {
-    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-      var method = req.body._method;
-      delete req.body._method;
-      return method;
-    }
-  })
+    methodOverride((req, res) => {
+        if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+            var method = req.body._method;
+            delete req.body._method;
+            return method;
+        }
+    })
 );
 
 /* Richiamo dei diversi router precedentemente importati */
-
 app.use('/admin/impianti', router_admin_impiantos);
 app.use('/admin/society', router_admin_society);
 app.use('/admin/resps', router_admin_resps);
 app.use('/admin', router_admin);
-app.use('/err', errorRouter);
-app.use('/user', userRouter);
-app.use('/', basicRouter);
+
+app.use('/user', router_user);
+app.use('/err', router_error);
+app.use('/impianti', router_impianti);
+app.use('/', router_basic);
 
 /* Esportazione modulo app per l'utilizzo in server.js */
 module.exports = app;

@@ -30,6 +30,7 @@ exports.get_dashboard = (req, res) => {
                                 society: dataSoc,
                                 resps: dataResps,
                                 user: req.user
+
                             });
                         }
                     })

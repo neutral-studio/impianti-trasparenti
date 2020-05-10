@@ -1,0 +1,103 @@
+<%- include('./partials/header') %>
+    <%- include('./partials/navbar') %>
+
+        <div class="container" style="margin-top:8em;">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- TITOLO E DESCRIZIONE -->
+                    <div class="card custom-shadow">
+                        <div class="card-body">
+                            <h3 class="custom-titolo-impianto">
+                                <%= impianto.name %>
+                            </h3>
+                            <p>
+                                <%- impianto.desc %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card custom-shadow">
+                        <div class="card-body">
+                            <label for="" style="font-size: 0.8em; margin-top: 1.6em">SPORT & ATTIVITA'</label>
+                            <div class="blog-tags mb-2">
+                                <!-- NON CANCELLARE -->
+                                <% impianto.sport.forEach((item) => { %>
+                                    <span class="badge badge-secondary badge-pill"><%= item %></span>
+                                    <% }) %>
+                                        <!-- FINE NON CANCELLARE -->
+                            </div>
+                            <label for="" style="font-size: 0.8em; margin-top: 1.6em">TAGS</label>
+                            <div class="blog-tags mb-2">
+                                <% impianto.tags.forEach((item) => { %>
+                                    <% Object.getOwnPropertyNames(item).forEach((tag) => { %>
+                                        <span class="badge badge-secondary badge-pill"><%= tag %> </span>
+                                        <% }) %>
+                                            </span>
+                                            <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--TAGS E SOTTO FOTO -->
+                <div class="col-md-6">
+                    <div class="card custom-shadow" style="padding: 10px;">
+                        <div class="card-body" style="padding: 10px;">
+                            <!-- FOTO SCORREVOLI -->
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-interval="3000">
+                                        <img src="https://www.consigliperfareilprato.com/media/k2/items/cache/come-quando-e-perche-usare-il-vertidrain-sui-campi-sportivi_L.jpg" class="d-block w-100 rounded" alt="#">
+                                    </div>
+                                    <div class="carousel-item" data-interval="3000">
+                                        <img src="https://lh3.googleusercontent.com/proxy/EmYyGSKg1NSXPqI34lp0APa_WooLFgWJvOh-wFHHFJ8rEGuFyOD_wBtpGOws8zvtN72rNDCFLSCorsfs-4HhbGS5O3IJRN13DHKaWu2FJj2hWIHfP9jgk1z9tKLkrhoh1qC0zgq56ySap_g" class="d-block w-100 rounded" alt="#">
+                                    </div>
+                                    <div class="carousel-item" data-interval="3000">
+                                        <img src="https://www.ilgiunco.net/photogallery_new/images/2017/05/campo-calcio-sintetico-uzielli-di-paganico-186298.660x368.jpg" class="d-block w-100 rounded" alt="#">
+                                    </div>
+                                    <div class="carousel-item" data-interval="3000">
+                                        <img src="https://lh3.googleusercontent.com/proxy/T3DKyxCPPol0mYqQmDSwLq_0JV7GCif4sU3n-Ih5xRSBlEqHSoi-gidCg34ssxPw1P08jw-fc4c4KEmTbVpVzzrAbkpuheJU0KTTvQa-U8pLwsyxBgibaukLAzXtmq0" class="d-block w-100 rounded" alt="#">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <!-- FINE FOTO SCORREVOLI -->
+                        </div>
+                    </div>
+
+                    <div class="card custom-shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">Gestisci</h5>
+                            <button class="btn btn-danger" type="button">Prenota</button>
+                            <button class="btn btn-danger" type="button">Chiama</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card custom-shadow" style="padding: 10px;">
+                        <div class="card-body" style="padding: 10px;">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item rounded custom-shadow" src="https://maps.google.com/maps?width=720&amp;height=440&amp;hl=en&amp;q=Sportarea%20Borgo%20San%20Giuseppe+(Sportarea%20Borgo%20San%20Giuseppe)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include('./partials/footer') %>

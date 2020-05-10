@@ -197,4 +197,5 @@ exports.api_society = (req, res) => {
             });
         }
     })
+
 }

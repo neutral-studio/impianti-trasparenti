@@ -1,7 +1,7 @@
 const passport = require('passport');
 /* Importazione pacchetti necessari */
 const express = require('express');
-const userController = require('./../controllers/controller_user');
+const controller_user = require('./../controllers/controller_user');
 
 /* Definizione router dall'oggetto express */
 const router = express.Router();
@@ -11,11 +11,14 @@ router.route('/').get(controller_user.get_home);
 
 /*Redirecting to the home route*/
 router.route('/index').get((req, res) => {
+
   res.redirect('/');
+
 });
 
 /*Redirecting to the home route*/
 router.route('/home').get((req, res) => {
+
   res.redirect('/');
 });
 
@@ -67,6 +70,7 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 router
   .route('/onboarding')
   .get(utils.customOnboardCheck, controller_user.get_onboarding);
+
 
 /* Esportazione modulo router per app.js */
 module.exports = router;
