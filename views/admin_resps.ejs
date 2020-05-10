@@ -19,7 +19,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
     <base href="">
     <meta charset="utf-8" />
-    <title>Impianti | Impianti-Trasparenti</title>
+    <title>Responsabili | Impianti-Trasparenti</title>
     <meta name="description" content="Updates and statistics">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -78,16 +78,18 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
                         <div class="kt-container ">
                             <div class="kt-subheader__main">
-                                <a href="/admin/impianti" class="kt-subheader__breadcrumbs-link"><h3 class="kt-subheader__title">
-                                    Impianti</h3></a>
+                                <a href="/admin/resps" class="kt-subheader__breadcrumbs-link"><h3 class="kt-subheader__title">
+                                    Responsabili</h3></a>
                                 <span class="kt-subheader__separator kt-hidden"></span>
                                 
                                 <div class="kt-subheader__breadcrumbs">
                                     <a href="/admin/dashboard" class="kt-subheader__breadcrumbs-home"><i
                                 class="flaticon2-shelter"></i></a>
-                               
-                                    
-
+                 
+                                    <!-- <span class="kt-subheader__breadcrumbs-separator"></span>
+                                    <a href="/admin/resps" class="kt-subheader__breadcrumbs-link">
+                                        Responsabili </a>
+ -->
 
                                     <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
                                 </div>
@@ -141,7 +143,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </p>
                                 <p>
                                     <span
-                                        class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">NOTA</span>&nbsp;&nbsp;La
+                                        class="kt-badge kt-badge--inline kt-badge--pill kt-badge--warning kt-badge--rounded kt-font-light">NOTA</span>&nbsp;&nbsp;La
                                     disposizione attuale della pagina è sperimentale e in fase di sviluppo. Potrà subire
                                     variazioni
                                     grafiche e logiche. Fai riferimento al <a href="/changelog/admin"><i
@@ -153,19 +155,18 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!--Begin::Row-->
                         <div class="row">
                             <div class="col-xl-5">
-                                <div class="kt-portlet kt-callout kt-callout--brand">
+                                <div class="kt-portlet kt-callout kt-callout--warning">
                                     <div class="kt-portlet__body">
                                         <div class="kt-callout__body">
                                             <div class="kt-callout__content">
-                                                <h3 class="kt-callout__title">Nuovo Impianto</h3>
+                                                <h3 class="kt-callout__title">Nuovo Responsabile</h3>
                                                 <p class="kt-callout__desc">
-                                                    Crea un nuovo impianto inserendo le informazioni principali e
-                                                    associando un gestore
+                                                    Crea un nuovo responsabile inserendo le informazioni principali
                                                 </p>
                                             </div>
                                             <div class="kt-callout__action">
-                                                <a href="/admin/impianti/new"
-                                                    class="btn btn-custom btn-bold btn-upper btn-font-sm  btn-brand"><svg
+                                                <a href="/admin/resps/new"
+                                                    class="btn btn-custom btn-bold btn-upper btn-font-light  btn-warning"><svg
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                                                         height="24px" viewBox="0 0 24 24" version="1.1"
@@ -190,12 +191,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="kt-callout__content">
                                                 <h3 class="kt-callout__title">Creazione Guidata</h3>
                                                 <p class="kt-callout__desc">
-                                                    Segui il wizard automatico per creare l'impianto da zero
+                                                    Segui il wizard automatico per creare le entità da zero
                                                 </p>
                                             </div>
                                             <div class="kt-callout__action">
                                                 <a href="#"
-                                                    class="btn btn-custom btn-bold btn-upper btn-font-sm  btn-brand"><svg
+                                                    class="btn btn-custom btn-bold btn-upper btn-font-light  btn-warning"><svg
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                                                         height="24px" viewBox="0 0 24 24" version="1.1"
@@ -228,38 +229,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                     </div>
                                     <div class="kt-portlet__body">
-
-                                        <div class="kt-widget14">
-                                            <div class="kt-widget14__header">
-                                                <h3 class="kt-widget14__title">
-                                                    Stato Impianti
-                                                </h3>
-                                                <span class="kt-widget14__desc">
-                                                    Suddivisione delle strutture per stato attuale
-                                                </span>
-                                            </div>
-                                            <div class="kt-widget14__content">
-                                                <div class="kt-widget14__chart">
-                                                    <canvas id="kt_chart_profit_share"
-                                                        style="height: 140px; width: 140px;">
-                                                    </canvas>
-                                                </div>
-                                                <div class="kt-widget14__legends">
-                                                    <div class="kt-widget14__legend">
-                                                        <span class="kt-widget14__bullet kt-bg-success"></span>
-                                                        <span class="kt-widget14__stats">In Utilizzo</span>
-                                                    </div>
-                                                    <div class="kt-widget14__legend">
-                                                        <span class="kt-widget14__bullet kt-bg-brand"></span>
-                                                        <span class="kt-widget14__stats">Utilizzabili</span>
-                                                    </div>
-                                                    <div class="kt-widget14__legend">
-                                                        <span class="kt-widget14__bullet kt-bg-warning"></span>
-                                                        <span class="kt-widget14__stats">Manutenzione</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <p>Work in progress</p>
 
                                     </div>
                                 </div>
@@ -271,13 +241,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="kt-portlet__head">
                                         <div class="kt-portlet__head-label">
                                             <h3 class="kt-portlet__head-title">
-                                                Tutti gli Impianti
+                                                Tutti i Gestori
                                             </h3>
                                         </div>
                                         <div class="kt-portlet__head-toolbar">
                                             <div class="kt-portlet__head-toolbar-wrapper">
                                                 <div class="dropdown dropdown-inline">
-                                                    <button type="button" class="btn btn-brand btn-sm"
+                                                    <button type="button" class="btn btn-warning btn-sm btn-font-light"
                                                         data-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false">
                                                         <i class="fas fa-tools"></i> Strumenti
@@ -327,53 +297,41 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                         <!--begin: Datatable -->
                                         <table class="table table-striped- table-bordered table-hover table-checkable"
-                                            id="kt_table_2">
+                                            id="kt_table_4">
                                             <thead>
                                                 <tr>
                                                     <!-- <th>ID</th> -->
                                                     <th><strong>Nome</strong></th>
-                                                    <th><strong>Indirizzo</strong></th>
-                                                    <th><strong>Gestione</strong></th>
-                                                    <th><strong>Gestore</strong></th>   
-                                                    <th><strong>Stato</strong></th>
+                                                    <th><strong>E-Mail</strong></th>
                                                     <th style="font-weight: bold !important;"><strong>Azioni</strong></th>
                                                 </tr>
-                                            </thead>    
-                                            <tbody> 
-                                                <% impianti.forEach((impianto) => { %>
+                                            </thead>
+                                            <tbody>
+                                                <% resps.forEach((resp) => { %>
                                                 <tr>
                                                     <!-- <td></td> -->
                                                     <td>
-                                                        <a href="impianti/edit/<%= impianto._id %>">
-                                                        <%= impianto.name %>
+                                                        <a href="resps/edit/<%= resp._id %>">
+                                                        <%= resp.firstName + " " + resp.lastName %>
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <%= impianto.address %>
+                                                        <%= resp.email %>
                                                     </td>
                                                     <td>
-                                                        <%= impianto.managementType %>
-                                                    </td>
-                                                    <td>
-                                                        <% societies.forEach((society) => { %>
-                                                            <% if (society._id == impianto.manager) { %>
-                                                                <%= society.name %>
-                                                            <% } %>
-                                                        <% }) %>
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            class="kt-badge kt-badge--success kt-badge--dot"></span>&nbsp
-                                                        <span class="kt-font-bold kt-font-success"> online</span>
-                                                    </td>
-                                                    <td>
-                                                        <%= impianto._id %>
+                                                        <%= resp._id %>
                                                     </td>
                                                 </tr>
                                                 <% }) %>
-
-
                                             </tbody>
+                                            <!-- <tfoot>
+                                                <tr>
+                                                    
+                                                    <th>Nome</th>
+                                                    <th>Indirizzo</th>
+                                                    <th>Responsabile</th>
+                                                </tr>
+                                            </tfoot> -->
                                         </table>
 
                                         <!--end: Datatable -->

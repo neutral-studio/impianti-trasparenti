@@ -69,7 +69,7 @@ exports.new = (req, res) => {
 
 exports.get_new = (req, res) => {
     /* Impostazione dello stato HTTP success e rendering della pagina dedicata alla creazione di un nuovo Resp (newResp.ejs) */
-    res.status(200).render('admin_newResps');
+    res.status(200).render('admin_newResp');
 };
 
 exports.get_edit = (req, res) => {
