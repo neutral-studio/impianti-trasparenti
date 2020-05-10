@@ -27,6 +27,7 @@ exports.get_society = (req, res) => {
           res.render('admin_society', {
             society: dataSociety,
             resp: dataResp,
+            user: req.user
           });
         }
       });
@@ -105,6 +106,7 @@ exports.get_new = (req, res) => {
     } else {
       res.status(200).render('admin_newSociety', {
         resps: dataResp,
+        user: req.user
       });
     }
   });
@@ -178,6 +180,7 @@ exports.get_edit = (req, res) => {
         res.render('admin_editSociety', {
           society: dataSociety,
           resps: dataResp,
+          user: req.user
         });
       });
     }

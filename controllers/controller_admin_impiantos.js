@@ -28,6 +28,7 @@ exports.get_impianti = (req, res) => {
           res.render('admin_impianti', {
             impianti: dataImpianti,
             societies: dataSociety,
+            user: req.user
           });
         }
       });
@@ -97,6 +98,7 @@ exports.get_new = (req, res) => {
     } else {
       res.status(200).render('admin_newImpianto', {
         societies: data,
+        user: req.user
       });
     }
   });
@@ -171,6 +173,7 @@ exports.get_edit = (req, res) => {
         res.render('admin_editImpianto', {
           impianto: dataImpianto,
           societies: dataSociety,
+          user: req.user
         });
       });
     }
