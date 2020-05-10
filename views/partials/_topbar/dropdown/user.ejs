@@ -1,14 +1,17 @@
-<!--begin: Head -->
 <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x"
 	style="background-image: url(assets/media/misc/bg-1.jpg)">
 	<div class="kt-user-card__avatar">
-		<img class="kt-hidden" alt="Pic" src="assets/media/users/300_25.jpg" />
-
+		<% if(user.picture) { %>
+		<img alt="Pic" src="<%=user.picture%>" />
+		<%} else {%>
+		<span
+			class="kt-badge kt-badge--username kt-badge--unified-danger kt-badge--lg kt-badge--rounded kt-badge--bold"><%= user.mail.charAt(0).toUpperCase() %></span>
+		<%}%>
 		<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-		<span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">S</span>
+		<span class="kt-hidden kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">S</span>
 	</div>
 	<div class="kt-user-card__name">
-		Sean Stone
+		<%= user.username%>
 	</div>
 	<div class="kt-user-card__badge">
 		<span class="btn btn-success btn-sm btn-bold btn-font-md">23 messages</span>
@@ -86,13 +89,8 @@
 		</div>
 	</a>
 	<div class="kt-notification__custom kt-space-between">
-		<<<<<<< HEAD <a href="../user/logout" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign
-			Out</a>
-			=======
-			<a href="custom/user/login-v2.html" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign
-				Out</a>
-			>>>>>>> caad8e3f5f9f6a7ef81a34d9bc47f279ea8233d5
-			<a href="custom/user/login-v2.html" target="_blank" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
+		<a href="../user/logout" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+		<a href="custom/user/login-v2.html" target="_blank" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
 	</div>
 </div>
 
