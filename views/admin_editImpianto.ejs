@@ -76,21 +76,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="kt-subheader   kt-grid__item" id="kt_subheader">
                                     <div class="kt-container ">
                                         <div class="kt-subheader__main">
-                                            <h3 class="kt-subheader__title">
-                                                Impianti </h3>
+                                            <a href="/admin/impianti" class="kt-subheader__breadcrumbs-link"><h3 class="kt-subheader__title">
+                                                Impianti</h3></a>
                                             <span class="kt-subheader__separator kt-hidden"></span>
+                                            
                                             <div class="kt-subheader__breadcrumbs">
                                                 <a href="/admin/dashboard" class="kt-subheader__breadcrumbs-home"><i
                                             class="flaticon2-shelter"></i></a>
+
                                                 <span class="kt-subheader__breadcrumbs-separator"></span>
-                                                <a href="" class="kt-subheader__breadcrumbs-link">
-                                        Entità </a>
-                                                <span class="kt-subheader__breadcrumbs-separator"></span>
-                                                <a href="/admin/impianti" class="kt-subheader__breadcrumbs-link">
-                                        Impianti </a>
-                                                <span class="kt-subheader__breadcrumbs-separator"></span>
-                                                <a href="/admin/impianti" class="kt-subheader__breadcrumbs-link">
-                                        Modifica Impianto </a>
+                                                <a href="/admin/impianti/edit/<%= impianto._id %>" class="kt-subheader__breadcrumbs-link">
+                                        Modifica</a>
 
 
                                                 <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
@@ -168,53 +164,21 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                         <div class="form-group">
                                                             <label>Nome</label>
-                                                            <input name="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome dell'impianto" value="<%= impianto.name %>">
+                                                            <input name="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome dell'impianto" value="<%= impianto.name %>" required>
                                                             <span class="form-text text-muted">Il nome che verrà visualizzato
                                                                 dall'utenza e nelle tabelle dell'app</span>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="address">Indirizzo</label>
-                                                            <input name="address" type="text" class="form-control Autocomplete" placeholder="Inserisci l'indirizzo dell'impianto" value="<%= impianto.address %>">
+                                                            <input name="address" type="text" class="form-control Autocomplete" placeholder="Inserisci l'indirizzo dell'impianto" value="<%= impianto.address %>" required>
                                                         </div>
 
 
                                                         <div class="form-group">
                                                             <label for="address">Gestione</label>
 
-                                                            <select class="form-control kt-bootstrap-select" id="kt_bootstrap_select" multiple name="managementType" data-max-options="1">
-                                                                <!-- <script> 
-                                                                    let a = document.getElementById("kt_bootstrap_select").firstChild.firstChild;
-                                                                    let c = document.getElementById("kt_bootstrap_select").firstChild.nextElementSibling.firstChild;
-
-                                                                    switch (impianto.managementType) {
-                                                                        case 1:
-                                                                            a.innerHTML = "selected"
-                                                                            break;
-                                                                            
-                                                                        case 2:
-                                                                            a.nextElementSibling.innerHTML = "selected";
-                                                                            break;
-
-                                                                        case 3:
-                                                                            a.nextElementSibling.nextElementSibling.innerHTML = "selected";
-                                                                            break;
-
-                                                                        case 6:
-                                                                            a.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML = "selected";
-                                                                            break;
-
-                                                                        case 4:
-                                                                            c.innerHTML = "selected";
-                                                                            break;
-
-                                                                        case 5:
-                                                                            c.nextElementSibling.innerHTML = "selected"
-                                                                            break;
-
-                                                                        default:
-                                                                            break;
-                                                                    }  -->
+                                                            <select class="form-control kt-bootstrap-select" id="kt_bootstrap_select" multiple name="managementType" data-max-options="1" required>
                                                                 </script> 
                                                                 <optgroup label="Standard">
                                                                     <option value="1" <%= impianto.managementType == 1 ? "selected" : null %>>Diretta</option>
@@ -235,7 +199,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <div class="form-group">
                                                             <label>Gestore</label>
 
-                                                            <select class="form-control kt-select2" id="kt_select2_1" name="manager">
+                                                            <select class="form-control kt-select2" id="kt_select2_1" name="manager" required>
                                                                 <option></option>
                                                     <% societies.forEach((item) => { %>
                                                     <option value="<%= item._id %>" <%= impianto.manager == item._id ? "selected" : null %>><%= item.name %></option>
@@ -261,11 +225,18 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
                                                     <div class="kt-portlet__body">
                                                         <div class="form-group">
-
-                                                            <input id="kt_tagify_1" name='sport' placeholder='scrivi...' autofocus data-blacklist='.NET,PHP' value="<%= impianto.sport %> ">
+                                                            
+                                                            <input id="kt_tagify_1" name='sport' placeholder='Sport ...' autofocus data-blacklist='.NET,PHP' value="<%= impianto.sport %> ">
                                                             <div class="kt-margin-t-10">
                                                                 <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-soft btn-sm btn-label-brand">Rimuovi tutti</a>
                                                             </div>
+
+                                                            <p style="margin-top: 13px; margin-bottom: 0px;">
+                                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">HOW TO</span>&nbsp;&nbsp;
+                                                                <br>&emsp;1) Scrivere il nome dello sport desiderato
+                                                                <br>&emsp;2) Premere la virgola (,) oppure premere il tasto invio
+                                                                <br>&emsp;3) Procedere con l'aggiunta di eventuali altri impianti
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -283,39 +254,81 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <div class="form-group" id="kt_repeater_1">
 
                                                                 <div data-repeater-list="">
-                                                                    <div data-repeater-item class="form-group row align-items-center">
-                                                                        <div class="col-md-4">
-                                                                            <div class="kt-form__group--inline">
 
-                                                                                <div class="kt-form__control">
-                                                                                    <input type="text" class="form-control" name="tag_name" id="tag_name" placeholder="Nome del tag" value="<%= console.log("tag" + impianto.tags[0]) %> ">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="d-md-none kt-margin-b-10"></div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="kt-form__group--inline">
+                                                                                    <% impianto.tags.forEach((tag) => { %>
+                                                                                        <% var keys = Object.keys(tag);%>
+                                                                                            <% keys.forEach((key) => { %>
+                                                                                                <div data-repeater-item class="form-group row align-items-center">
+                                                                                                    <div class="col-md-4">
+                                                                                                        <div class="kt-form__group--inline">
+                            
+                                                                                                            <div class="kt-form__control">
+                                                                                                                <input type="text" class="form-control" name="tag_name" id="tag_name" placeholder="Nome del tag" value="<%= key %> ">
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="d-md-none kt-margin-b-10"></div>
+                                                                                                    </div>
+                                                                                                    <div class="col-md-4">
+                                                                                                        <div class="kt-form__group--inline">
+                                                                                                            <div class="kt-form__control">
+                                                                                                                <input type="text" class="form-control" name="tag_value" id="tag_value" placeholder="Valore del tag" value="<%= tag[key] != "true" ? tag[key] : null %>">
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="d-md-none kt-margin-b-10"></div>
+                                                                                                    </div>
+                                                                                                    <div class="col-md-4">
+                                                                                                        <a href="javascript:;" data-repeater-delete="" class="btn-sm btn btn-label-danger btn-bold">
+                                                                                                            <i class="la la-trash-o"></i> Elimina
+                                                                                                        </a>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            <% }) %>
+                                                                                    <% }) %>
 
-                                                                                <div class="kt-form__control">
-                                                                                    <input type="text" class="form-control" name="tag_value" id="tag_value" placeholder="Valore del tag">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="d-md-none kt-margin-b-10"></div>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <a href="javascript:;" data-repeater-delete="" class="btn-sm btn btn-label-danger btn-bold">
-                                                                                <i class="la la-trash-o"></i> Elimina
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
+                                                                                    <% if (impianto.tags[0].length == null) { %>
+
+                                                                                        <div data-repeater-item class="form-group row align-items-center">
+                                                                                            <div class="col-md-4">
+                                                                                                <div class="kt-form__group--inline">
+                    
+                                                                                                    <div class="kt-form__control">
+                                                                                                        <input type="text" class="form-control" name="tag_name" id="tag_name" placeholder="Nome del tag">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="d-md-none kt-margin-b-10"></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-4">
+                                                                                                <div class="kt-form__group--inline">
+                                                                                                    <div class="kt-form__control">
+                                                                                                        <input type="text" class="form-control" name="tag_value" id="tag_value" placeholder="Valore del tag">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="d-md-none kt-margin-b-10"></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-4">
+                                                                                                <a href="javascript:;" data-repeater-delete="" class="btn-sm btn btn-label-danger btn-bold">
+                                                                                                    <i class="la la-trash-o"></i> Elimina
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    <% } %>
+
+
+
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
 
 
                                                                 <a href="javascript:;" data-repeater-create="" class="btn btn-soft btn-sm btn-label-brand">
-                                                                    <i class="la la-plus"></i> Aggiungi
+                                                                    <i class="la la-plus"></i> Conferma o Aggiungi Tag
                                                                 </a>
+                                                                <p style="margin-top: 13px; margin-bottom: 0px;">
+                                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">HOW TO</span>&nbsp;&nbsp;
+                                                                <br>&emsp;1) Scrivere il nome e il valore del tag
+                                                                <br>&emsp;2) Premere Conferma o Aggiungi Tag
+                                                            </p>
                                                                 <input type="text" name="tags" id="tags" hidden>
                                                             </div>
                                                             <script>
@@ -387,7 +400,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <div class="kt-portlet__body ">
                                                         <div class="form-group form-group-last mt-3 ">
                                                             <label for="exampleTextarea ">Descrizione Impianto</label>
-                                                            <textarea name="desc" class="form-control " id="exampleTextarea " rows="3" ><%= impianto.desc %></textarea>
+                                                            <textarea name="desc" class="form-control " id="exampleTextarea " rows="3"><%= impianto.desc %></textarea>
 
                                                         </div>
                                                
@@ -396,14 +409,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <div class="kt-form__actions">
                                                             <button onclick="toTag()" type="submit" class="btn btn-primary">Conferma modifica</button>
                                                         </form>
-                                                    </div>
 
-                                                            <form action="/admin/impianti/<%= impianto._id %>" method="POST">
-                                                                <input type="hidden" name="_method" value="DELETE">
-                                                                <a>
-                                                                    <button type="submit" class="btn btn-danger">Elimina impianto</button>
-                                                                </a>
-                                                            </form>
+                                                        <form action="/admin/impianti/<%= impianto._id %>" method="POST">
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <a>
+                                                                <button type="submit" class="btn btn-danger">Elimina impianto</button>
+                                                            </a>
+                                                        </form>
+
+                                                        </div>
+
+                                                            
                                                             <!-- <button type="reset" class="btn btn-secondary">Cancel</button> -->
                                                         
 
@@ -526,119 +542,5 @@ License: You must have a valid license purchased only from themeforest(the above
 </body>
 
 <!-- end::Body -->
-
-
-
-
-
-
-
-
-
-
-====
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Modifica -
-        <%= impianto.name %>
-    </title>
-    <link rel="icon" type="image/png" href="../../../../../../admin-pages/assets/img/favicon.png">
-
-    <script src="https://kit.fontawesome.com/cf6028255a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-    <link href="../../../../../admin-pages/assets/css/admin/material-dashboard.css?v=2.1.1" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="../../../../../admin-pages/assets/css/style.css">
-
-    <script src="https://cdn.tiny.cloud/1/qbg8aqvvm4rcofj7peoqelpx2ggev08nhkv2aiar5kpvssr9/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
-
-</head>
-
-<body>
-
-
-    <div class="wrapper">
-        <div class="sidebar" data-color="orange" data-background-color="white">
-            <!--
-         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
- 
-         Tip 2: you can also add an image using data-image tag
-     -->
-            <div class="logo">
-                <a href="home.html" class="simple-text logo-normal">nevtral</a>
-            </div>
-            <%- include('partials/sidebar'); %>
-        </div>
-        <div class="main-panel bgAdmin">
-            <div class="content">
-                <div class="customContainer2" id="blur">
-                    <div class="customContainer2" id="blur2">
-                        <div class="customContainer2" id="blur3">
-                            <h2>
-                                Modifica impianto -
-                                <%= impianto.name %>
-                            </h2>
-                            <div class="card data-card">
-                                <div class="card-body">
-                                    <form action="/admin/impianti/edit/<%= impianto._id %>" method="POST">
-                                        <div class="customRow100">
-                                            <div class="customCol">
-                                                <h4 name="" class="text">Nome</h4>
-                                                <input class="form-control" type="text" name="name" required="required" value="<%= impianto.name %>">
-                                                <span class="line"></span>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">Indirizzo</h4>
-                                                <input type="text" class="form-control" name="address" required="required" value="<%= impianto.address %>">
-                                                <span class="line"></span>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">iFrame mappa</h4>
-                                                <input class="form-control" type="text" name="iFrame" required="required" value="<%= impianto.iFrame %>">
-                                                <span class="line"></span>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">Gestione</h4>
-                                                <div class=" my-1">
-
-                                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="managementType">
-                                                        <option selected>Seleziona gestione...</option>
-                                                        <option id="mgt1" value="1">Diretta</option>
-                                                        <option id="mgt2" value="2">Diretta Esterna</option>
-                                                        <option id="mgt3" value="3">In Convenzione</option>
-                                                        <option id="mgt4" value="4">Scolastico - Diretta</option>
-                                                        <option id="mgt5" value="5">Scolastico - In Convenzione</option>
-                                                        <option id="mgt6" value="6">Gruppo Sportivo Concessionario
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="" class="text">Da chi è gestito?</h4>
-                                                <input class="form-control" type="text" name="manager" required="required" value="<%= impianto.manager %>">
-                                                <span class="line"></span>
-                                            </div>
-                                            <div class="customCol">
-                                                <h4 name="descrizione" class="text">Descrizione</h4>
-                                                <textarea name="desc" id="mytextarea" style="margin-top: 20%;"><% this.value %><%= impianto.desc %></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="customRow100" style="margin-left: 1%;">
-                                            <div>
-
-                                                <div style="margin-top: 4%;">
-                                                    <a onclick="re_toggle()"><button type="button" class="customBtn2"
-                                                            style="margin-right: 2%;">Modifica Immagini</button></a>
-                                                    <a onclick="toggle()"><button type="button" class="customBtn2"
-                                                            style="margin-right: 2%;">Modifica Tags</button></a>
-                                                    <a onclick="re_re_toggle()"><button type="button"
-                                                            class="customBtn2">Modifica Sport</button></a>
-
 
 </html>

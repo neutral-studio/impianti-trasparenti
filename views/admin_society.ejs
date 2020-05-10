@@ -78,18 +78,16 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
                         <div class="kt-container ">
                             <div class="kt-subheader__main">
-                                <h3 class="kt-subheader__title">
-                                    Gestori </h3>
+                                <a href="/admin/society" class="kt-subheader__breadcrumbs-link">
+                                    <h3 class="kt-subheader__title">
+                                        Gestori</h3>
+                                </a>
                                 <span class="kt-subheader__separator kt-hidden"></span>
+
                                 <div class="kt-subheader__breadcrumbs">
                                     <a href="/admin/dashboard" class="kt-subheader__breadcrumbs-home"><i
                                             class="flaticon2-shelter"></i></a>
-                                    <span class="kt-subheader__breadcrumbs-separator"></span>
-                                    <a href="" class="kt-subheader__breadcrumbs-link">
-                                        Entità </a>
-                                    <span class="kt-subheader__breadcrumbs-separator"></span>
-                                    <a href="/admin/impianti" class="kt-subheader__breadcrumbs-link">
-                                        Gestori </a>
+
 
 
                                     <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
@@ -97,11 +95,11 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="kt-subheader__toolbar">
                                 <div class="kt-subheader__wrapper">
-                                    <a href="#" class="btn kt-subheader__btn-primary">
+                                    <a href="#" class="btn kt-subheader__btn-success">
                                         <span class="mr-2">Aiuto</span>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                                            viewBox="0 0 24 24" version="1.1" class="kt-svg-icon--success">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <rect x="0" y="0" width="24" height="24" />
                                                 <rect fill="#000000" opacity="0.3" x="2" y="2" width="20" height="20"
@@ -144,7 +142,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </p>
                                 <p>
                                     <span
-                                        class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">NOTA</span>&nbsp;&nbsp;La
+                                        class="kt-badge kt-badge--inline kt-badge--pill kt-badge--success kt-badge--rounded">NOTA</span>&nbsp;&nbsp;La
                                     disposizione attuale della pagina è sperimentale e in fase di sviluppo. Potrà subire
                                     variazioni
                                     grafiche e logiche. Fai riferimento al <a href="/changelog/admin"><i
@@ -156,7 +154,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!--Begin::Row-->
                         <div class="row">
                             <div class="col-xl-5">
-                                <div class="kt-portlet kt-callout kt-callout--warning">
+                                <div class="kt-portlet kt-callout kt-callout--success">
                                     <div class="kt-portlet__body">
                                         <div class="kt-callout__body">
                                             <div class="kt-callout__content">
@@ -168,7 +166,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                             <div class="kt-callout__action">
                                                 <a href="/admin/society/new"
-                                                    class="btn btn-custom btn-bold btn-upper btn-font-light  btn-warning"><svg
+                                                    class="btn btn-custom btn-bold btn-upper btn-font-light  btn-success"><svg
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                                                         height="24px" viewBox="0 0 24 24" version="1.1"
@@ -198,7 +196,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                             <div class="kt-callout__action">
                                                 <a href="#"
-                                                    class="btn btn-custom btn-bold btn-upper btn-font-sm  btn-brand"><svg
+                                                    class="btn btn-custom btn-bold btn-upper btn-font-sm  btn-success"><svg
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                                                         height="24px" viewBox="0 0 24 24" version="1.1"
@@ -249,7 +247,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="kt-portlet__head-toolbar">
                                             <div class="kt-portlet__head-toolbar-wrapper">
                                                 <div class="dropdown dropdown-inline">
-                                                    <button type="button" class="btn btn-brand btn-sm"
+                                                    <button type="button" class="btn btn-success btn-sm"
                                                         data-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false">
                                                         <i class="fas fa-tools"></i> Strumenti
@@ -303,9 +301,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <thead>
                                                 <tr>
                                                     <!-- <th>ID</th> -->
-                                                    <th>Nome</th>
-                                                    <th>Indirizzo</th>
-                                                    <th>Responsabile</th>
+                                                    <th><strong>Nome</strong></th>
+                                                    <th><strong>Indirizzo</strong></th>
+                                                    <th><strong>Responsabile</strong></th>
+                                                    <th style="font-weight: bold !important;"><strong>Azioni</strong>
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -313,29 +313,35 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <tr>
                                                     <!-- <td></td> -->
                                                     <td>
-                                                        <%= manager.name %>
+                                                        <a href="society/edit/<%= manager._id %>">
+                                                            <%= manager.name %>
+                                                        </a>
                                                     </td>
                                                     <td>
                                                         <%= manager.address %>
                                                     </td>
 
                                                     <td>
-                                                        <%= manager.contact %>
+                                                        <% resp.forEach((res) => { %>
+                                                        <% if (manager.contact == res._id) { %>
+                                                        <%= res.firstName + ' ' + res.lastName %>
+                                                        <% } %>
+                                                        <% }) %>
                                                     </td>
-
+                                                    <td>
+                                                        <%= manager._id %>
+                                                    </td>
                                                 </tr>
                                                 <% }) %>
-
-
                                             </tbody>
-                                            <tfoot>
+                                            <!-- <tfoot>
                                                 <tr>
-                                                    <!-- <th>ID</th> -->
+                                                    
                                                     <th>Nome</th>
                                                     <th>Indirizzo</th>
                                                     <th>Responsabile</th>
                                                 </tr>
-                                            </tfoot>
+                                            </tfoot> -->
                                         </table>
 
                                         <!--end: Datatable -->
@@ -429,6 +435,5 @@ License: You must have a valid license purchased only from themeforest(the above
 </body>
 
 <!-- end::Body -->
-
 
 </html>

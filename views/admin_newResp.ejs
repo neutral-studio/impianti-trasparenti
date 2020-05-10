@@ -84,13 +84,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="kt-subheader__breadcrumbs">
                                                 <a href="/admin/dashboard" class="kt-subheader__breadcrumbs-home"><i
                                             class="flaticon2-shelter"></i></a>
-                                                
 
-
-                                                
-                                                <!-- <span class="kt-subheader__breadcrumbs-separator"></span> -->
-                                                <a href="/admin/resps/edit/<%= resp._id %>" class="kt-subheader__breadcrumbs-link">
-                                        Modifica</a>
+                                            <!--     <span class="kt-subheader__breadcrumbs-separator"></span> -->
+                                                <a href="/admin/resps/new" class="kt-subheader__breadcrumbs-link">
+                                        Nuovo</a>
 
 
                                                 <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
@@ -148,7 +145,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
 
 
-                                    <form class="kt-form" action="/admin/resps/edit/<%= resp._id %>" method="POST">
+                                    <form class="kt-form" action="/admin/resps/new" method="POST">
                                         <!--Begin::Row-->
                                         <div class="row">
                                             <!--begin::Form-->
@@ -168,37 +165,31 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                         <div class="form-group">
                                                             <label>Nome</label>
-                                                            <input name="firstName" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome del responsabile" value="<%= resp.firstName %> " required>
+                                                            <input name="firstName" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome del responsabile" required>
                                                             <span class="form-text text-muted">Il nome che verrà visualizzato
                                                     dall'utenza e nelle tabelle dell'app</span>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="lastName">Cognome</label>
-                                                            <input name="lastName" type="text" class="form-control Autocomplete" placeholder="Inserisci il cognome del responsabile" value="<%= resp.lastName %>" required>
+                                                            <input name="lastName" type="text" class="form-control Autocomplete" placeholder="Inserisci il cognome del responsabile" required>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label>Codice Fiscale</label>
-                                                            <input name="cf" type="text" class="form-control Autocomplete" placeholder="Inserisci il C.Fiscale del responsabile" value="<%= resp.cf %>" pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" required>
+                                                            <label for="cf">Codice Fiscale</label>
+                                                            <input name="cf" type="text" class="form-control Autocomplete" placeholder="Inserisci il codice fiscale del responsabile"  pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" required>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label>E-Mail</label>
-                                                            <input name="email" type="text" class="form-control Autocomplete" placeholder="Inserisci l'e-mail del responsabile" value="<%= resp.email %>"" required>
+                                                            <label for="email">E-Mail</label>
+                                                            <input name="email" type="email" class="form-control Autocomplete" placeholder="Inserisci l'email del responsabile" required>
                                                         </div>
+
                                                     </div>
                                                     <div class="kt-portlet__foot">
                                                         <div class="kt-form__actions">
-                                                            <button onclick="toTag()" type="submit" class="btn btn-warning">Conferma modifiche</button>
-                                                        </form>
-                                                        <form action="/admin/resps/<%= resp._id %>" method="POST">
-                                                            <input type="hidden" name="_method" value="DELETE">
-                                                            <a>
-                                                                <button type="submit" class="btn btn-danger">Elimina responsabile</button>
-                                                            </a>
-                                                        </form>
-                                                           
+                                                            <button onclick="toTag()" type="submit" class="btn btn-warning">Conferma creazione</button>
+                                                            <button type="reset" class="btn btn-secondary">Annulla</button>
                                                         </div>
                                                     </div>
                                                 </div>
