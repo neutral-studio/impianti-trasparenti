@@ -2,8 +2,12 @@
 <!--begin: Head -->
 <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(assets/media/misc/bg-1.jpg)">
 	<div class="kt-user-card__avatar">
+		<% if(user.picture) { %>
 		<img alt="Pic" src="<%=user.picture%>" />
-
+		<%} else {%>
+			<span
+			class="kt-badge kt-badge--username kt-badge--unified-danger kt-badge--lg kt-badge--rounded kt-badge--bold"><%= user.mail.charAt(0).toUpperCase() %></span>
+		<%}%>
 		<!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
 		<span class="kt-hidden kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">S</span>
 	</div>
@@ -85,7 +89,7 @@
 		</div>
 	</a>
 	<div class="kt-notification__custom kt-space-between">
-		<a href="custom/user/login-v2.html" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+		<a href="../user/logout" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
 		<a href="custom/user/login-v2.html" target="_blank" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
 	</div>
 </div>

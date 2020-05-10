@@ -70,7 +70,7 @@ passport.use(
                     Id: profile.id,
                     picture: profile.photos[0].value,
                     role: 2,
-                    isOnBoard: true
+                    isOnBoard: false
 
 
 

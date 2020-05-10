@@ -3,13 +3,13 @@
 	<div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
 		<div class="kt-header__topbar-user">
 			<!-- <span class="kt-header__topbar-welcome kt-hidden-mobile">Ciao,</span> -->
-			<% if(user.fName && user.picture) { %>
+			<% if(user.picture) { %>
 
 				<span class="kt-header__topbar-username kt-hidden-mobile"><%= user.fName%></span>
 				<img  alt="Pic" src="<%=user.picture%>" />
 				<% } else { %>
 					
-					<span class="kt-header__topbar-username kt-hidden-mobile">Nome</span>
+					<span class="kt-header__topbar-username kt-hidden-mobile"><%= user.fName%></span>
 					
 					<span
 						class="kt-badge kt-badge--username kt-badge--unified-danger kt-badge--lg kt-badge--rounded kt-badge--bold"><%= user.mail.charAt(0).toUpperCase() %></span>

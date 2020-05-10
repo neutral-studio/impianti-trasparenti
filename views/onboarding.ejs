@@ -4,32 +4,38 @@
   <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
 
-          <form class="form" method="POST" action="/user/login">
+          <form class="form" method="POST" action="/user/onboarding?_method=PUT">
               <div class="card" style="margin-top: 11rem;">
                   <div class="card-body" style="padding-left: 10px !important;">
+                    <div class="input-group mt-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" name="userName" class="form-control custom-input" placeholder="Username" required></input>
+                    </div>
                       <div class="input-group mt-4">
                           <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                              <span class="input-group-text"><i class="fas fa-signature"></i></span>
                           </div>
-                          <input type="text" name="fName" class="form-control custom-input" placeholder="Mario" required></input>
+                          <input type="text" name="fName" class="form-control custom-input" placeholder="Nome" required></input>
                       </div>
                       <div class="input-group mt-4">
                           <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                              <span class="input-group-text"><i class="fas fa-signature"></i></span>
                           </div>
-                          <input type="text" id="mail" name="lName" class="form-control custom-input" placeholder="Rossi" required></input>
+                          <input type="text" name="lName" class="form-control custom-input" placeholder="Cognome" required></input>
                       </div>
                       <div class="input-group mt-4">
                           <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
                           </div>
-                          <input type="text" name="cf" class="form-control custom-input" placeholder="VDILRD02H01D205R" required></input>
+                          <input type="text" name="cf" class="form-control custom-input" placeholder="Codice fiscale" required></input>
                       </div>
                       <div class="input-group mt-4">
                           <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                              <span class="input-group-text"><i class="fas fa-book"></i></span>
                           </div>
-                          <input type="text" name="office" class="form-control custom-input" placeholder="Territorio" required></input>
+                          <input type="text" name="office" class="form-control custom-input" placeholder="Ufficio" required></input>
                       </div>
                       
                   </div>

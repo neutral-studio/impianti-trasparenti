@@ -150,3 +150,12 @@ exports.get_onboarding = (req, res) => {
     res.render('onboarding');
 }
 
+exports.put_onboarding = async (req, res) =>{
+    
+
+        await User.updateOne({ _id: req.user.id }, { username: req.body.userName, fName: req.body.fName, lName: req.body.lName, office: req.body.office, cf: req.body.cf, isOnBoard: true});
+        res.redirect("/admin/dashboard");
+
+      };
+    
+

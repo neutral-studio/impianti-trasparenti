@@ -26,7 +26,9 @@ router.route('/login').get(controller_user.get_login).post(controller_user.post_
 router.route('/register').get(controller_user.get_register).post(controller_user.post_register);
 router.route('/about').get(controller_user.get_about);
 router.route('/logout').get(controller_user.get_logout);
-router.route('/onboarding').get(utils.customOnboardCheck, controller_user.get_onboarding);
+router.route('/onboarding')
+.get(utils.customOnboardCheck, controller_user.get_onboarding)
+.put(controller_user.put_onboarding);
 
 /* router.route('/admin').get(controller_user.get_admin);
 router.route('/superUser').get(controller_user.get_superUser);
@@ -58,7 +60,7 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 });
 
 
-router.route('/onboarding').get()
+router.route('/onboarding').get(utils.customOnboardCheck, controller_user.get_onboarding);
 
 /* Esportazione modulo router per app.js */
 module.exports = router;
