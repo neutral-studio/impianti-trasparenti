@@ -87,10 +87,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <a href="" class="kt-subheader__breadcrumbs-link">
                                         Entità </a>
                                                 <span class="kt-subheader__breadcrumbs-separator"></span>
-                                                <a href="/admin/gestori" class="kt-subheader__breadcrumbs-link">
+                                                <a href="/admin/society" class="kt-subheader__breadcrumbs-link">
                                         Gestori </a>
                                                 <span class="kt-subheader__breadcrumbs-separator"></span>
-                                                <a href="/admin/gestori" class="kt-subheader__breadcrumbs-link">
+                                                <a href="/admin/society" class="kt-subheader__breadcrumbs-link">
                                         Nuovo Gestore </a>
 
 
@@ -141,7 +141,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             class="fas fa-external-link-alt"></i> contattandoci</a>
                                             </p>
                                             <p>
-                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">NOTA</span>&nbsp;&nbsp;La disposizione attuale della pagina è sperimentale e in fase di sviluppo. Potrà subire variazioni
+                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--success kt-badge--rounded">NOTA</span>&nbsp;&nbsp;La disposizione attuale della pagina è sperimentale e in fase di sviluppo. Potrà subire variazioni
                                                 grafiche e logiche. Fai riferimento al <a href="/changelog/admin"><i
                                             class="fas fa-external-link-alt"></i> changelog</a> per essere aggiornato.
                                             </p>
@@ -149,7 +149,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
 
 
-                                    <form class="kt-form" action="/admin/impianti/new" method="POST">
+                                    <form class="kt-form" action="/admin/society/new" method="POST">
                                         <!--Begin::Row-->
                                         <div class="row">
                                             <!--begin::Form-->
@@ -169,14 +169,25 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                         <div class="form-group">
                                                             <label>Nome</label>
-                                                            <input name="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome dell'impianto" required>
+                                                            <input name="name" type="text" class="form-control" aria-describedby="nameHelp" placeholder="Inserisci il nome del gestore" required>
                                                             <span class="form-text text-muted">Il nome che verrà visualizzato
                                                     dall'utenza e nelle tabelle dell'app</span>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="address">Indirizzo</label>
-                                                            <input name="address" type="text" class="form-control Autocomplete" placeholder="Inserisci l'indirizzo dell'impianto" required>
+                                                            <input name="address" type="text" class="form-control Autocomplete" placeholder="Inserisci l'indirizzo del gestore" required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Responsabile</label>
+                                                            <select class="form-control kt-select2" id="kt_select2_1" name="resp" required>
+                                                                <option></option>
+                                                                <% resps.forEach((item) => { %>
+                                                                <option value="<%= item._id %>"><%= item.firstName + ' ' + item.lastName %></option>
+                                                                <% }) %>
+                                                                <!-- <option value="test">test</option> -->
+                                                            </select>
                                                         </div>
                                                     </div>
 
@@ -194,15 +205,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     </div>
                                                     <div class="kt-portlet__body">
                                                         <div class="form-group">
-                                                            <input id="kt_tagify_1" name='sport' placeholder='scrivi...'>
+                                                            <input id="kt_tagify_1" name='sport' placeholder='Sport ...'>
                                                             <div class="kt-margin-t-10">
-                                                                <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-soft btn-sm btn-label-brand">Rimuovi tutti</a>
+                                                                <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-soft btn-sm btn-label-success">Rimuovi tutti</a>
                                                             </div>
                                                             <p style="margin-top: 13px; margin-bottom: 0px;">
-                                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">HOW TO</span>&nbsp;&nbsp;
+                                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded kt-badge--success">HOW TO</span>&nbsp;&nbsp;
                                                                 <br>&emsp;1) Scrivere il nome dello sport desiderato
                                                                 <br>&emsp;2) Premere la virgola (,) oppure premere il tasto invio
-                                                                <br>&emsp;3) Procedere con l'aggiunta di eventuali altri impianti
+                                                                <br>&emsp;3) Procedere con l'aggiunta di eventuali altri sport
                                                             </p>
                                                         </div>
                                                     </div>
@@ -243,27 +254,27 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <div class="kt-portlet__head">
                                                         <div class="kt-portlet__head-label">
                                                             <h3 class="kt-portlet__head-title">
-                                                                Activity
+                                                                Attività
                                                             </h3>
                                                         </div>
                                                     </div>
                                                     <div class="kt-portlet__body">
                                                         <div class="form-group">
-                                                            <input id="kt_tagify_1" name='activity' placeholder='scrivi...'>
+                                                            <input id="kt_tagify_2" name='activities' placeholder='Attività ...'>
                                                             <div class="kt-margin-t-10">
-                                                                <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-soft btn-sm btn-label-brand">Rimuovi tutti</a>
+                                                                <a href="javascript:;" id="kt_tagify_2_remove" class="btn btn-soft btn-sm btn-label-success">Rimuovi tutti</a>
                                                             </div>
                                                             <p style="margin-top: 13px; margin-bottom: 0px;">
-                                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">HOW TO</span>&nbsp;&nbsp;
-                                                                <br>&emsp;1) Scrivere il nome dello sport desiderato
+                                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded kt-badge--success">HOW TO</span>&nbsp;&nbsp;
+                                                                <br>&emsp;1) Scrivere il nome dell'attività
                                                                 <br>&emsp;2) Premere la virgola (,) oppure premere il tasto invio
-                                                                <br>&emsp;3) Procedere con l'aggiunta di eventuali altri impianti
+                                                                <br>&emsp;3) Procedere con l'aggiunta di eventuali altre attività
                                                             </p>
                                                         </div>
                                                     </div>
                                                     <div class="kt-portlet__foot">
                                                         <div class="kt-form__actions">
-                                                            <button onclick="toTag()" type="submit" class="btn btn-primary">Conferma creazione</button>
+                                                            <button onclick="toTag()" type="submit" class="btn btn-success">Conferma creazione</button>
                                                             <button type="reset" class="btn btn-secondary">Annulla creazione</button>
                                                         </div>
                                                     </div>

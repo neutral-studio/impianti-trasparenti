@@ -19,7 +19,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
     <base href="/public">
     <meta charset="utf-8" />
-    <title>Modifica Società | <%= society.name %></title>
+    <title>Modifica Gestore | <%= society.name %></title>
     <meta name="description" content="Updates and statistics">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -91,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         Impianti </a>
                                                 <span class="kt-subheader__breadcrumbs-separator"></span>
                                                 <a href="/admin/society" class="kt-subheader__breadcrumbs-link">
-                                        Modifica Società </a>
+                                        Modifica Gestore </a>
 
 
                                                 <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
@@ -141,7 +141,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             class="fas fa-external-link-alt"></i> contattandoci</a>
                                             </p>
                                             <p>
-                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">NOTA</span>&nbsp;&nbsp;La disposizione attuale della pagina è sperimentale e in fase di sviluppo. Potrà subire variazioni
+                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--success kt-badge--rounded">NOTA</span>&nbsp;&nbsp;La disposizione attuale della pagina è sperimentale e in fase di sviluppo. Potrà subire variazioni
                                                 grafiche e logiche. Fai riferimento al <a href="/changelog/admin"><i
                                             class="fas fa-external-link-alt"></i> changelog</a> per essere aggiornato.
                                             </p>
@@ -179,6 +179,18 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <input name="address" type="text" class="form-control Autocomplete" placeholder="Inserisci l'indirizzo dell'società" value="<%= society.address %>" required>
                                                         </div>
 
+                                                        <div class="form-group">
+                                                            <label>Responsabile</label>
+                                                            <select class="form-control kt-select2" id="kt_select2_1" name="resp" required>
+                                                                <option></option>
+                                                                <% resps.forEach((item) => { %>
+                                                                    
+                                                                <option value="<%= item._id %>" <%= society.contact == item._id ? 'selected' : null %>><%= item.firstName + ' ' + item.lastName %></option>
+                                                                <% }) %>
+                                                                <!-- <option value="test">test</option> -->
+                                                            </select>
+                                                        </div>
+
                                                     </div>
 
                                                 </div>
@@ -196,13 +208,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <div class="kt-portlet__body">
                                                         <div class="form-group">
                                                             
-                                                            <input id="kt_tagify_1" name='sport' placeholder='scrivi...' autofocus data-blacklist='.NET,PHP' value="<%= society.sport %> ">
+                                                            <input id="kt_tagify_1" name='sport' placeholder='Sport ...' autofocus data-blacklist='.NET,PHP' value="<%= society.sport %> ">
                                                             <div class="kt-margin-t-10">
-                                                                <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-soft btn-sm btn-label-brand">Rimuovi tutti</a>
+                                                                <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-soft btn-sm btn-label-success">Rimuovi tutti</a>
                                                             </div>
 
                                                             <p style="margin-top: 13px; margin-bottom: 0px;">
-                                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded">HOW TO</span>&nbsp;&nbsp;
+                                                                <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded kt-badge--success">HOW TO</span>&nbsp;&nbsp;
                                                                 <br>&emsp;1) Scrivere il nome dello sport desiderato
                                                                 <br>&emsp;2) Premere la virgola (,) oppure premere il tasto invio
                                                                 <br>&emsp;3) Procedere con l'aggiunta di eventuali altri impianti
@@ -210,6 +222,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                
 
                                         
 
@@ -245,8 +259,44 @@ License: You must have a valid license purchased only from themeforest(the above
                                             
                                         </div>
 
-                                    
-
+                                        <div class="col-xl-12">
+                                            <div class="kt-portlet">
+                                                <div class="kt-portlet__head">
+                                                    <div class="kt-portlet__head-label">
+                                                        <h3 class="kt-portlet__head-title">
+                                                            Attività
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                                <div class="kt-portlet__body">
+                                                    <div class="form-group">
+                                                        <input id="kt_tagify_2" name='activities' placeholder='Attività ...' value="<%= society.activities %>">
+                                                        <div class="kt-margin-t-10">
+                                                            <a href="javascript:;" id="kt_tagify_2_remove" class="btn btn-soft btn-sm btn-label-success">Rimuovi tutti</a>
+                                                        </div>
+                                                        <p style="margin-top: 13px; margin-bottom: 0px;">
+                                                            <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--primary kt-badge--rounded kt-badge--success">HOW TO</span>&nbsp;&nbsp;
+                                                            <br>&emsp;1) Scrivere il nome dell'attività
+                                                            <br>&emsp;2) Premere la virgola (,) oppure premere il tasto invio
+                                                            <br>&emsp;3) Procedere con l'aggiunta di eventuali altre attività
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="kt-portlet__foot">
+                                                    <div class="kt-form__actions">
+                                                        <button onclick="toTag()" type="submit" class="btn btn-success">Conferma modifica</button>
+                                                    </form>
+        
+                                                    <form action="/admin/society/<%= society._id %>" method="POST">
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <a>
+                                                            <button type="submit" class="btn btn-danger">Elimina gestore</button>
+                                                        </a>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                 </div>
 

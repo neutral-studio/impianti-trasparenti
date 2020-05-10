@@ -39,11 +39,38 @@ exports.get_society = (req, res) => {
 
 /* creating a new Impianto */
 exports.new = (req, res) => {
+
+    const newSociety = {
+        name: req.body.name,
+        address: req.body.address,
+        sport: req.body.sport.replace(/\s+/g, '').split(','),
+        activities: req.body.activities.replace(/\s+/g, '').split(','),
+        contact: req.body.resp
+    };
+
+    Society.create(newSociety, (err, data) => {
+        if (err) {
+            res.status(400).json({
+                status: 'fail',
+                message: 'Society could not be created'
+            });
+        } else {
+            /* Society created */
+            /* res.send('Society has been created successfully'); */
+            // res.send(data);
+            res.redirect('/admin/society');
+            //console.log('Sono arrivato qui...');
+        }
+    })
+
+
+
+
     /* Getting data from forms */
-    let requestName = req.body.contact.split(' ');
+    //let requestName = req.body.contact.split(' ');
     // res.send(requestName);
     // let contactID;
-    Resp.find({
+    /* Resp.find({
         firstName: requestName[0]
     }, (err, data) => {
         contactID = data[0]._id;
@@ -61,15 +88,15 @@ exports.new = (req, res) => {
                     status: 'fail',
                     message: 'Society could not be created'
                 });
-            } else {
+            } else { */
                 /* Society created */
                 /* res.send('Society has been created successfully'); */
                 // res.send(data);
-                res.redirect('/admin/society');
+                //res.redirect('/admin/society');
                 //console.log('Sono arrivato qui...');
-            }
-        })
-    })
+            //}
+        //})
+    //})
 
 
     // res.send(newSociety);
@@ -82,7 +109,21 @@ exports.new = (req, res) => {
 exports.get_new = (req, res) => {
     let namesArr = [];
     /* Impostazione dello stato HTTP success e rendering della pagina dedicata alla creazione di un nuovo impianto (newImpianto.ejs) */
-    Resp.find((err, data) => {
+    Resp.find((err, dataResp) => {
+        if (err) {
+            res.status(404).render('404')
+        } else {
+            res.status(200).render('admin_newSociety', {
+                resps: dataResp
+            })
+        }
+
+    })
+
+
+
+
+    /* Resp.find((err, data) => {
         data.forEach((item, index) => {
             namesArr.push(item.firstName + " " + item.lastName);
         })
@@ -93,12 +134,12 @@ exports.get_new = (req, res) => {
                 resps: namesArr
             });
         }
-    })
+    }) */
 };
 
 /* editing an Society */
 exports.edit = (req, res) => {
-    let id = req.params.id;
+    /* let id = req.params.id;
     let requestName = req.body.contact.split(' ')[0];
     var contactID = new mongoose.Types.ObjectId;
     Resp.find({
@@ -109,13 +150,15 @@ exports.edit = (req, res) => {
         } else {
             contactID = data._id;
         }
-    })
+    }) */
+
+    let id = req.params.id;
     const updated = {
         name: req.body.name,
         address: req.body.address,
         sport: req.body.sport.replace(/\s+/g, '').split(','),
         activities: req.body.activities.replace(/\s+/g, '').split(','),
-        contact: contactID
+        contact: req.body.resp
     }
 
     Society.findById(id, (err, data) => {
@@ -147,8 +190,11 @@ exports.get_edit = (req, res) => {
         if (err) {
             res.status(404).render('404');
         } else {
-            res.render('admin_editSociety', {
-                society: dataSociety
+            Resp.find((err, dataResp) => {
+                res.render('admin_editSociety', {
+                    society: dataSociety,
+                    resps: dataResp
+                })
             })
         }
     })

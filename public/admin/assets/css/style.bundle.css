@@ -31074,6 +31074,8 @@ strong {
     fill: #ffb822 !important; }
   .kt-svg-icon.kt-svg-icon--danger g [fill] {
     fill: #fd397a !important; }
+  .kt-svg-icon.kt-svg-icon--magenta g [fill] {
+    fill: #FF00FF !important; }
   .kt-svg-icon.kt-svg-icon--sm {
     height: 20px;
     width: 20px; }

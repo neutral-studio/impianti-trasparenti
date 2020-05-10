@@ -70,13 +70,12 @@ var KTTagify = function () {
     var demo2 = function () {
         var input = document.getElementById('kt_tagify_2');
         var tagify = new Tagify(input, {
-            enforceWhitelist: true,
-            whitelist: ["Calcio", "Pallavolo", "Rugby", "Scherma", "Atletica"],
-            callbacks: {
-                add: console.log, // callback when adding a tag
-                remove: console.log // callback when removing a tag
-            }
-        });
+
+            blacklist: [".NET", "PHP"], // <-- passed as an attribute in this demo
+        })
+
+        // "remove all tags" button event listener
+        document.getElementById('kt_tagify_2_remove').addEventListener('click', tagify.removeAllTags.bind(tagify))
     }
 
     var demo3 = function () {

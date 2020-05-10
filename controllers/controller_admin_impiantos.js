@@ -42,7 +42,7 @@ exports.new = (req, res) => {
     /* Getting data from forms */
 
 
-    console.log(req.body.sport);
+    //console.log(req.body.sport);
 
     const newImpianto = {
         name: req.body.name,
