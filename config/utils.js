@@ -4,7 +4,7 @@ exports.adminCheck = (req, res, next) => {
     } else if (req.user.role < 1) {
       res.redirect('/err/403');
     } else if(!req.user.isOnBoard) {
-      res.redirect('/onboarding');
+      res.redirect('/user/onboarding');
     } else {
       next();
     }

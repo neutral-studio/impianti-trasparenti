@@ -146,4 +146,7 @@ exports.get_logout = (req, res) => {
     res.redirect('/user/login')
 };
 
+exports.get_onboarding = (req, res) => {
+    res.render('onboarding');
+}
 
