@@ -54,6 +54,9 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 
 });
 
+
+router.route('/onboarding').get()
+
 /* Esportazione modulo router per app.js */
 module.exports = router;
 
