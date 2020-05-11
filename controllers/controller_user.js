@@ -158,7 +158,7 @@ exports.get_user = (req, res) => {
 
 exports.get_logout = (req, res) => {
     req.logout();
-    res.redirect('/user/login');
+    res.redirect('/user');
 };
 
 exports.get_onboarding = (req, res) => {
