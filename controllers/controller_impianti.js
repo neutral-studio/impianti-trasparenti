@@ -13,3 +13,13 @@ exports.get_impianti = (req, res) => {
         }
     })
 }
+
+exports.get_impianto = (req, res) => {
+    Impianto.findById(req.params.id, (err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('show', { impianto: data });
+        }
+    })
+}

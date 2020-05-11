@@ -1,9 +1,16 @@
 /* Importazione Pacchetti necessari - Se non presenti lanciare 'npm i --save' per caricare come da package.json*/
 const express = require('express');
 const morgan = require('morgan');
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const sslRedirect = require('heroku-ssl-redirect');
+const passportSetup = require('./config/passport-setup');
+const cookieSession = require('cookie-session');
+const bcrypt = require('bcrypt');
+const flash = require('connect-flash');
+const session = require('express-session');
+const keys = require('./config/keys');
 
 /* Definizione app */
 const app = express();
@@ -15,6 +22,8 @@ const router_admin_society = require('./routes/router_admin_society');
 const router_admin = require('./routes/router_admin');
 const router_admin_resps = require('./routes/router_admin_users');
 const router_basic = require('./routes/router_basic');
+const router_impianti = require('./routes/router_impianti');
+const router_error = require('./routes/router_error');
 
 /* Costanti utils */
 const path = require('path');
@@ -35,8 +44,37 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+/*app.use(session({
+    secret: 'Amistad',
+    resave: true,
+    saveUninitialized: true,
+}));
+*/
+app.use(passport.initialize());
+app.use(passport.session());
+/*
+app.use(flash());
+
+app.use((req, res, next) =>{
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.console_msg = req.flash('errorr_msg');
+    next();
+});
+*/
+
 /* Impostazione del motore di rendering - Non è quindi necessario specificare l'estensione dei file nel 'res.render('nomeFile)' */
 app.set('view engine', 'ejs');
+
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.session.cookieKey],
+  })
+);
+
+/*Initializing passport*/
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* Impostazione del middleware di body-parser - Ci permette di ottenere un oggetto dalla POST di un form HTML debitamente costruito */
 app.use(
@@ -54,7 +92,11 @@ app.use('/admin/impianti', router_admin_impiantos);
 app.use('/admin/society', router_admin_society);
 app.use('/admin/resps', router_admin_resps);
 app.use('/admin', router_admin);
+
 app.use('/user', router_user);
+app.use('/err', router_error);
+app.use('/impianti', router_impianti);
 app.use('/', router_basic);
+
 /* Esportazione modulo app per l'utilizzo in server.js */
 module.exports = app;

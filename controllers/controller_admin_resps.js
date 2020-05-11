@@ -10,7 +10,8 @@ exports.get_resps = (req, res) => {
             res.status(404).render('404');
         } else {
             res.render('admin_resps', {
-                resps: data
+                resps: data,
+                user: req.user
             });
         }
     });
@@ -69,7 +70,9 @@ exports.new = (req, res) => {
 
 exports.get_new = (req, res) => {
     /* Impostazione dello stato HTTP success e rendering della pagina dedicata alla creazione di un nuovo Resp (newResp.ejs) */
-    res.status(200).render('admin_newResps');
+    res.status(200).render('admin_newResp', {
+        user: req.user
+    });
 };
 
 exports.get_edit = (req, res) => {
@@ -79,7 +82,8 @@ exports.get_edit = (req, res) => {
             res.status(404).render('404');
         } else {
             res.render('admin_editResps', {
-                resp: data
+                resp: data,
+                user: req.user
             });
         }
     });

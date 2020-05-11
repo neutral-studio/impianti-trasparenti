@@ -1,62 +1,70 @@
 <%- include('./partials/header') %>
-<%- include('./partials/navbar') %>
-<div class="container" style="margin-top:8em;">
-    <div class="row">
-        <% impianti.forEach((impianto, index) => { %>
-        <div class="col-md-6">
-            <div class="card custom-shadow">
-                <div class="card-body">
-                    <h3><a href="#" class="custom-h3"><%= impianto.name %></a></h3>
-                    <a href="#" style="color: rgb(255, 33, 33); font-size: larger;"> <%= impianto.address %> </a>
-                    <!-- <i
+    <%- include('./partials/navbar') %>
+        <div class="container" style="margin-top:8em;">
+            <div class="row">
+                <% impianti.forEach((impianto, index) => { %>
+                    <div class="col-md-6">
+                        <div class="card custom-shadow">
+                            <div class="card-body">
+                                <h3>
+                                    <a href="/impianti/<%= impianto._id %>" class="custom-h3">
+                                        <%= impianto.name %>
+                                    </a>
+                                </h3>
+                                <a href="#" style="color: rgb(255, 33, 33); font-size: larger;">
+                                    <%= impianto.address %>
+                                </a>
+                                <!-- <i
                             class="fas fa-map-marker-alt"></i> -->
-                    <img src="http://www.sportingcuneo.it/sporting/wp-content/uploads/2015/10/SportingCuneoBanner.jpg"
-                        alt="Raised Image" class="img-raised rounded img-fluid custom-shadow my-4">
-                    <p><%= impianto.desc %></p>
-                    <label for="" style="font-size: 0.8em; margin-top: 1.6em">SPORT & ATTIVITA'</label>
-                    <div class="blog-tags mb-2">
-                        <% impianto.sport.forEach((item) => { %>
-                        <span class="badge badge-secondary badge-pill"><%= item %></span>
-                        <% }) %>
-                    </div>
+                                <img src="http://www.sportingcuneo.it/sporting/wp-content/uploads/2015/10/SportingCuneoBanner.jpg" alt="Raised Image" class="img-raised rounded img-fluid custom-shadow my-4">
+                                <p>
+                                    <%- impianto.desc %>
+                                </p>
+                                <label for="" style="font-size: 0.8em; margin-top: 1.6em">SPORT & ATTIVITA'</label>
+                                <div class="blog-tags mb-2">
+                                    <% impianto.sport.forEach((item) => { %>
+                                        <span class="badge badge-secondary badge-pill"><%= item %></span>
+                                        <% }) %>
+                                </div>
 
-                    <label for="" style="font-size: 0.8em; margin-top: 1.6em">TAGS</label>
-                    <div class="blog-tags mb-2">
-                        <% impianto.tags.forEach((item) => { %>
-                        <% Object.getOwnPropertyNames(item).forEach((tag) => { %>
-                        <span class="badge badge-secondary badge-pill"><%= tag %> </span>
-                        <% }) %></span>
-                        <% }) %>
-                    </div>
-                    <!-- <hr style="margin-top: 2em;"> -->
-                    <label for="" style="font-size: 0.8em; margin-top: 1.6em">GESTITO DA</label>
-                    <h4
-                        style="margin-bottom: 4px; margin-top: -0.3em; font-family: 'Poppins', sans-serif; font-weight: 400;">
-                        <%= impianto.manager %></h4>
-                    <!-- <ul class="list-unstyled">
+                                <label for="" style="font-size: 0.8em; margin-top: 1.6em">TAGS</label>
+                                <div class="blog-tags mb-2">
+                                    <% impianto.tags.forEach((item) => { %>
+                                        <% Object.getOwnPropertyNames(item).forEach((tag) => { %>
+                                            <span class="badge badge-secondary badge-pill"><%= tag %> </span>
+                                            <% }) %>
+                                                </span>
+                                                <% }) %>
+                                </div>
+                                <!-- <hr style="margin-top: 2em;"> -->
+                                <label for="" style="font-size: 0.8em; margin-top: 1.6em">GESTITO DA</label>
+                                <h4 style="margin-bottom: 4px; margin-top: -0.3em; font-family: 'Poppins', sans-serif; font-weight: 400;">
+                                    <%= impianto.manager %>
+                                </h4>
+                                <!-- <ul class="list-unstyled">
                             <li><i class="fas fa-location-arrow"></i> <a href="#" style="color: rgb(255, 33, 33);">Via Roma
                                     28 12100 Cuneo</a></li>
                             <li><i class="fas fa-phone-alt"></i> 0171 484 292</li>
                             <li><i class="fas fa-envelope"></i> albertosola2002@gmail.com</li>
                         </ul> -->
 
-                    <!-- <div class="blog-tags mt-4 mb-2">
+                                <!-- <div class="blog-tags mt-4 mb-2">
                             <span class="badge badge-secondary badge-pill">Calcio</span>
                             <span class="badge badge-secondary badge-pill">Pallavolo</span>
                             <span class="badge badge-secondary badge-pill">Tennis</span>
                         </div> -->
-                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <% }) %>
+
             </div>
 
+
+
+
         </div>
-        <% }) %>
+        </div>
 
-    </div>
-
-
-
-
-</div>
-</div>
-
-<%- include('./partials/footer') %>
+        <%- include('./partials/footer') %>
