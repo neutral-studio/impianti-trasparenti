@@ -8,7 +8,8 @@ exports.get_impianti = (req, res) => {
         } else {
             // res.send(data[0].tags);
             res.render('impianti', {
-                impianti: data
+                impianti: data,
+                user: req.user
             });
         }
     })
@@ -19,7 +20,7 @@ exports.get_impianto = (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render('show', { impianto: data });
+            res.render('show', { impianto: data, user: req.user });
         }
     })
 }
