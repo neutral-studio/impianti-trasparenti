@@ -5,11 +5,15 @@ const passport = require('passport');
 
 exports.get_home = (req, res) => {
     /* Impostazione dello stato HTTP success e rendering della pagina home (home.ejs) */
-    res.status(200).render('home');
+    res.status(200).render('home', {
+        user: req.user
+    });
 };
 
 exports.get_login = (req, res) => {
-    res.status(200).render('login');
+    res.status(200).render('login', {
+        user: req.user
+    });
 };
 
 exports.post_login = (req, res, next) =>{
@@ -22,7 +26,10 @@ exports.post_login = (req, res, next) =>{
 };
 
 exports.get_register = (req, res) => {
-    res.status(200).render('register');
+    res.status(200).render('register', {
+        user: req.user
+    });
+    
 };
 
 exports.post_register = async (req, res) =>{
@@ -125,29 +132,39 @@ function emailIsValid (email) {
   }
 
 exports.get_about = (req, res) => {
-    res.render('about');
+    res.render('about', {
+        user: req.user
+    });
 };
 
 exports.get_admin = (req, res) => {
-    res.render('admin');
+    res.render('admin',{
+        user: req.user
+    });
 };
 
 exports.get_superUser = (req, res) => {
-    res.render('superUser');
+    res.render('superUser',{
+        user: req.user
+    });
 };
 
 exports.get_user = (req, res) => {
-    res.render('user');
+    res.render('user',{
+        user: req.user
+    });
 };
 
 
 exports.get_logout = (req, res) => {
     req.logout();
-    res.redirect('/user/login')
+    res.redirect('/user/login');
 };
 
 exports.get_onboarding = (req, res) => {
-    res.render('onboarding');
+    res.render('onboarding',{
+        user: req.user
+    });
 }
 
 exports.put_onboarding = async (req, res) =>{

@@ -25,6 +25,11 @@
                 <li class="nav-item mr-3">
                     <a class="nav-link custom-nav-link" href="/user/about"><i class="fas fa-users"></i> CHI SIAMO</a>
                 </li>
+                <% if(user) { %>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link custom-nav-link" href="/admin/dashboard"><i class="fas fa-chart-line"></i> DASHBOARD</a>
+                    </li>
+                <% } else { %>
                 <li class="nav-item mr-3">
                     <a class="nav-link custom-nav-link" href="/user/login"><i
                             class="fas fa-sign-in-alt mr-1"></i>ACCEDI</a>
@@ -33,6 +38,7 @@
                     <a class="nav-link custom-nav-link" href="/user/register">
                         <i class="fas fa-user-plus mr-1"></i>REGISTRATI</a>
                 </li>
+                <% } %>
             </ul>
         </div>
     </div>
