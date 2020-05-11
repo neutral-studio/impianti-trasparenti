@@ -93,3 +93,29 @@
 .custom-navbar-broom {
     size: 5em;
 }
+
+.white::selection {
+    background: #faf7f7;
+}
+
+.fanculo::selection {
+    background: #b3b2b2;
+}
+
+.parallax-div {
+    /* margin-top: 1em;
+    margin-bottom: 1em ; */
+    background-color: white;
+    width: 90px;
+    height: 90px;
+    border-radius: 14%;
+    -webkit-box-shadow: 25px 27px 25px -2px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 25px 27px 25px -2px rgba(0, 0, 0, 0.38);
+    box-shadow: 25px 27px 25px -2px rgba(0, 0, 0, 0.38);
+    right: 0em !important;
+}
+
+.svg-icon {
+    width: 75px;
+    height: 75px;
+}
